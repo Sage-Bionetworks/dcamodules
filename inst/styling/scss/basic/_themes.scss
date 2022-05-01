@@ -1,0 +1,126 @@
+// this file is used to define app's themes (colors and fonts)
+
+@import 'colors';
+@import 'typography';
+@import '../boxes/boxes_var';
+@import '../buttons/buttons_var';
+
+@mixin themes($primary, $accent) {
+  // colors
+  $bg-primary: map-get($primary, 500);
+  $bg-accent: map-get($accent, 500);
+  $bg-sidebar: map-get($primary, 800);
+  $icon-sidebar: map-get($accent, 200);
+
+  $cl: (
+    'primary': $bg-primary,
+    'accent': $bg-accent,
+    'success': $success,
+    // $info: ;
+    'warning': $warning,
+    'danger': $danger,
+  );
+
+  // header
+  .skin-blue .main-header .navbar {
+    background: $bg-primary;
+  }
+
+  // sidebar
+  .skin-blue .main-header .logo {
+    background: $bg-primary;
+
+    &:hover {
+      background: $bg-primary;
+    }
+  }
+
+  .navbar .sidebar-toggle {
+    background: $bg-primary;
+    color: set-font-color($bg-primary);
+
+    &:hover {
+      background: $bg-primary;
+      color: set-font-color($bg-primary);
+    }
+  }
+
+  .main-sidebar {
+    background-color: $bg-sidebar !important;
+
+    //icon color
+    .fa {
+      color: rgba($icon-sidebar, 0.8);
+      transition: 100ms;
+    }
+
+    li > a {
+      color: #fff !important;
+      filter: grayscale(100%) opacity(0.7);
+      transition: 100ms;
+
+      &:hover {
+        background: map-get($primary, 200) !important;
+        filter: grayscale(0%) opacity(1);
+      }
+    }
+
+    li.active > a {
+      background-color: rgba($bg-sidebar, 0.8) !important;
+      filter: unset;
+
+      .fa {
+        color: #fff;
+      }
+    }
+  }
+  // content
+
+  // boxes
+  @each $type in ('primary', 'success', 'warning', 'danger') {
+    $bg-cl: map-get($cl, #{$type});
+    $radius: map-get($dca-box-var, 'border-radius');
+
+    .box.box-solid.box-#{$type},
+    .box.box-#{$type} {
+      border-color: $bg-cl;
+      border-radius: $radius;
+
+      & > .box-header {
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+
+        & h3 {
+          color: $black;
+        }
+      }
+
+      &[class*='solid'] > .box-header {
+        background: $bg-cl;
+
+        & h3 {
+          color: set-font-color($bg-cl);
+        }
+      }
+    }
+  }
+
+  // buttons
+  @include dca-ripple($bg-accent);
+  .btn-default,
+  .action-button {
+    background: $bg-accent;
+    color: set-font-color($bg-accent);
+    @include dca-btn;
+    @extend .dca-ripple;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:active:focus,
+    &:visited {
+      background: $bg-accent;
+      color: set-font-color($bg-accent);
+    }
+  }
+}

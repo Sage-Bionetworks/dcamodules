@@ -1,0 +1,7 @@
+$dca-box-var: (
+  'border-radius': 10px,
+);
+
+@mixin dca-box {
+  border-radius: map-get($dca-box, 'border-radius');
+}

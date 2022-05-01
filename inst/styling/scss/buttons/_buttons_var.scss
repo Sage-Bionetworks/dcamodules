@@ -1,0 +1,33 @@
+@mixin dca-btn {
+  min-width: 36px;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  line-height: 36px;
+  margin: 8px 8px 8px 0;
+  padding: 0 16px;
+  border-radius: 4px;
+  outline: none !important;
+  cursor: pointer;
+}
+
+@mixin dca-ripple($bg-color) {
+  .dca-ripple {
+    background-position: center !important;
+    background-image: radial-gradient(
+      circle,
+      transparent 1%,
+      $bg-color 1%
+    ) !important;
+    background-size: 8000% !important;
+    transition: background 0.5s;
+
+    &:active {
+      background-color: #fff !important;
+      background-size: 10% !important;
+      transition: background 0s;
+    }
+  }
+}
