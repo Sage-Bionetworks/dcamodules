@@ -1,14 +1,2 @@
-
-@mixin dca-btn {
-  min-width: 36px;
-  display: inline-block;
-  white-space: nowrap;
-  text-decoration: none;
-  vertical-align: baseline;
-  text-align: center;
-  line-height: 36px;
-  margin: 8px 8px 8px 0;
-  padding: 0 16px;
-}
-
-@import 'shiny_button'
+@import 'buttons_var';
+@import 'shiny_button';

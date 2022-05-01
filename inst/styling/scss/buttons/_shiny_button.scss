@@ -1,5 +1,5 @@
 /* Buttons */
-.btn-shiny-effect {
+.dca-shiny-btn {
   @include dca-btn;
   position: relative;
   background: #27022d;
@@ -14,7 +14,8 @@
   background-size: 400% 400%;
   animation: TransitioningBackground 10s ease infinite;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: #fff;
     background-image: linear-gradient(to left, #2d8fe5, #d155b8);
     transform: scale(1.05);
@@ -47,7 +48,8 @@
     transform: translateX(-100px) skewX(-15deg);
   }
 
-  &::before, &::after {
+  &::before,
+  &::after {
     transform: translateX(300px) skewX(-15deg);
     transition: 0.7s;
   }
@@ -55,7 +57,6 @@
 
 // update button animation
 @keyframes TransitioningBackground {
-
   0% {
     background-position: 1% 0%;
   }
