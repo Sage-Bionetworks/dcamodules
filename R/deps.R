@@ -31,14 +31,15 @@ add_deps <- function(tag) {
 update_css <- function(main.scss=NULL) {
   stopifnot(interactive())
   if (is.null(main.scss)) {
-    main.scss <- system.file("styling/scss/main.scss", package = "dcamodules")
+    main.scss <- system.file(package = "dcamodules", "styling/scss/main.scss")
   }
   sass::sass(
     sass::sass_file(main.scss),
-    output = "inst/styling/main.min.css",
+    output = system.file(package = "dcamodules", "styling/main.min.css"),
     options = sass::sass_options(
       output_style = "compressed",
       source_map_embed = TRUE
     )
   )
 }
+

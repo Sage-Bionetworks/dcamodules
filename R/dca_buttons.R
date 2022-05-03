@@ -1,3 +1,4 @@
+
 #' @title shinyButton
 #'
 #' @description
@@ -9,16 +10,40 @@
 #'
 #' if (interactive()) {
 #'
-#'  shinyButton()
+#'  shinyButton("button")
 #'
 #' }
-shinyButton <- function() {
-  tag <- tags$button(
+shinyButton <- function(id, label="Button", ...) {
+  btn <- tags$button(
+    id = id,
     type = "button",
-    class = "btn-shiny-effect",
-    "Button"
+    class = "btn btn-default action-button dca-shiny-btn",
+    list(label),
+    ...
   )
-  add_deps(tag)
+  add_deps(btn)
 }
 
 
+#' Title
+#'
+#' @param id
+#' @param direction
+#'
+#' @return
+#' @export
+#'
+#' @examples
+arrowButton <- function(id, direction = "left") {
+  match.arg(direction, c("left", "right"))
+  icon_left <- lapply(1:3, function(i) tags$i(class = "fa fa-angle-left"))
+  icon_right <- lapply(1:3, function(i) tags$i(class = "fa fa-angle-right"))
+
+
+  if (direction == "left") {
+    btn <- actionButton(id, class = "dca-left-btn", icon_left)
+  } else {
+    btn <- actionButton(id, class = "dca-right-btn", icon_right)
+  }
+  add_deps(btn)
+}

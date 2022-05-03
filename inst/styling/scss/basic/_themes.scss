@@ -2,8 +2,10 @@
 
 @import 'colors';
 @import 'typography';
+@import 'global_variables';
 @import '../boxes/boxes_var';
 @import '../buttons/buttons_var';
+
 
 @mixin themes($primary, $accent) {
   // colors
@@ -106,13 +108,13 @@
   }
 
   // buttons
-  @include dca-ripple($bg-accent);
+  @include dca-ripple-effect($bg-accent);
   .btn-default,
   .action-button {
+    @extend .dca-btn;
     background: $bg-accent;
     color: set-font-color($bg-accent);
-    @include dca-btn;
-    @extend .dca-ripple;
+    //@extend .dca-ripple;
 
     &:hover,
     &:focus,
@@ -121,6 +123,21 @@
     &:visited {
       background: $bg-accent;
       color: set-font-color($bg-accent);
+    }
+  }
+
+  @each $type in ('primary', 'accent', 'success', 'warning', 'danger') {
+    $bg-cl: map-get($cl, #{$type});
+    .btn-#{$type},
+    .btn-#{$type}:active, .btn-#{$type}:visited  {
+      background: $bg-cl !important;
+      color: set-font-color($bg-cl) !important;
+      filter: grayscale(0%) opacity(1);
+			transition: 100ms;
+    }
+    .btn-#{$type}:hover {
+    	background: $bg-cl !important;
+			filter: grayscale(20%) opacity(0.7);
     }
   }
 }

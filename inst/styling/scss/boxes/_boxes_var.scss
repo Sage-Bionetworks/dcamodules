@@ -3,5 +3,5 @@ $dca-box-var: (
 );
 
 @mixin dca-box {
-  border-radius: map-get($dca-box, 'border-radius');
+  border-radius: map-get($dca-box-var, 'border-radius');
 }

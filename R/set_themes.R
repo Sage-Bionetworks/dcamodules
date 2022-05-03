@@ -34,5 +34,3 @@ set_themes <- function(primary, accent) {
     )
   )
 }
-
-

@@ -4,7 +4,7 @@
 \alias{shinyButton}
 \title{shinyButton}
 \usage{
-shinyButton()
+shinyButton(id, label = "Button", ...)
 }
 \description{
 A button with shiny effect
@@ -13,7 +13,7 @@ A button with shiny effect
 
 if (interactive()) {
 
- shinyButton()
+ shinyButton("button")
 
 }
 }
