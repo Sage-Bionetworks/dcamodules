@@ -5,7 +5,6 @@
 #' A button with shiny effect
 #'
 #' @export
-#' @importFrom shiny tags
 #' @examples
 #'
 #' if (interactive()) {

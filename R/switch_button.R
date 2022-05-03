@@ -4,8 +4,8 @@
 #' @param .tab
 #'
 #' @return
+#' @import dplyr
 #' @export
-#'
 #' @examples
 tabSwitchUI <- function(.tab, id=NULL) {
 

@@ -26,6 +26,7 @@ add_deps <- function(tag) {
 #' @param main.scss path to main.min.css
 #'
 #' @return path of main.min.css
+#' @import sass
 #' @export
 #'
 update_css <- function(main.scss=NULL) {

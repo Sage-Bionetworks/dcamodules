@@ -1,8 +1,9 @@
 library(shiny)
 library(shinydashboard)
 library(dcamodules)
-library(shinyjs)
-library(dplyr)
+# library(waiter)
+# library(dplyr)
+
 ### general
 themes <- c(
   "royal", "powder","coral","blueberry",
@@ -39,6 +40,7 @@ ui <- dashboardPage(
     )
   ),
   dashboardBody(
+    waiter::use_waiter(),
     uiOutput("theme"),
     tabItems(
       tabItem(
@@ -61,7 +63,33 @@ ui <- dashboardPage(
       ),
       tabItem(
         tabName = "tab_waiter",
-        h2("Nothing here yet")
+        h2("Loading Screens"),
+        fluidRow(
+          box(
+            title = "Landing:",
+            width = 12,
+            height = "250px",
+            actionButton("btn_waiter_loading", "try 5s")
+          ) %>% tagInsertAttribute(id = "box_waiter_loading"),
+          box(
+            title = "Uncertified User:",
+            width = 12,
+            height = "250px",
+            actionButton("btn_waiter_no_cert", "try 5s")
+          ) %>% tagInsertAttribute(id = "box_waiter_no_cert"),
+          box(
+            title = "Not Enough Permission:",
+            width = 12,
+            height = "250px",
+            actionButton("btn_waiter_no_perm", "try 5s")
+          ) %>% tagInsertAttribute(id = "box_waiter_no_perm"),
+          box(
+            title = "Successful Login:",
+            width = 12,
+            height = "250px",
+            actionButton("btn_waiter_success", "try 5s")
+          ) %>% tagInsertAttribute(id = "box_waiter_success")
+        )
       ),
       tabItem(
         tabName = "tab_data",
@@ -119,6 +147,35 @@ server <- function(input, output, session) {
 
   tabSwitch("switch_btn", "tabs", session, input, output)
 
+  lapply(c("loading", "no_cert", "no_perm", "success"), function(i) {
+
+    observeEvent(input[[paste0("btn_waiter_", i)]], {
+      dcWaiter("hide", sleep = 0)
+
+      if (i == "loading") {
+        msg <- "Retrieving Synapse information..."
+        dcWaiter("show", id = paste0("box_waiter_", i), msg = msg)
+        dcWaiter("hide", sleep = 5)
+      } else {
+        msg <- NULL
+        dcWaiter("show", id = paste0("box_waiter_", i), msg = msg)
+        dcWaiter("update",
+                 id = paste0("box_waiter_", i),
+                 is.landing = !grepl("landing", i),
+                 is.certified = !grepl("cert", i),
+                 is.permission = !grepl("perm", i))
+        dcWaiter("hide", sleep = 5)
+      }
+
+    })
+
+  })
+  observeEvent(c(input$pri_theme,input$acc_theme), {
+
+    output$theme <- renderUI({
+      set_themes(input$pri_theme, input$acc_theme)
+    })
+  })
 }
 
 shinyApp(ui, server)

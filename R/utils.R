@@ -17,6 +17,7 @@ validate_session_object <- function(session, label = as.character(sys.call(sys.p
 #' @param .tab
 #'
 #' @return
+#' @import htmltools
 #' @export
 #'
 #' @examples
@@ -35,6 +36,7 @@ get_tab_names <- function(.tab) {
 #' @param values
 #'
 #' @return
+#' @import shiny
 #' @export
 #'
 #' @examples
@@ -48,4 +50,27 @@ var2server <- function(id, values) {
   out$attribs$class <- paste0(out$attribs$class, " dca-hidden")
 
   return(out)
+}
+
+
+#' Title
+#'
+#' @param .tag
+#' @param ...
+#' @param pos
+#'
+#' @return
+#' @export
+#'
+#' @examples
+tagInsertAttribute <- function(.tag, ..., pos = 1) {
+  if (pos == 0) {
+    .tag <- tagAppendAttributes(.tag, ...)
+  } else {
+    .tag$children[[pos]] <- tagAppendAttributes(
+      .tag$children[[pos]],
+      ...
+      )
+  }
+  return(.tag)
 }
