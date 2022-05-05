@@ -159,6 +159,6 @@ spin_logo <- function(logo = "synapse") {
 
   b64 <- base64enc::dataURI(file = system.file(logo_path, package="dcamodules"),
                             mime = paste0("image/", img_type))
-  spinner <- img(src = b64, class = "logo-spin")
+  spinner <- img(src = b64, class = "dca-logo-spin")
   add_deps(spinner, "waiter")
 }

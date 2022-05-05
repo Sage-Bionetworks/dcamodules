@@ -32,7 +32,7 @@ set_themes <- function(primary, accent) {
       sass::sass_file(
         system.file(package = "dcamodules", "styling/scss/basic/_themes.scss")
         ),
-      glue::glue("@include themes(${primary}, ${accent});")
+      glue::glue("@include dca-themes(${primary}, ${accent});")
     )
   )
 

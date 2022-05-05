@@ -7,7 +7,7 @@
 @import '../buttons/buttons_var';
 
 
-@mixin themes($primary, $accent) {
+@mixin dca-themes($primary, $accent) {
   // colors
   $bg-primary: map-get($primary, 500);
   $bg-accent: map-get($accent, 500);

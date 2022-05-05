@@ -31,6 +31,7 @@ add_deps <- function(tag, type="default") {
 
 #' haha
 #'
+#' @export
 #' @noRd
 #'
 update_css <- function(type="default") {
@@ -45,6 +46,7 @@ update_css <- function(type="default") {
                                type == "waiter" ~ "waiter.min.css",
                                type == "box" ~ "box.min.css",
                                TRUE ~ "main.min.css")
+
 
   sass::sass(
     sass::sass_file(file.path(system.file(package = "dcamodules", "styling/scss"), scss_file)),
