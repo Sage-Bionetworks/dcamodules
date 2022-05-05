@@ -4,22 +4,15 @@ library(dcamodules)
 library(dplyr)
 
 ### general
-themes <- c(
-  "royal", "powder","coral","blueberry",
-  "rose","slate", "cloud","butterscotch",
-  "turquoise","apricot", "apple","lavender",
-  "fern", "stone"
-)
-
-primary_cl <- reactiveVal("slate")
-accent_cl <- reactiveVal("royal")
+themes <- c("sage")
 
 all_orgs <- list.files(system.file(package = "dcamodules", "assets/logos")) %>%
   tools::file_path_sans_ext()
 
-
 ui <- dashboardPage(
-  dashboardHeader(),
+  dashboardHeader(
+    title = tags$img(src="assets/logos/sage.svg", height = 40, alt="Logo")
+  ),
   dashboardSidebar(
     sidebarMenu(
       id = "tabs",
@@ -34,9 +27,9 @@ ui <- dashboardPage(
         icon = icon("clock")
       ),
       menuItem(
-        "data",
-        tabName = "tab_data",
-        icon = icon("table")
+        "progress bar",
+        tabName = "tab_progress_bar",
+        icon = icon("spinner")
       ),
       menuItem(
         "themes",
@@ -107,25 +100,19 @@ ui <- dashboardPage(
         )
       ),
       tabItem(
-        tabName = "tab_data",
+        tabName = "tab_progress_bar",
         h2("Nothing here yet")
       ),
       tabItem(
         tabName = "tab_themes",
-        h2("Select colors to preview themes"),
+        h2("Change theme"),
         fluidRow(
-          column(3, offset = 2,
+          column(3, offset = 5,
             selectInput(
-              inputId = "pri_theme",
-              label = "Primary color:",
-              choices = themes
-            )
-          ),
-          column(3,
-            selectInput(
-              inputId = "acc_theme",
-              label = "Secondary color:",
-              choices = themes
+              inputId = "btn_theme",
+              label = "Theme Choice:",
+              choices = themes,
+              selected = "sage"
             )
           )
         ),
@@ -151,11 +138,10 @@ ui <- dashboardPage(
 
 server <- function(input, output, session) {
 
-  observeEvent(c(primary_cl(), accent_cl()), {
-
-    output$theme <- renderUI({
-      set_themes(primary_cl(), accent_cl())
-    })
+  observeEvent(input$btn_theme, {
+    output$theme <- renderUI(
+      set_themes(input$btn_theme)
+    )
   })
 
   tabSwitch("switch_btn", "tabs", session, input, output)

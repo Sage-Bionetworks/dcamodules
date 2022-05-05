@@ -4,7 +4,7 @@
 \alias{set_themes}
 \title{set_themes}
 \usage{
-set_themes(primary, accent)
+set_themes(theme)
 }
 \arguments{
 \item{accent}{}

@@ -16,31 +16,25 @@
 #'
 #' @export
 #'
-set_themes <- function(primary, accent) {
+set_themes <- function(theme) {
 
-  themes <- c(
-    "royal", "powder","coral","blueberry",
-    "rose","slate", "cloud","butterscotch",
-    "turquoise","apricot", "apple","lavender",
-    "fern", "stone"
-  )
-  match.arg(primary, themes)
-  match.arg(accent, themes)
+  # themes <- c(
+  #   "royal", "powder","coral","blueberry",
+  #   "rose","slate", "cloud","butterscotch",
+  #   "turquoise","apricot", "apple","lavender",
+  #   "fern", "stone"
+  # )
+  themes <- c("sage")
+  match.arg(theme, themes)
 
   themeCSS <- sass::sass(
     list(
       sass::sass_file(
         system.file(package = "dcamodules", "styling/scss/themes/_load.scss")
       ),
-      glue::glue("@include dca-set-theme(${primary}, ${accent});")
+      glue::glue("@include dca-set-theme({theme});")
     )
   )
-
-  # theme <- sass::sass_layer(
-  #   functions = themeCSS
-  # )
-
-  # theme_dep <- registerThemeDependency(theme)
 
   tags$head(
     tags$style(
