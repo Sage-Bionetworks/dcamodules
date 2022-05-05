@@ -1,8 +1,7 @@
 library(shiny)
 library(shinydashboard)
 library(dcamodules)
-# library(waiter)
-# library(dplyr)
+library(dplyr)
 
 ### general
 themes <- c(
@@ -11,6 +10,10 @@ themes <- c(
   "turquoise","apricot", "apple","lavender",
   "fern", "stone"
 )
+
+all_orgs <- list.files(system.file(package = "dcamodules", "assets/logos")) %>%
+  tools::file_path_sans_ext()
+
 
 ui <- dashboardPage(
   dashboardHeader(),
@@ -25,7 +28,7 @@ ui <- dashboardPage(
       menuItem(
         "waiter",
         tabName = "tab_waiter",
-        icon = icon("screen")
+        icon = icon("clock")
       ),
       menuItem(
         "data",
@@ -40,7 +43,7 @@ ui <- dashboardPage(
     )
   ),
   dashboardBody(
-    waiter::use_waiter(),
+    use_dcaWaiter(),
     uiOutput("theme"),
     tabItems(
       tabItem(
@@ -66,28 +69,37 @@ ui <- dashboardPage(
         h2("Loading Screens"),
         fluidRow(
           box(
+            title = "Logo Spinner:",
+            width = 12,
+            fluidRow(
+              lapply(all_orgs, function(org) {
+                column(3, spin_logo(org))
+              })
+            )
+          ),
+          box(
             title = "Landing:",
             width = 12,
             height = "250px",
-            actionButton("btn_waiter_loading", "try 5s")
+            actionButton("btn_waiter_loading", "try")
           ) %>% tagInsertAttribute(id = "box_waiter_loading"),
           box(
             title = "Uncertified User:",
             width = 12,
             height = "250px",
-            actionButton("btn_waiter_no_cert", "try 5s")
+            actionButton("btn_waiter_no_cert", "try")
           ) %>% tagInsertAttribute(id = "box_waiter_no_cert"),
           box(
             title = "Not Enough Permission:",
             width = 12,
             height = "250px",
-            actionButton("btn_waiter_no_perm", "try 5s")
+            actionButton("btn_waiter_no_perm", "try")
           ) %>% tagInsertAttribute(id = "box_waiter_no_perm"),
           box(
             title = "Successful Login:",
             width = 12,
             height = "250px",
-            actionButton("btn_waiter_success", "try 5s")
+            actionButton("btn_waiter_success", "try")
           ) %>% tagInsertAttribute(id = "box_waiter_success")
         )
       ),
@@ -150,30 +162,20 @@ server <- function(input, output, session) {
   lapply(c("loading", "no_cert", "no_perm", "success"), function(i) {
 
     observeEvent(input[[paste0("btn_waiter_", i)]], {
-      dcWaiter("hide", sleep = 0)
+      dcaWaiter("hide", sleep = 0)
 
       if (i == "loading") {
         msg <- "Retrieving Synapse information..."
-        dcWaiter("show", id = paste0("box_waiter_", i), msg = msg)
-        dcWaiter("hide", sleep = 5)
+        dcaWaiter("show", id = paste0("box_waiter_", i), msg = msg)
       } else {
         msg <- NULL
-        dcWaiter("show", id = paste0("box_waiter_", i), msg = msg)
-        dcWaiter("update",
+        dcaWaiter("show", id = paste0("box_waiter_", i), msg = msg)
+        dcaWaiter("update",
                  id = paste0("box_waiter_", i),
                  is.landing = !grepl("landing", i),
                  is.certified = !grepl("cert", i),
                  is.permission = !grepl("perm", i))
-        dcWaiter("hide", sleep = 5)
       }
-
-    })
-
-  })
-  observeEvent(c(input$pri_theme,input$acc_theme), {
-
-    output$theme <- renderUI({
-      set_themes(input$pri_theme, input$acc_theme)
     })
   })
 }

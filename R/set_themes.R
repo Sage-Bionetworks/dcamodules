@@ -1,3 +1,13 @@
+# sass_layer(
+#   functions = sass(sass_file("~/Projects/Web/dcamodules/inst/styling/basic/_themes.scss")), html_deps = htmltools::htmlDependency(
+#   name = "dcamodules",
+#   version = utils::packageVersion("dcamodules"),
+#   package = "dcamodules",
+#   src = "styling"
+# ))
+# registerThemeDependency()
+# session$setCurrentTheme()
+
 #' set_themes
 #'
 #' @description set_themes
