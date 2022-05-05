@@ -30,15 +30,21 @@ set_themes <- function(primary, accent) {
   themeCSS <- sass::sass(
     list(
       sass::sass_file(
-        system.file(package = "dcamodules", "styling/scss/basic/_themes.scss")
-        ),
-      glue::glue("@include dca-themes(${primary}, ${accent});")
+        system.file(package = "dcamodules", "styling/scss/themes/_load.scss")
+      ),
+      glue::glue("@include dca-set-theme(${primary}, ${accent});")
     )
   )
 
-  htmltools::tags$head(
-    htmltools::tags$style(
-      htmltools::HTML(
+  # theme <- sass::sass_layer(
+  #   functions = themeCSS
+  # )
+
+  # theme_dep <- registerThemeDependency(theme)
+
+  tags$head(
+    tags$style(
+      HTML(
         text = themeCSS
       )
     )

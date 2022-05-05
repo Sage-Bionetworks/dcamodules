@@ -1,16 +1,17 @@
-.dca-left-btn, .dca-right-btn {
+.dca-left-btn,
+.dca-right-btn {
   @extend .dca-btn;
   background: #fff !important;
   color: #000 !important;
-  display: flex !important;
+  display: inline-flex !important;
   justify-content: center;
   align-items: center;
   height: 40px !important;
   padding: 5px;
   border-radius: 10px;
-  // box-shadow: $simple_shadow;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: #fff;
   }
 
@@ -33,7 +34,6 @@
 }
 
 .dca-right-btn:hover {
-
   .fa {
     animation: dca-move-right 2s infinite;
 
@@ -47,12 +47,10 @@
   }
 }
 
-
 @keyframes dca-move-left {
-
   0% {
     opacity: 0;
-    transform:  translateX(10px);
+    transform: translateX(10px);
   }
 
   50% {
@@ -66,10 +64,9 @@
 }
 
 @keyframes dca-move-right {
-
   0% {
     opacity: 0;
-    transform:  translateX(-10px);
+    transform: translateX(-10px);
   }
 
   50% {

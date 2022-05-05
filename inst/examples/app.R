@@ -11,6 +11,9 @@ themes <- c(
   "fern", "stone"
 )
 
+primary_cl <- reactiveVal("slate")
+accent_cl <- reactiveVal("royal")
+
 all_orgs <- list.files(system.file(package = "dcamodules", "assets/logos")) %>%
   tools::file_path_sans_ext()
 
@@ -115,16 +118,14 @@ ui <- dashboardPage(
             selectInput(
               inputId = "pri_theme",
               label = "Primary color:",
-              choices = themes,
-              selected = "slate"
+              choices = themes
             )
           ),
           column(3,
             selectInput(
               inputId = "acc_theme",
               label = "Secondary color:",
-              choices = themes,
-              selected = "royal"
+              choices = themes
             )
           )
         ),
@@ -150,10 +151,10 @@ ui <- dashboardPage(
 
 server <- function(input, output, session) {
 
-  observeEvent(c(input$pri_theme,input$acc_theme), {
+  observeEvent(c(primary_cl(), accent_cl()), {
 
     output$theme <- renderUI({
-      set_themes(input$pri_theme, input$acc_theme)
+      set_themes(primary_cl(), accent_cl())
     })
   })
 

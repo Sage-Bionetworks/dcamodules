@@ -133,3 +133,11 @@ $stone: (
   700: #6d7078,
   800: #515359,
 );
+
+@function set-font-color($color) {
+  @if (lightness($color) > 50) {
+    @return $black; // Lighter background, return dark color
+  } @else {
+    @return $white; // Darker background, return light color
+  }
+}

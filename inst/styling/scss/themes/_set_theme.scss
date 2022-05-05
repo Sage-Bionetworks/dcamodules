@@ -1,13 +1,5 @@
-// this file is used to define app's themes (colors and fonts)
-
-@import 'colors';
-@import 'typography';
-@import 'global_variables';
-@import '../boxes/boxes_var';
-@import '../buttons/buttons_var';
-
-
-@mixin dca-themes($primary, $accent) {
+// this file is used to define app's theme (colors and fonts)
+@mixin dca-set-theme($primary, $accent) {
   // colors
   $bg-primary: map-get($primary, 500);
   $bg-accent: map-get($accent, 500);
@@ -129,15 +121,16 @@
   @each $type in ('primary', 'accent', 'success', 'warning', 'danger') {
     $bg-cl: map-get($cl, #{$type});
     .btn-#{$type},
-    .btn-#{$type}:active, .btn-#{$type}:visited  {
+    .btn-#{$type}:active,
+    .btn-#{$type}:visited {
       background: $bg-cl !important;
       color: set-font-color($bg-cl) !important;
       filter: grayscale(0%) opacity(1);
-			transition: 100ms;
+      transition: 100ms;
     }
     .btn-#{$type}:hover {
-    	background: $bg-cl !important;
-			filter: grayscale(20%) opacity(0.7);
+      background: $bg-cl !important;
+      filter: grayscale(20%) opacity(0.7);
     }
   }
 }
