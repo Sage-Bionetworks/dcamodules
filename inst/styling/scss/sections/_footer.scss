@@ -1,0 +1,26 @@
+.content-wrapper {
+  // need to refer content-wrapper size
+  position: relative;
+}
+
+.dca-footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+
+  & > * {
+    margin-bottom: 8px;
+  }
+
+  .dca-footer-media {
+    display: inline-flex;
+    align-items: center;
+
+    & > * {
+      margin: 0 8px;
+    }
+  }
+}

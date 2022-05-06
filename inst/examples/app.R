@@ -22,7 +22,7 @@ ui <- dashboardPage(
         icon = icon("mouse")
       ),
       menuItem(
-        "waiter",
+        "waiters",
         tabName = "tab_waiter",
         icon = icon("clock")
       ),
@@ -132,7 +132,18 @@ ui <- dashboardPage(
           )
         )
       )
-    ) %>% tabSwitchUI("switch_btn")
+    ) %>% tabSwitchUI("switch_btn"),
+    dcaFooter(
+      HTML(paste0(
+        "Copy right @2022. Powered by ",
+        tags$a("Sage Bionetworks", href = "https://sagebionetworks.org/"),
+        "."
+        )),
+      media = tagList(
+        iconButton(icon("github"), "https://github.com/Sage-Bionetworks/dcamodules"),
+        iconButton(icon("github"), "https://github.com/Sage-Bionetworks/dcamodules")
+      )
+    )
   )
 )
 

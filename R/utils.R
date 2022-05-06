@@ -33,7 +33,7 @@ var2server <- function(id, values) {
               choices = values,
               selected = values,
               multiple = TRUE)
-  out$attribs$class <- paste0(out$attribs$class, " dca-hidden")
+  out$attribs$class <- paste0(out$attribs$class, " dca-remove")
 
   return(out)
 }

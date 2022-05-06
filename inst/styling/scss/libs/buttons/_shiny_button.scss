@@ -9,7 +9,7 @@
   overflow: hidden;
   animation: TransitioningBackground 10s ease infinite;
   transition: 500ms !important;
-  filter: none;
+  filter: none !important;
 
   &:hover,
   &:focus {
@@ -27,7 +27,7 @@
     width: 60px;
     height: 100%;
     top: 0;
-    filter: blur(30px);
+    filter: blur(30px) !important;
     transform: translateX(-100px) skewX(-15deg);
   }
 
@@ -40,7 +40,7 @@
     width: 30px;
     height: 100%;
     top: 0;
-    filter: blur(5px);
+    filter: blur(5px) !important;
     transform: translateX(-100px) skewX(-15deg);
   }
 
