@@ -1,20 +1,20 @@
 #' Create UI dependencies
 #' @noRd
 #'
-dca_deps <- function(type="default") {
+get_dca_deps <- function() {
 
-  match.arg(type, c("default", "btn", "waiter", "box"))
-  css <- dplyr::case_when(type == "btn" ~ "button.min.css",
-                          type == "waiter" ~ "waiter.min.css",
-                          type == "box" ~ "box.min.css",
-                          TRUE ~ "main.min.css")
+  # match.arg(type, c("default", "btn", "waiter", "box"))
+  # css <- dplyr::case_when(type == "btn" ~ "button.min.css",
+  #                         type == "waiter" ~ "waiter.min.css",
+  #                         type == "box" ~ "box.min.css",
+  #                         TRUE ~ "main.min.css")
   # js <-
   htmltools::htmlDependency(
-    name = shiny::NS("dcamodules", type),
+    name = "dcamodules",
     version = utils::packageVersion("dcamodules"),
     package = "dcamodules",
     src = "styling/css",
-    stylesheet = css,
+    stylesheet = "main.min.css",
     all_files = FALSE
   )
 }
@@ -23,9 +23,8 @@ dca_deps <- function(type="default") {
 #'
 #' @noRd
 #'
-add_deps <- function(tag, type="default") {
-  match.arg(type, c("default", "btn", "waiter", "box"))
-  shiny::tagList(tag, dca_deps(type))
+add_deps <- function(tag) {
+  shiny::tagList(tag, get_dca_deps())
 }
 
 
@@ -34,20 +33,21 @@ add_deps <- function(tag, type="default") {
 #' @export
 #' @noRd
 #'
-update_css <- function(type="default") {
+update_css <- function() {
   stopifnot(interactive())
 
-  match.arg(type, c("default", "btn", "waiter", "box"))
-  scss_file <- dplyr::case_when(type == "btn" ~ "buttons/_load.scss",
-                                type == "waiter" ~ "waiters/_load.scss",
-                                type == "box" ~ "boxes/_load.scss",
-                                TRUE ~ "main.scss")
-  css_file <- dplyr::case_when(type == "btn" ~ "button.min.css",
-                               type == "waiter" ~ "waiter.min.css",
-                               type == "box" ~ "box.min.css",
-                               TRUE ~ "main.min.css")
+  # match.arg(type, c("default", "btn", "waiter", "box"))
+  # scss_file <- dplyr::case_when(type == "btn" ~ "buttons/_load.scss",
+  #                               type == "waiter" ~ "waiters/_load.scss",
+  #                               type == "box" ~ "boxes/_load.scss",
+  #                               TRUE ~ "main.scss")
+  # css_file <- dplyr::case_when(type == "btn" ~ "button.min.css",
+  #                              type == "waiter" ~ "waiter.min.css",
+  #                              type == "box" ~ "box.min.css",
+  #                              TRUE ~ "main.min.css")
 
-
+  scss_file <- "main.scss"
+  css_file <- "main.min.css"
   sass::sass(
     sass::sass_file(file.path(system.file(package = "dcamodules", "styling/scss"), scss_file)),
     output = file.path(system.file(package = "dcamodules", "styling/css"), css_file),

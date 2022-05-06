@@ -1,0 +1,21 @@
+// collect all themes
+$themes: (
+  'sage': (
+    'primary': map-get($slate, 500),
+    'accent': map-get($butterscotch, 500),
+    'dark': $black,
+    'light': $white,
+    'base-font-cl': map-get($slate, 600),
+    'link-font-cl': map-get($turquoise, 500),
+    'header-bg-cl': $white,
+    'header-font-cl': $black,
+    // sidebar
+    'sidebar-bg-cl': $white,
+    'sidebar-font-cl': map-get($slate, 600),
+    'sidebar-bg-hover-cl': map-get($butterscotch, 500),
+    'sidebar-font-hover-cl': map-get($slate, 600),
+    // box
+    // waiter
+    'waiter-bg-cl': $light-blue,
+  ),
+);

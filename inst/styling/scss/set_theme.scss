@@ -1,0 +1,13 @@
+// this file is used to define app's theme (colors and fonts)
+
+// load base variables
+@import 'base/variables';
+
+// load colors/fonts to set themes
+@import 'themes/load';
+@import 'themes/themes';
+
+// load fun/mixin for theme
+@import 'mixins/box_mixin';
+@import 'mixins/button_mixin';
+@import 'mixins/theme_mixin';

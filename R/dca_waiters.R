@@ -5,7 +5,7 @@
 #'
 #' @examples
 use_dcaWaiter <- function() {
-  list(waiter::use_waiter(), dca_deps("waiter"))
+  list(waiter::use_waiter(), get_dca_deps())
 }
 
 
@@ -56,7 +56,7 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
   ## predefined loading screens for dca
   if (is.landing) {
 
-    img_path <- "assets/loading.gif"
+    img_path <- "assets/loading_sage_logo.gif"
 
     if (stage == "show") {
       # initial loading screen
@@ -160,5 +160,5 @@ spin_logo <- function(logo = "synapse") {
   b64 <- base64enc::dataURI(file = system.file(logo_path, package="dcamodules"),
                             mime = paste0("image/", img_type))
   spinner <- img(src = b64, class = "dca-logo-spin")
-  add_deps(spinner, "waiter")
+  add_deps(spinner)
 }

@@ -1,6 +1,6 @@
 .dca-left-btn,
 .dca-right-btn {
-  @extend .dca-btn;
+  @include dca-btn-basic;
   background: #fff !important;
   color: #000 !important;
   display: inline-flex !important;

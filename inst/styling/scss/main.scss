@@ -1,6 +1,18 @@
 // this will only load all stylings for modules
 // stylings for themes (variables) will not be loaded here
 
+// variables
+@import 'base/load';
+
+// mixins
+@import 'mixins/button_mixin';
+@import 'mixins/box_mixin';
+
 // buttons
 @import 'buttons/load';
+
+// boxes
+@import 'boxes/load';
+
+// waiters
 @import 'waiters/load';

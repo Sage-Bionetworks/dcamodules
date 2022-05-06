@@ -1,6 +1,6 @@
 /* Buttons */
 .dca-shiny-btn {
-  @extend .dca-btn;
+  @include dca-btn-basic;
   position: relative;
   background: #27022d !important;
   color: #fff !important;
@@ -8,7 +8,8 @@
   background-size: 400% 400% !important;
   overflow: hidden;
   animation: TransitioningBackground 10s ease infinite;
-  transition: 500ms;
+  transition: 500ms !important;
+  filter: none;
 
   &:hover,
   &:focus {

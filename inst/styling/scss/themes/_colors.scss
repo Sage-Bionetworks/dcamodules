@@ -1,14 +1,15 @@
-// Status colors
+// basic colors variables
 $success: #28a745;
 // $info: ;
 $warning: #ff9900;
 $danger: #e53935;
 $black: #000;
 $white: #fff;
+$light-blue: #eaeff5;
 $glass-grey: rgba(104, 103, 103, 0.3);
 $border-cl: #d3d5db;
 
-// Sage colors
+// sage colors
 $royal: (
   200: #d5cfe3,
   300: #b2a5d1,
@@ -135,28 +136,3 @@ $stone: (
   700: #6d7078,
   800: #515359,
 );
-
-$themes: (
-  'sage': (
-    'primary': map-get($slate, 500),
-    'accent': map-get($butterscotch, 500),
-    'dark': $black,
-    'light': $white,
-    'font-cl': $black,
-    'header-bg-cl': $white,
-    'header-font-cl': $black,
-    //sidebar
-    'sidebar-bg-cl': $white,
-    'sidebar-font-cl': map-get($slate, 600),
-    'sidebar-bg-hover-cl': map-get($butterscotch, 500),
-    'sidebar-font-hover-cl': map-get($slate, 600),
-  ),
-);
-
-@function set-font-color($color) {
-  @if (lightness($color) > 50) {
-    @return $black; // Lighter background, return dark color
-  } @else {
-    @return $white; // Darker background, return light color
-  }
-}

@@ -1,17 +1,3 @@
-# Copy from https://github.com/rstudio/shiny/blob/ac84be956a1417a613e0b6ebeea75b08f9302df2/R/shiny.R#L2571-L2582
-validate_session_object <- function(session, label = as.character(sys.call(sys.parent())[[1]])) {
-  if (missing(session) ||
-      !inherits(session, c("ShinySession", "MockShinySession", "session_proxy")))
-  {
-    stop(call. = FALSE,
-         sprintf(
-           "`session` must be a 'ShinySession' object. Did you forget to pass `session` to `%s()`?",
-           label
-         )
-    )
-  }
-}
-
 #' test
 #'
 #' @param .tab

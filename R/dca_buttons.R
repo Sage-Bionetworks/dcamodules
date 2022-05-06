@@ -20,7 +20,7 @@ shinyButton <- function(id, label="Button", ...) {
     list(label),
     ...
   )
-  add_deps(btn, type = "btn")
+  add_deps(btn)
 }
 
 
@@ -44,5 +44,5 @@ arrowButton <- function(id, direction = "left") {
   } else {
     btn <- actionButton(id, class = "dca-right-btn", icon_right)
   }
-  add_deps(btn, type = "btn")
+  add_deps(btn)
 }

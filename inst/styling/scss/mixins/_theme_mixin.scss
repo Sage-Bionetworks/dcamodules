@@ -1,4 +1,13 @@
-// this file is used to define app's theme (colors and fonts)
+// function to change color based on bg color
+@function set-font-color($color) {
+  @if (lightness($color) > 50) {
+    @return $black; // Lighter background, return dark color
+  } @else {
+    @return $white; // Darker background, return light color
+  }
+}
+
+// mixin to set theme
 @mixin dca-set-theme($theme) {
   // get theme object
   $current-theme: map-get($themes, $theme);
@@ -19,14 +28,34 @@
     'danger': $danger,
   );
 
-  $font-cl: map-get($current-theme, 'font-cl');
+  $base-font-cl: map-get($current-theme, 'base-font-cl');
+  $link-font-cl: map-get($current-theme, 'link-font-cl');
   $header-bg-cl: map-get($current-theme, 'header-bg-cl');
   $header-font-cl: map-get($current-theme, 'header-font-cl');
-  //sidebar
+  // sidebar
   $sidebar-bg-cl: map-get($current-theme, 'sidebar-bg-cl');
   $sidebar-font-cl: map-get($current-theme, 'sidebar-font-cl');
   $sidebar-bg-hover-cl: map-get($current-theme, 'sidebar-bg-hover-cl');
   $sidebar-font-hover-cl: map-get($current-theme, 'sidebar-font-hover-cl');
+  // box
+  // waiter
+  $waiter-bg-cl: map-get($current-theme, 'waiter-bg-cl');
+
+  ///////
+  // base
+  body {
+    background-color: $header-bg-cl;
+    color: $base-font-cl;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  span {
+    color: $base-font-cl;
+  }
 
   // header
   .skin-blue .main-header .navbar {
@@ -72,7 +101,7 @@
   }
 
   // sidebar
-  .main-sidebar {
+  .skin-blue .main-sidebar {
     background: $sidebar-bg-cl !important;
     color: $sidebar-font-cl;
     box-shadow: $primary-shadow;
@@ -82,23 +111,25 @@
 
       li > a {
         color: $sidebar-font-cl !important;
-        transition: background-color 200ms ease;
-        border-bottom: 1px solid $border-cl;
         border-left: unset !important;
+        border-radius: $radius;
+        margin: 0 14px;
         transition: background-color 100ms ease;
+      }
 
-        &:hover {
-          color: $sidebar-bg-hover-cl !important;
-          background: rgba($border-cl, 0.2);
-        }
+      li:hover > a,
+      li > a:hover {
+        color: $sidebar-bg-hover-cl !important;
+        background: rgba($border-cl, 0.2);
       }
 
       li.active > a {
         background: $sidebar-bg-hover-cl !important;
+      }
 
-        &:hover {
-          color: $sidebar-font-cl !important;
-        }
+      li.active:hover > a,
+      li.active > a:hover {
+        color: $sidebar-font-cl !important;
       }
     }
   }
@@ -107,28 +138,27 @@
   .content-wrapper,
   .right-side {
     background: $white;
+
+    a {
+      color: $link-font-cl !important;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 
   // boxes
   @each $type in ('primary', 'success', 'warning', 'danger') {
     $bg-cl: map-get($cl, #{$type});
-    $radius: map-get($dca-box-var, 'border-radius');
 
-    .box.box-solid.box-#{$type},
-    .box.box-#{$type} {
-      border-color: $bg-cl;
-      border-radius: $radius;
+    .box.box-solid.box-#{$type} {
+      @include dca-box-basic;
+      border: none;
 
       & > .box-header {
-        border-top-left-radius: $radius;
-        border-top-right-radius: $radius;
-
-        & h3 {
-          color: $black;
-        }
-      }
-
-      &[class*='solid'] > .box-header {
+        @include dca-box-header;
         background: $bg-cl;
 
         & h3 {
@@ -136,16 +166,29 @@
         }
       }
     }
+
+    .box.box-#{$type} {
+      @include dca-box-basic;
+      border-color: $bg-cl;
+
+      & > .box-header {
+        @include dca-box-header;
+
+        & h3 {
+          color: $black;
+        }
+      }
+    }
   }
 
   // buttons
-  @include dca-ripple-effect($accent);
   .btn-default,
   .action-button {
-    @extend .dca-btn;
+    @include dca-btn-basic;
     background: $accent;
     color: set-font-color($accent);
-    //@extend .dca-ripple;
+    filter: grayscale(0%) opacity(1);
+    transition: 100ms;
 
     &:hover,
     &:focus,
@@ -154,6 +197,7 @@
     &:visited {
       background: $accent;
       color: set-font-color($accent);
+      filter: grayscale(20%) opacity(0.7);
     }
   }
 
@@ -164,12 +208,14 @@
     .btn-#{$type}:visited {
       background: $bg-cl !important;
       color: set-font-color($bg-cl) !important;
-      filter: grayscale(0%) opacity(1);
-      transition: 100ms;
     }
     .btn-#{$type}:hover {
       background: $bg-cl !important;
-      filter: grayscale(20%) opacity(0.7);
     }
+  }
+
+  // waiter
+  .waiter-overlay.waiter-local {
+    background: $waiter-bg-cl !important;
   }
 }

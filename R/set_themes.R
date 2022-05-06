@@ -30,7 +30,7 @@ set_themes <- function(theme) {
   themeCSS <- sass::sass(
     list(
       sass::sass_file(
-        system.file(package = "dcamodules", "styling/scss/themes/_load.scss")
+        system.file(package = "dcamodules", "styling/scss/set_theme.scss")
       ),
       glue::glue("@include dca-set-theme({theme});")
     )

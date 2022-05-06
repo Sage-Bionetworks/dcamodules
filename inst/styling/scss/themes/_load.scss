@@ -1,11 +1,3 @@
-// get variables of parts that may be used for themes
-@import '../base/variables';
-
-@import '../boxes/boxes_var';
-
-@import '../buttons/buttons_var';
-
-// load function to set themes
+// load color and typography
 @import 'colors';
 @import 'typography';
-@import 'set_theme';
