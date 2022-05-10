@@ -4,15 +4,15 @@ library(dcamodules)
 library(dplyr)
 
 ### general
-themes <- c("sage")
+themes <- c("default" ,"sage")
 
 all_orgs <- list.files(system.file(package = "dcamodules", "assets/logos")) %>%
   tools::file_path_sans_ext()
 
 ui <- dashboardPage(
   dashboardHeader(
-    title = tags$img(src="assets/logos/sage.svg", height = 40, alt="Logo")
-  ),
+    title = tagList("DCA Modules", tags$img(src="assets/logos/sage.svg", height = 40, alt="Logo")
+  )),
   dashboardSidebar(
     sidebarMenu(
       id = "tabs",
@@ -40,6 +40,7 @@ ui <- dashboardPage(
   ),
   dashboardBody(
     use_dcaWaiter(),
+    # set_theme(system.file(package = "dcamodules", "examples/theme_config_tmp.R")),
     uiOutput("theme"),
     tabItems(
       tabItem(
@@ -47,11 +48,12 @@ ui <- dashboardPage(
         h2("Still under development ...", style = "color: red; text-align:center;"),
         h3("Basic Buttons:"),
         fluidPage(
-          actionButton("demo-act-btn", "Primary", class = "btn-primary"),
-          actionButton("demo-act-btn", "Accent", class = "btn-accent"),
-          actionButton("demo-act-btn", "Success", class = "btn-success"),
-          actionButton("demo-act-btn", "Warning", class = "btn-warning"),
-          actionButton("demo-act-btn", "Danger", class = "btn-danger")
+          actionButton("demo-act-btn1", "Primary", class = "btn-primary"),
+          actionButton("demo-act-btn2", "Accent", class = "btn-accent"),
+          actionButton("demo-act-btn3", "Success", class = "btn-success"),
+          actionButton("demo-act-btn4", "Info", class = "btn-info"),
+          actionButton("demo-act-btn5", "Warning", class = "btn-warning"),
+          actionButton("demo-act-btn6", "Danger", class = "btn-danger")
         ),
         h3("Special Buttons:"),
         fluidPage(
@@ -111,9 +113,14 @@ ui <- dashboardPage(
             selectInput(
               inputId = "btn_theme",
               label = "Theme Choice:",
-              choices = themes,
-              selected = "sage"
+              choices = themes
             )
+          ),
+          box(
+            title = "Customize your theme",
+            status = "primary",
+            width = 12,
+            palettePanelUI("palette-panel")
           )
         ),
         fluidRow(
@@ -121,15 +128,23 @@ ui <- dashboardPage(
             title = "Box1",
             status = "primary",
             width = 6,
-            actionButton("theme_button", "Button")
+            "empty box"
           ),
           box(
             title = "Box2",
             status = "primary",
             solidHeader = TRUE,
             width = 6,
-            actionButton("theme_button", "Button")
+            "empty box"
           )
+        ),
+        fluidPage(
+          actionButton("demo-act-btn1", "Primary", class = "btn-primary"),
+          actionButton("demo-act-btn2", "Accent", class = "btn-accent"),
+          actionButton("demo-act-btn3", "Success", class = "btn-success"),
+          actionButton("demo-act-btn4", "Info", class = "btn-info"),
+          actionButton("demo-act-btn5", "Warning", class = "btn-warning"),
+          actionButton("demo-act-btn6", "Danger", class = "btn-danger")
         )
       )
     ) %>% tabSwitchUI("switch_btn"),
@@ -140,19 +155,19 @@ ui <- dashboardPage(
         "."
         )),
       media = tagList(
-        iconButton(icon("github"), "https://github.com/Sage-Bionetworks/dcamodules"),
-        iconButton(icon("github"), "https://github.com/Sage-Bionetworks/dcamodules")
+        mediaButton("github", "https://github.com/Sage-Bionetworks/dcamodules"),
+        mediaButton("github", "https://github.com/Sage-Bionetworks/dcamodules")
       )
     )
   )
 )
 
 server <- function(input, output, session) {
-
+  palettePanel("palette-panel", "theme", session, input, output)
   observeEvent(input$btn_theme, {
-    output$theme <- renderUI(
-      set_themes(input$btn_theme)
-    )
+      output$theme <- renderUI({
+          set_theme(theme = input$btn_theme)
+      })
   })
 
   tabSwitch("switch_btn", "tabs", session, input, output)

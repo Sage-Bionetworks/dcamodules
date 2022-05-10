@@ -1,53 +1,73 @@
 // function to change color based on bg color
 @function set-font-color($color) {
-  @if (lightness($color) > 50) {
+  @if (lightness($color) > 60) {
     @return $black; // Lighter background, return dark color
   } @else {
     @return $white; // Darker background, return light color
   }
 }
 
-// mixin to set theme
-@mixin dca-set-theme($theme) {
-  // get theme object
-  $current-theme: map-get($themes, $theme);
-  $primary: map-get($current-theme, primary);
-  $accent: map-get($current-theme, 'accent');
-  $dark: map-get($current-theme, 'dark');
-  $light: map-get($current-theme, 'light');
-
-  $cl: (
+@mixin get-colors-from-theme($theme) {
+  @if $theme and $theme != 'default' {
+    // get colors from pre-defined themes
+    $current-theme: map-get($themes, $theme) !global;
+    $primary: map-get($current-theme, 'primary') !global;
+    $accent: map-get($current-theme, 'accent') !global;
+    $dark: map-get($current-theme, 'dark') !global;
+    $light: map-get($current-theme, 'light') !global;
+    $success: map-get($current-theme, 'success') !global;
+    $info: map-get($current-theme, 'info') !global;
+    $warning: map-get($current-theme, 'warning') !global;
+    $danger: map-get($current-theme, 'danger') !global;
+    $font: map-get($current-theme, 'font') !global;
+    $content-bg-cl: map-get($current-theme, 'content-bg-cl') !global;
+    $content-font-cl: map-get($current-theme, 'content-font-cl') !global;
+    $link-font-cl: map-get($current-theme, 'link-font-cl') !global;
+    $header-bg-cl: map-get($current-theme, 'header-bg-cl') !global;
+    $header-font-cl: map-get($current-theme, 'header-font-cl') !global;
+    // sidebar
+    $sidebar-bg-cl: map-get($current-theme, 'sidebar-bg-cl') !global;
+    $sidebar-font-cl: map-get($current-theme, 'sidebar-font-cl') !global;
+    $sidebar-bg-select-cl: map-get(
+      $current-theme,
+      'sidebar-bg-select-cl'
+    ) !global;
+    $sidebar-font-select-cl: map-get(
+      $current-theme,
+      'sidebar-font-select-cl'
+    ) !global;
+    $sidebar-bg-hover-cl: map-get(
+      $current-theme,
+      'sidebar-bg-hover-cl'
+    ) !global;
+    $sidebar-font-hover-cl: map-get(
+      $current-theme,
+      'sidebar-font-hover-cl'
+    ) !global;
+    // footer
+    $footer-bg-cl: map-get($current-theme, 'footer-bg-cl') !global;
+    $footer-font-cl: map-get($current-theme, 'footer-font-cl') !global;
+    // box
+    // waiter
+    $waiter-bg-cl: map-get($current-theme, 'waiter-bg-cl') !global;
+  }
+}
+// mixin to set custom theme
+@mixin set-theme() {
+  // basic colors for loop later
+  $basic-cls: (
     'primary': $primary,
     'accent': $accent,
+    'dark': $dark,
+    'light': $light,
     'success': $success,
-    // not change with theme
-    // $info: ;
-    // not change with theme
+    'info': $info,
     'warning': $warning,
-    // not change with theme
     'danger': $danger,
+    'white': $white,
+    'black': $black,
   );
 
-  $font: map-get($current-theme, 'font');
-  $base-font-cl: map-get($current-theme, 'base-font-cl');
-  $link-font-cl: map-get($current-theme, 'link-font-cl');
-  $header-bg-cl: map-get($current-theme, 'header-bg-cl');
-  $header-font-cl: map-get($current-theme, 'header-font-cl');
-  // sidebar
-  $sidebar-bg-cl: map-get($current-theme, 'sidebar-bg-cl');
-  $sidebar-font-cl: map-get($current-theme, 'sidebar-font-cl');
-  $sidebar-bg-select-cl: map-get($current-theme, 'sidebar-bg-select-cl');
-  $sidebar-font-select-cl: map-get($current-theme, 'sidebar-font-select-cl');
-  $sidebar-bg-hover-cl: map-get($current-theme, 'sidebar-bg-hover-cl');
-  $sidebar-font-hover-cl: map-get($current-theme, 'sidebar-font-hover-cl');
-  // footer
-  $footer-bg-cl: map-get($current-theme, 'footer-bg-cl');
-  $footer-font-cl: map-get($current-theme, 'footer-font-cl');
-  // box
-  // waiter
-  $waiter-bg-cl: map-get($current-theme, 'waiter-bg-cl');
-
-  ///////
   // base
   body {
     background-color: $header-bg-cl;
@@ -59,13 +79,14 @@
     h5,
     span {
       font-family: $font;
-      color: $base-font-cl;
+      color: $content-font-cl;
     }
   }
 
   // header
   .skin-blue .main-header .navbar {
     background: $header-bg-cl;
+    color: $header-font-cl;
     box-shadow: $primary-shadow;
     clip-path: inset(-5px -5px -5px 0);
   }
@@ -73,6 +94,7 @@
   // logo bar
   .skin-blue .main-header .logo {
     background: $header-bg-cl !important;
+    color: $header-font-cl;
     box-shadow: $primary-shadow;
     clip-path: inset(-5px 0 -5px -5px);
   }
@@ -81,28 +103,29 @@
   .skin-blue .main-header .navbar .sidebar-toggle {
     background: $header-bg-cl;
     color: $header-font-cl;
+
     &:hover {
-      background: inherit;
-      color: inherit;
+      background: $header-bg-cl;
+      color: $header-font-cl;
       opacity: 0.75;
     }
   }
 
   .skin-blue .main-header .logo {
-    background: $primary;
+    background: map-get($basic-cls, 'primary');
 
     &:hover {
-      background: $primary;
+      background: map-get($basic-cls, 'primary');
     }
   }
 
   .navbar .sidebar-toggle {
-    background: $primary;
-    color: set-font-color($primary);
+    background: map-get($basic-cls, 'primary');
+    color: set-font-color(map-get($basic-cls, 'primary'));
 
     &:hover {
-      background: $primary;
-      color: set-font-color($primary);
+      background: map-get($basic-cls, 'primary');
+      color: set-font-color(map-get($basic-cls, 'primary'));
     }
   }
 
@@ -158,12 +181,12 @@
 
   // content
   .skin-blue .wrapper {
-    background-color: $white;
+    background-color: $content-bg-cl;
   }
 
   .content-wrapper,
   .right-side {
-    background: $white;
+    background: $content-bg-cl;
 
     a {
       color: $link-font-cl !important;
@@ -182,8 +205,8 @@
   }
 
   // boxes
-  @each $type in ('primary', 'success', 'warning', 'danger') {
-    $bg-cl: map-get($cl, #{$type});
+  @each $type in map-keys($basic-cls) {
+    $bg-cl: map-get($basic-cls, #{$type});
 
     .box {
       @include dca-box-basic;
@@ -219,8 +242,8 @@
   .btn-default,
   .action-button {
     @include dca-btn-basic;
-    background: $accent;
-    color: set-font-color($accent);
+    background: map-get($basic-cls, 'accent');
+    color: set-font-color(map-get($basic-cls, 'accent'));
     filter: grayscale(0%) opacity(1);
     transition: 100ms;
 
@@ -229,14 +252,15 @@
     &:active,
     &:active:focus,
     &:visited {
-      background: $accent;
-      color: set-font-color($accent);
+      background: map-get($basic-cls, 'accent');
+      color: set-font-color(map-get($basic-cls, 'accent'));
       filter: grayscale(20%) opacity(0.7);
     }
   }
 
-  @each $type in ('primary', 'accent', 'success', 'warning', 'danger') {
-    $bg-cl: map-get($cl, #{$type});
+  @each $type in map-keys($basic-cls) {
+    $bg-cl: map-get($basic-cls, #{$type});
+
     .btn-#{$type},
     .btn-#{$type}:active,
     .btn-#{$type}:visited {

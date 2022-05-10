@@ -77,13 +77,14 @@ arrowButton <- function(id, direction = "left", ...) {
 #' @export
 #'
 #' @examples
-iconButton <- function(icon, link, ...) {
+mediaButton <- function(icon, link = NULL, ...) {
+
   btn <- tags$a(
-    icon,
-    href = link,
-    target = "_blank",
-    class = "dca-icon-btn",
-    ...
-  )
+      shiny::icon(icon),
+      href = link,
+      target = "_blank",
+      class = "dca-icon-btn",
+      ...
+    )
   add_deps(btn)
 }

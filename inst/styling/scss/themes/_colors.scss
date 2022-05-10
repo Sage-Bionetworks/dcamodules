@@ -1,10 +1,14 @@
-// basic colors variables
-$success: #28a745;
-// $info: ;
-$warning: #ff9900;
-$danger: #e53935;
-$black: #000;
-$white: #fff;
+$primary: #3c8dbc !default;
+$accent: #f4f4f4 !default;
+$dark: #000 !default;
+$light: #fff !default;
+$success: #00a65a !default;
+$info: #00c0ef !default;
+$warning: #f39c12 !default;
+$danger: #dd4b39 !default;
+$white: #fff !default;
+$black: #000 !default;
+
 $light-blue: #eaeff5;
 $glass-grey: rgba(104, 103, 103, 0.3);
 $border-cl: #d3d5db;

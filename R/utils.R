@@ -60,3 +60,27 @@ tagInsertAttribute <- function(.tag, ..., pos = 1) {
   }
   return(.tag)
 }
+
+
+### utils
+#' Title
+#'
+#' @param x
+#'
+#' @return
+#' @export
+#'
+#' @examples
+dropEmptys <- function(x, drop = "all") {
+
+  match.arg(drop, c("all", "na", "null", "blank"))
+
+  if (drop == "all") {
+    res <- is.na(x) | sapply(x, is.null) | trimws(x, "both") == ""
+  } else {
+    if (drop == "na") res <- is.na(x)
+    if (drop == "null") res <- sapply(x, is.null)
+    if (drop == "blank") res <- trimws(x, "both") == ""
+  }
+  return(x[!res])
+}

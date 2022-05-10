@@ -9,7 +9,7 @@
 #'
 #' @examples
 dcaFooter <- function(message, media = NULL, height = "100px", ...) {
-
+  
   tags$div(
     class = "dca-footer-placeholder",
     style = glue::glue("max-height: {height};"),

@@ -151,7 +151,7 @@ spin_logo <- function(logo = "synapse") {
   logo_path <- file.path("assets/logos", all_logos[match(logo, all_orgs)])
 
   # only accept png and svg now, add more as needed
-  if (tools::file_ext(basename(logo_path)) == "svg") {
+  if (tools::file_ext(logo_path) == "svg") {
     img_type <- "svg+xml"
   } else {
     img_type <- "png"

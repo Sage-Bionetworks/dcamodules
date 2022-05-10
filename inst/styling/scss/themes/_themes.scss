@@ -1,3 +1,5 @@
+$current-theme: null !default;
+
 // sage colors is moved to theme, we may remove unused colors later
 $royal: (
   200: #d5cfe3,
@@ -126,9 +128,54 @@ $stone: (
   800: #515359,
 );
 
+$font: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif' !default;
+$link-font-cl: #3c8dbc !default;
+$content-bg-cl: #ecf0f5 !default;
+$content-font-cl: #444 !default;
+$header-font-cl: #fff !default;
+$header-bg-cl: #3c8dbc !default;
+$sidebar-bg-cl: #222d32 !default;
+$sidebar-font-cl: #b8c7ce !default;
+$sidebar-bg-select-cl: #1e282c !default;
+$sidebar-font-select-cl: #fff !default;
+$sidebar-bg-hover-cl: #1e282c !default;
+$sidebar-font-hover-cl: #fff !default;
+$footer-bg-cl: #222d32 !default;
+$footer-font-cl: #b8c7ce !default;
+$waiter-bg-cl: #3c8dbc !default;
+
 // collect all themes
 $themes: (
   'sage': (
+    'primary': map-get($slate, 500),
+    'accent': map-get($butterscotch, 500),
+    'success': #28a745,
+    'info': blue,
+    'warning': #ff9900,
+    'danger': #e53935,
+    'dark': #000,
+    'light': #fff,
+    'font': 'lato',
+    'content-bg-cl': $white,
+    'content-font-cl': map-get($slate, 600),
+    'link-font-cl': map-get($turquoise, 500),
+    'header-bg-cl': $white,
+    'header-font-cl': $black,
+    // sidebar
+    'sidebar-bg-cl': map-get($slate, 600),
+    'sidebar-font-cl': $white,
+    'sidebar-bg-select-cl': map-get($butterscotch, 500),
+    'sidebar-font-select-cl': map-get($slate, 600),
+    'sidebar-bg-hover-cl': rgba($border-cl, 0.2),
+    'sidebar-font-hover-cl': map-get($butterscotch, 500),
+    // footer
+    'footer-bg-cl': $white,
+    'footer-font-cl': map-get($slate, 600),
+    // box
+    // waiter
+    'waiter-bg-cl': $light-blue,
+  ),
+  'htan': (
     'primary': map-get($slate, 500),
     'accent': map-get($butterscotch, 500),
     'dark': $black,
