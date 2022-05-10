@@ -1,10 +1,10 @@
-list(
+custom_theme <- list(
   "primary" =  "blue", # primary status, header, nav
   "accent" =  "red", # accent status
   "dark" =  NULL, # font - dark
   "light" = NULL, # font - light
   "font" = NULL, # font family
-  "base-font-cl" = NULL, 
+  "base-font-cl" = NULL,
   "header-font-cl" = NULL,
   "sidebar-bg-cl" = NULL,
   "sidebar-font-cl" = NULL,
@@ -16,3 +16,5 @@ list(
   "footer-font-cl" = NULL,
   "waiter-bg-cl" = NULL
 )
+
+saveRDS(custom_theme, "theme_config.rds")

@@ -4,7 +4,7 @@
 \alias{palettePanelUI}
 \title{Title}
 \usage{
-palettePanelUI(id = NULL, ...)
+palettePanelUI(id)
 }
 \arguments{
 \item{...}{}

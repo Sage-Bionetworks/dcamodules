@@ -1,157 +1,63 @@
-
-#
-# $coral: (
-#   200: #f7e2df,
-#     300: #ffc5bd,
-#     400: #fca79a,
-#     500: #f47e6c,
-#     600: #da614f,
-#     700: #bd422f,
-#     800: #8f1d0b,
-# );
-# $blueberry: (
-#   200: #bce0f7,
-#     300: #94c9eb,
-#     400: #77afd4,
-#     500: #5b95ba,
-#     600: #407ba0,
-#     700: #2b688f,
-#     800: #164b6e,
-# );
-# $rose: (
-#   200: #f7c6dd,
-#     300: #f7a6cc,
-#     400: #f683b9,
-#     500: #e566a1,
-#     600: #c94281,
-#     700: #b22d6b,
-#     800: #990e4f,
-# );
-# $slate: (
-#   200: #abbee0,
-#     300: #849bc4,
-#     400: #6279a1,
-#     500: #4a5e81,
-#     600: #3c4a63,
-#     700: #24334f,
-#     800: #0d1c38,
-# );
-# $cloud: (
-#   200: #f5f5f5,
-#     300: #ededed,
-#     400: #e3e1e1,
-#     500: #dbd9d9,
-#     600: #c7c5c5,
-#     700: #a6a6a6,
-#     800: #808080,
-# );
-# $butterscotch: (
-#   200: #ffe2ad,
-#     300: #fad591,
-#     400: #fccb6f,
-#     500: #f5b33c,
-#     600: #de9a1f,
-#     700: #cf8c15,
-#     800: #bd7900,
-# );
-# $turquoise: (
-#   200: #a9ebe5,
-#     300: #63dbd0,
-#     400: #42c7bb,
-#     500: #24ab9f,
-#     600: #109488,
-#     700: #10847a,
-#     800: #05635b,
-# );
-# $apricot: (
-#   200: #facfaf,
-#     300: #f5b584,
-#     400: #f89c55,
-#     500: #eb8231,
-#     600: #d46d1e,
-#     700: #c25d10,
-#     800: #a84c05,
-# );
-# $apple: (
-#   200: #ff9ca0,
-#     300: #f27277,
-#     400: #e0585d,
-#     500: #cc3f45,
-#     600: #b2242a,
-#     700: #9c141a,
-#     800: #85070c,
-# );
-# $lavender: (
-#   200: #c7d6ff,
-#     300: #b1c6fa,
-#     400: #93abe8,
-#     500: #7692d9,
-#     600: #5171c0,
-#     700: #3f5eab,
-#     800: #28448a,
-# );
-# $fern: (
-#   200: #c0ebc0,
-#     300: #a7dba7,
-#     400: #87c987,
-#     500: #6db56d,
-#     600: #58a158,
-#     700: #3f833f,
-#     800: #2c692c,
-# );
-# $stone: (
-#   200: #e6e6e8,
-#     300: #d3d5d8,
-#     400: #bcc0ca,
-#     500: #9da3b3,
-#     600: #8d919e,
-#     700: #6d7078,
-#     800: #515359,
-
-
 #' Title
 #'
 #' @param id
 #' @param ...
 #'
 #' @return
+#' @importFrom colourpicker colourInput
+#' @importFrom sagethemes sage_colors
 #' @export
 #'
 #' @examples
-palettePanelUI <- function(id = NULL, ...) {
+palettePanelUI <- function(id) {
 
   ns <- NS(id)
-  colors <- c("#d5cfe3", "#b2a5d1", "#907fba", "#5a478f",
-              "#47337d", "#332069", "#251454", "#e1f4f5",
-              "#c5edf0", "#a6dde0", "#7ec8cc", "#5bb0b5",
-              "#2f8e94", "#0c656b")
-  parts <- c("header", "sidebar", "content")
+  bg_cls <- unlist(sage_colors)
+  font_cls <- c("#000000", "#FFFFFF")
+  defaults <- list(
+    header_bg_cl = "#3c8dbc",
+    sidebar_bg_cl = "#222d32",
+    content_bg_cl = "#ecf0f5",
+    footer_bg_cl = "#222d32",
+    waiter_bg_cl = "#3c8dbc",
+    header_font_cl = "#3c8dbc",
+    sidebar_font_cl = "#b8c7ce",
+    content_font_cl = "#444444",
+    footer_font_cl = "#b8c7ce",
+    waiter_font_cl ="#444444"
+  )
+
+  sections <- c("header", "sidebar", "content", "footer", "waiter")
   value <- restoreInput(id = id, default = NULL)
 
   tags$div(
-    # ns("dca-palette-panel"),
-    class = "dca-palette-panel-container",
-    lapply(parts, function(part) {
-      tags$div(
-        tagList(
-          h4(part),
-          lapply(colors, function(cl) {
-            tags$button(
-              id = ns(sprintf("%s-%s", part, cl)),
-              type = "button",
-              class = "btn btn-default action-button",
-              `data-val` = value,
-              shiny::icon(
-                "circle",
-                style = sprintf("color: %s;", cl)
+    id = ns("dca-palette-panel"),
+    tagList(
+      fluidRow(
+        lapply(sections, function(s) {
+          column(2,
+            h4(s, class = "text-center text-capitalize"),
+            tagList(
+              colourInput(ns(NS(s, "bg-cl")), "background",
+                          palette = "limited",
+                          value = NULL,
+                          allowedCols = c(defaults[[paste0(s, "_bg_cl")]], bg_cls)
+              ),
+              colourInput(ns(NS(s, "font-cl")), "font",
+                          palette = "limited",
+                          value = NULL,
+                          allowedCols = c(defaults[[paste0(s, "_font_cl")]], font_cls)
               )
             )
-          })
-        )
+          )
+        })
+      ),
+      tagList(
+        actionButton(ns("save-btn"), "save"),
+        textOutput(ns("save-progress"))
       )
-    }),
-    ...
     )
+  )
 }
 
 
@@ -171,25 +77,37 @@ palettePanel <- function(id, header.id, parent.session, parent.input, parent.out
     id,
     function(input, output, session) {
 
-        colors <- c("#d5cfe3", "#b2a5d1", "#907fba", "#5a478f",
-                    "#47337d", "#332069", "#251454", "#e1f4f5",
-                    "#c5edf0", "#a6dde0", "#7ec8cc", "#5bb0b5",
-                    "#2f8e94", "#0c656b")
-        parts <- c("header", "sidebar", "content")
+      colors <- c("#d5cfe3", "#b2a5d1", "#907fba", "#5a478f",
+                  "#47337d", "#332069", "#251454", "#e1f4f5",
+                  "#c5edf0", "#a6dde0", "#7ec8cc", "#5bb0b5",
+                  "#2f8e94", "#0c656b")
+      sections <- c("header", "sidebar", "content", "footer", "waiter")
 
-        lapply(parts, function(part)  {
-          var_name <- sprintf("%s-bg-cl", part)
-          lapply(colors, function(cl) {
-            name <- sprintf("%s-%s", part, cl)
-            observeEvent(input[[name]], {
-              var <- list(cl)
-              names(var) <- var_name
-              parent.output[[header.id]] <- renderUI({
-                set_theme(var)
-              })
-            })
-          })
+      vars <- reactive({
+        bg_cls <- lapply(sections, function(s) input[[NS(s, "bg-cl")]])
+        font_cls <- lapply(sections, function(s) input[[NS(s, "font-cl")]])
+        vars <- c(bg_cls, font_cls)
+        names(vars) <- c(paste0(sections, "-bg-cl"), paste0(sections, "-font-cl"))
+        return(vars)
+      })
+
+      observeEvent(vars(), {
+        output[["save-progress"]] <- renderText(NULL)
+        parent.output[[header.id]] <- renderUI({
+          set_theme(vars())
         })
+      })
+
+      observeEvent(input$`save-btn`, {
+        vars()
+        path <- "./theme_config.rds"
+        isolate({
+          saveRDS(vars(), path)
+          output[["save-progress"]] <- renderText(
+            sprintf("'%s' is updated!", path)
+            )
+        })
+      })
     }
   )
 }

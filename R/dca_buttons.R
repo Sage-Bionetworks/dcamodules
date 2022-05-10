@@ -44,25 +44,16 @@ arrowButton <- function(id, direction = "left", ...) {
 
   value <- restoreInput(id = id, default = NULL)
 
-  if (direction == "left") {
-    btn <-  tags$button(
-      id = id,
-      type = "button",
-      class = "btn btn-default action-button dca-left-btn",
-      `data-val` = value,
-      icon_left,
-      ...
-    )
-  } else {
-    btn <- tags$button(
-      id = id,
-      type = "button",
-      class = "btn btn-default action-button dca-right-btn",
-      `data-val` = value,
-      icon_right,
-      ...
-    )
-  }
+  btn <-  tags$button(
+    id = id,
+    type = "button",
+    class = sprintf("btn btn-default action-button dca-%s-btn", direction),
+    `data-val` = value,
+    list(
+      ifelse(direction == "left", icon_left, icon_right)
+    ),
+    ...
+  )
   add_deps(btn)
 }
 
@@ -86,5 +77,33 @@ mediaButton <- function(icon, link = NULL, ...) {
       class = "dca-icon-btn",
       ...
     )
+  add_deps(btn)
+}
+
+
+#' Title
+#'
+#' @param id
+#' @param color
+#'
+#' @return
+#' @export
+#'
+#' @examples
+paletteButton <- function(id, color, ...) {
+
+  value <- restoreInput(id = id, default = NULL)
+
+  btn <- tags$button(
+    id = id,
+    type = "button",
+    class = "action-button dca-palette-btn",
+    `data-val` = value,
+    shiny::icon(
+      "circle",
+      style = sprintf("color: %s;", color)
+    ),
+    ...
+  )
   add_deps(btn)
 }

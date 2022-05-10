@@ -40,7 +40,6 @@ ui <- dashboardPage(
   ),
   dashboardBody(
     use_dcaWaiter(),
-    # set_theme(system.file(package = "dcamodules", "examples/theme_config_tmp.R")),
     uiOutput("theme"),
     tabItems(
       tabItem(
@@ -120,7 +119,7 @@ ui <- dashboardPage(
             title = "Customize your theme",
             status = "primary",
             width = 12,
-            palettePanelUI("palette-panel")
+            palettePanelUI("palette-panel"),
           )
         ),
         fluidRow(

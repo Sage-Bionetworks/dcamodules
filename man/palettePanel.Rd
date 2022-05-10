@@ -4,7 +4,7 @@
 \alias{palettePanel}
 \title{Title}
 \usage{
-palettePanel(id)
+palettePanel(id, header.id, parent.session, parent.input, parent.output)
 }
 \arguments{
 \item{parent.output}{}
