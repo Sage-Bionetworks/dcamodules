@@ -4,15 +4,15 @@ library(dcamodules)
 library(dplyr)
 
 ### general
-themes <- c("default" ,"sage")
+themes <- c("default", "sage")
 
 all_orgs <- list.files(system.file(package = "dcamodules", "assets/logos")) %>%
   tools::file_path_sans_ext()
 
 ui <- dashboardPage(
   dashboardHeader(
-    title = tagList("DCA Modules", tags$img(src="assets/logos/sage.svg", height = 40, alt="Logo")
-  )),
+    title = tagList("DCA Modules", tags$img(src = "assets/logos/sage.svg", height = 40, alt = "Logo"))
+  ),
   dashboardSidebar(
     sidebarMenu(
       id = "tabs",
@@ -59,7 +59,7 @@ ui <- dashboardPage(
           shinyButton("demo-shiny-btn", "Button"),
           arrowButton("demo-arrow-left", "left"),
           arrowButton("demo-arrow-right", "right")
-          )
+        )
       ),
       tabItem(
         tabName = "tab_waiter",
@@ -108,7 +108,8 @@ ui <- dashboardPage(
         tabName = "tab_themes",
         h2("Change theme"),
         fluidRow(
-          column(3, offset = 5,
+          column(3,
+            offset = 5,
             selectInput(
               inputId = "btn_theme",
               label = "Theme Choice:",
@@ -146,13 +147,13 @@ ui <- dashboardPage(
           actionButton("demo-act-btn6", "Danger", class = "btn-danger")
         )
       )
-    ) %>% tabSwitchUI("switch_btn"),
+    ),
     dcaFooter(
       HTML(paste0(
         "Copy right @2022. Powered by ",
         tags$a("Sage Bionetworks", href = "https://sagebionetworks.org/"),
         "."
-        )),
+      )),
       media = tagList(
         mediaButton("github", "https://github.com/Sage-Bionetworks/dcamodules"),
         mediaButton("github", "https://github.com/Sage-Bionetworks/dcamodules")
@@ -164,15 +165,12 @@ ui <- dashboardPage(
 server <- function(input, output, session) {
   palettePanel("palette-panel", "theme", session, input, output)
   observeEvent(input$btn_theme, {
-      output$theme <- renderUI({
-          set_theme(theme = input$btn_theme)
-      })
+    output$theme <- renderUI({
+      set_theme(theme = input$btn_theme)
+    })
   })
 
-  tabSwitch("switch_btn", "tabs", session, input, output)
-
   lapply(c("loading", "no_cert", "no_perm", "success"), function(i) {
-
     observeEvent(input[[paste0("btn_waiter_", i)]], {
       dcaWaiter("hide", sleep = 0)
 
@@ -183,10 +181,11 @@ server <- function(input, output, session) {
         msg <- NULL
         dcaWaiter("show", id = paste0("box_waiter_", i), msg = msg)
         dcaWaiter("update",
-                 id = paste0("box_waiter_", i),
-                 is.landing = !grepl("landing", i),
-                 is.certified = !grepl("cert", i),
-                 is.permission = !grepl("perm", i))
+          id = paste0("box_waiter_", i),
+          is.landing = !grepl("landing", i),
+          is.certified = !grepl("cert", i),
+          is.permission = !grepl("perm", i)
+        )
       }
     })
   })
