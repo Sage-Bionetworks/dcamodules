@@ -1,3 +1,37 @@
+#' Extract tab names
+#'
+#' @param .tab The \code{tabItem} object
+#'
+#' @export
+getTabNames <- function(.tab) {
+  sapply(.tab$children, function(tab) {
+    id <- htmltools::as.tags(tab)$attribs$id
+    gsub("shiny-tab-", "", id)
+  })
+}
+
+
+#' var2server
+#'
+#' @description Use this trick to send variables from ui to server in module
+#' @param id The input variable to read value from
+#' @param values The values need to be sent
+#'
+#' @export
+#'
+var2server <- function(id, values) {
+  out <- selectInput(id,
+    "",
+    choices = values,
+    selected = values,
+    multiple = TRUE
+  )
+  out$attribs$class <- paste0(out$attribs$class, " dca-remove")
+
+  return(out)
+}
+
+
 #' tagInsertAttribute
 #'
 #' @param .tag The tag object
