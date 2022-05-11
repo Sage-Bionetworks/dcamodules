@@ -20,5 +20,4 @@ Imports:
     sagethemes,
     sass,
     waiter
-Remotes: 
-    Sage-Bionetworks/sagethemes
+Remotes: Sage-Bionetworks/sagethemes
