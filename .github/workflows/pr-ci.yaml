@@ -5,7 +5,7 @@ on:
     types:
       - opened
     paths:
-      - '**.R'
+      - '**/*.R'
 
 name: PR-CI
 
