@@ -1,8 +1,10 @@
 # dcamodules
 
+[![R-CMD-check](https://github.com/Sage-Bionetworks/dcamodules/actions/workflows/R-CMD-check.yaml/badge.svg?branch=main)](https://github.com/Sage-Bionetworks/dcamodules/actions/workflows/R-CMD-check.yaml)
+
 ## Overview
 
-`dcamodules` collects essential the modules and useful functions used in the [data curator app](https://github.com/Sage-Bionetworks/data_curator).
+dcamodules collects essential modules and useful functions used in the [data curator app](https://github.com/Sage-Bionetworks/data_curator).
 
 ## Installation
 
