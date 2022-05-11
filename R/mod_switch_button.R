@@ -19,9 +19,9 @@ tabSwitchUI <- function(.tab, id = NULL) {
   .tab$children[[n_tabs]] <- .tab$children[[n_tabs]] %>%
     tagAppendChild(
       fluidRow(
-        lapply(1:6, function(i) br()),
+        lapply(1:3, function(i) br()),
         column(1, offset = 1, arrowButton(ns(NS("prev", n_tabs)), "left")),
-        lapply(1:6, function(i) br())
+        lapply(1:3, function(i) br())
       )
     )
 
@@ -29,9 +29,9 @@ tabSwitchUI <- function(.tab, id = NULL) {
     .tab$children[[1]] <- .tab$children[[1]] %>%
       tagAppendChild(
         fluidRow(
-          lapply(1:6, function(i) br()),
+          lapply(1:3, function(i) br()),
           column(1, offset = 10, arrowButton(ns(NS("next", 1)), "right")),
-          lapply(1:6, function(i) br())
+          lapply(1:3, function(i) br())
         )
       )
     switch_btn_ids <- c(switch_btn_ids, NS("next", 1))
@@ -42,10 +42,10 @@ tabSwitchUI <- function(.tab, id = NULL) {
       .tab$children[[i]] <<- .tab$children[[i]] %>%
         tagAppendChild(
           fluidRow(
-            lapply(1:6, function(i) br()),
+            lapply(1:3, function(i) br()),
             column(1, offset = 1, arrowButton(ns(NS("prev", i)), "left")),
             column(1, offset = 8, arrowButton(ns(NS("next", i)), "right")),
-            lapply(1:6, function(i) br()),
+            lapply(1:3, function(i) br()),
           )
         )
       switch_btn_ids <<- c(switch_btn_ids, c(NS("prev", i), NS("next", i)))

@@ -50,7 +50,7 @@ arrowButton <- function(id, direction = "left", ...) {
     class = sprintf("btn btn-default action-button dca-%s-btn", direction),
     `data-val` = value,
     list(
-      ifelse(direction == "left", icon_left, icon_right)
+      if (direction == "left") icon_left else icon_right
     ),
     ...
   )
