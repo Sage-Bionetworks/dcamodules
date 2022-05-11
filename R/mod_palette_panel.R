@@ -1,18 +1,13 @@
-#' Title
+#' Create an palette panel output element
 #'
-#' @param id
-#' @param ...
+#' @param id output variable to read the value from
 #'
-#' @return
-#' @importFrom colourpicker colourInput
-#' @importFrom sagethemes sage_colors
 #' @export
 #'
-#' @examples
 palettePanelUI <- function(id) {
 
   ns <- NS(id)
-  bg_cls <- unlist(sage_colors)
+  bg_cls <- unlist(sagethemes::sage_colors)
   font_cls <- c("#000000", "#FFFFFF")
   defaults <- list(
     header_bg_cl = "#3c8dbc",
@@ -38,15 +33,19 @@ palettePanelUI <- function(id) {
           column(2,
             h4(s, class = "text-center text-capitalize"),
             tagList(
-              colourInput(ns(NS(s, "bg-cl")), "background",
-                          palette = "limited",
-                          value = NULL,
-                          allowedCols = c(defaults[[paste0(s, "_bg_cl")]], bg_cls)
+              colourpicker::colourInput(
+                ns(NS(s, "bg-cl")), 
+                "background",
+                palette = "limited",
+                value = NULL,
+                allowedCols = c(defaults[[paste0(s, "_bg_cl")]], bg_cls)
               ),
-              colourInput(ns(NS(s, "font-cl")), "font",
-                          palette = "limited",
-                          value = NULL,
-                          allowedCols = c(defaults[[paste0(s, "_font_cl")]], font_cls)
+              colourpicker::colourInput(
+                ns(NS(s, "font-cl")), 
+                "font",
+                palette = "limited",
+                value = NULL,
+                allowedCols = c(defaults[[paste0(s, "_font_cl")]], font_cls)
               )
             )
           )
@@ -61,18 +60,17 @@ palettePanelUI <- function(id) {
 }
 
 
-#' Title
+#' Palette panel server
 #'
-#' @param id
-#' @param parent.session
-#' @param parent.input
-#' @param parent.output
+#' @param id The id of the output object.
+#' @param head.id The id of head tag that used to change styles
+#' @param parent.session Session from parent scope
+#' @param parent.input Input from parent scope
+#' @param parent.output Output from parent scope
 #'
-#' @return
 #' @export
 #'
-#' @examples
-palettePanel <- function(id, header.id, parent.session, parent.input, parent.output) {
+palettePanel <- function(id, head.id, parent.session, parent.input, parent.output) {
   moduleServer(
     id,
     function(input, output, session) {
@@ -93,7 +91,7 @@ palettePanel <- function(id, header.id, parent.session, parent.input, parent.out
 
       observeEvent(vars(), {
         output[["save-progress"]] <- renderText(NULL)
-        parent.output[[header.id]] <- renderUI({
+        parent.output[[head.id]] <- renderUI({
           set_theme(vars())
         })
       })

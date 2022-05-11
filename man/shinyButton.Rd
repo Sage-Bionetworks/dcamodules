@@ -2,15 +2,21 @@
 % Please edit documentation in R/dca_buttons.R
 \name{shinyButton}
 \alias{shinyButton}
-\title{shinyButton}
+\title{Shiny button}
 \usage{
-shinyButton(id, label = NULL, ...)
+shinyButton(id, label, ...)
+}
+\arguments{
+\item{id}{The input id to read value from}
+
+\item{label}{The display label of the button}
+
+\item{...}{List of tag attributes}
 }
 \description{
 A button with shiny effect
 }
 \examples{
-
 if (interactive()) {
 
  shinyButton("button")

@@ -7,11 +7,10 @@
 var2server(id, values)
 }
 \arguments{
-\item{values}{}
-}
-\value{
+\item{id}{The input variable to read value from}
 
+\item{values}{The values need to be sent}
 }
 \description{
-use this trick to send variables from ui to server in module
+Use this trick to send variables from ui to server in module
 }

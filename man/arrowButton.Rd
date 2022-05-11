@@ -2,16 +2,17 @@
 % Please edit documentation in R/dca_buttons.R
 \name{arrowButton}
 \alias{arrowButton}
-\title{Title}
+\title{Arrow button}
 \usage{
 arrowButton(id, direction = "left", ...)
 }
 \arguments{
-\item{direction}{}
-}
-\value{
+\item{id}{The input id to read value from}
 
+\item{direction}{The direction of arrow button}
+
+\item{...}{List of tag attributes}
 }
 \description{
-Title
+Arrow button
 }

@@ -1,12 +1,10 @@
-#' Title
+#' Create switch button
 #'
-#' @param id
-#' @param .tab
+#' @param id The input variable to read value from
+#' @param .tab The \code{tabItem} object
 #'
-#' @return
-#' @import dplyr
+#' @importFrom magrittr %>%
 #' @export
-#' @examples
 tabSwitchUI <- function(.tab, id=NULL) {
 
   if (is.null(id)) id <- "dca-tab-switch"
@@ -14,7 +12,7 @@ tabSwitchUI <- function(.tab, id=NULL) {
 
   n_tabs <- length(.tab$children)
 
-  tab_names <- get_tab_names(.tab)
+  tab_names <- getTabNames(.tab)
   var1 <- var2server(ns("tab-names"), tab_names)
 
   switch_btn_ids <- c(NS("prev", n_tabs))
@@ -61,19 +59,16 @@ tabSwitchUI <- function(.tab, id=NULL) {
   return(tagList(.tab, var1, var2))
 }
 
-#' Title
+#' Tab switch button server
 #'
-#' @param id
-#' @param tab.id
-#' @param tabList
-#' @param parent.session
-#' @param parent.input
-#' @param parent.output
+#' @param id The input id to read value from
+#' @param tab.id The id of \code{tabItem} object
+#' @param parent.session The session from parent scope
+#' @param parent.input The input from parent scope
+#' @param parent.output The output from parent scope
 #'
-#' @return
 #' @export
 #'
-#' @examples
 tabSwitch <- function(id, tab.id, parent.session, parent.input, parent.output) {
   moduleServer(
     id,
@@ -87,7 +82,7 @@ tabSwitch <- function(id, tab.id, parent.session, parent.input, parent.output) {
           curr_inx <- which(tab_names == parent.input[[tab.id]])
           # switch to next/previous tab based on which btn is clicked
           i <- ifelse(grepl("prev-[1-9+]", name), -1, 1)
-          updateTabItems(parent.session,
+          shinydashboard::updateTabItems(parent.session,
                          tab.id,
                          selected = tab_names[curr_inx + i])
 

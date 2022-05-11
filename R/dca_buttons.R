@@ -1,18 +1,22 @@
 
-#' @title shinyButton
+#' @title Shiny button
 #'
 #' @description
 #' A button with shiny effect
 #'
+#' @param id The input id to read value from
+#' @param label The display label of the button
+#' @param ... List of tag attributes
+#' 
+#' @import shiny
 #' @export
 #' @examples
-#'
 #' if (interactive()) {
 #'
 #'  shinyButton("button")
 #'
 #' }
-shinyButton <- function(id, label = NULL, ...) {
+shinyButton <- function(id, label, ...) {
 
   value <- restoreInput(id = id, default = NULL)
 
@@ -28,15 +32,14 @@ shinyButton <- function(id, label = NULL, ...) {
 }
 
 
-#' Title
+#' Arrow button
 #'
-#' @param id
-#' @param direction
+#' @param id The input id to read value from
+#' @param direction The direction of arrow button
+#' @param ... List of tag attributes
 #'
-#' @return
 #' @export
 #'
-#' @examples
 arrowButton <- function(id, direction = "left", ...) {
   match.arg(direction, c("left", "right"))
   icon_left <- lapply(1:3, function(i) tags$i(class = "fa fa-angle-left"))
@@ -58,20 +61,17 @@ arrowButton <- function(id, direction = "left", ...) {
 }
 
 
-#' Title
+#' Media button
 #'
-#' @param icon
-#' @param link
-#' @param ...
+#' @param icon The icon object from \code{shiny::icon}
+#' @param link The redirecting url
+#' @param ... List of tag attributes
 #'
-#' @return
 #' @export
-#'
-#' @examples
 mediaButton <- function(icon, link = NULL, ...) {
 
   btn <- tags$a(
-      shiny::icon(icon),
+      icon(icon),
       href = link,
       target = "_blank",
       class = "dca-icon-btn",
@@ -81,15 +81,14 @@ mediaButton <- function(icon, link = NULL, ...) {
 }
 
 
-#' Title
+#' Palette button
 #'
-#' @param id
-#' @param color
-#'
-#' @return
+#' @param id The input id to read value from
+#' @param color The color of palette
+#' @param ... List of tag attributes
+#' 
 #' @export
 #'
-#' @examples
 paletteButton <- function(id, color, ...) {
 
   value <- restoreInput(id = id, default = NULL)
@@ -99,7 +98,7 @@ paletteButton <- function(id, color, ...) {
     type = "button",
     class = "action-button dca-palette-btn",
     `data-val` = value,
-    shiny::icon(
+    icon(
       "circle",
       style = sprintf("color: %s;", color)
     ),

@@ -9,9 +9,6 @@ spin_logo(logo = "synapse")
 \arguments{
 \item{logo}{name of logo}
 }
-\value{
-
-}
 \description{
 Synapse logo spinner to use with waiter
 }

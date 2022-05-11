@@ -2,16 +2,17 @@
 % Please edit documentation in R/utils.R
 \name{tagInsertAttribute}
 \alias{tagInsertAttribute}
-\title{Title}
+\title{tagInsertAttribute}
 \usage{
 tagInsertAttribute(.tag, ..., pos = 1)
 }
 \arguments{
-\item{pos}{}
-}
-\value{
+\item{.tag}{The tag object}
 
+\item{...}{List of tag attributes}
+
+\item{pos}{After which position to insert attributes}
 }
 \description{
-Title
+tagInsertAttribute
 }

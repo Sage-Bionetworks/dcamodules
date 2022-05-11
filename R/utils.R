@@ -1,13 +1,9 @@
-#' test
+#' Extract tab names
 #'
-#' @param .tab
+#' @param .tab The \code{tabItem} object
 #'
-#' @return
-#' @import htmltools
 #' @export
-#'
-#' @examples
-get_tab_names <- function(.tab) {
+getTabNames <- function(.tab) {
   sapply(.tab$children, function(tab) {
     id <- htmltools::as.tags(tab)$attribs$id
     gsub("shiny-tab-", "", id)
@@ -17,15 +13,12 @@ get_tab_names <- function(.tab) {
 
 #' var2server
 #'
-#' @description use this trick to send variables from ui to server in module
-#' @param id
-#' @param values
+#' @description Use this trick to send variables from ui to server in module
+#' @param id The input variable to read value from
+#' @param values The values need to be sent
 #'
-#' @return
-#' @import shiny
 #' @export
 #'
-#' @examples
 var2server <- function(id, values) {
 
   out <- selectInput(id,
@@ -39,16 +32,14 @@ var2server <- function(id, values) {
 }
 
 
-#' Title
+#' tagInsertAttribute
 #'
-#' @param .tag
-#' @param ...
-#' @param pos
+#' @param .tag The tag object
+#' @param pos After which position to insert attributes
+#' @param ... List of tag attributes
 #'
-#' @return
 #' @export
 #'
-#' @examples
 tagInsertAttribute <- function(.tag, ..., pos = 1) {
   if (pos == 0) {
     .tag <- tagAppendAttributes(.tag, ...)
@@ -63,14 +54,13 @@ tagInsertAttribute <- function(.tag, ..., pos = 1) {
 
 
 ### utils
-#' Title
+#' dropEmptys
 #'
-#' @param x
-#'
-#' @return
+#' @param x List of input values
+#' @param drop Which type of values to drop
+#' 
 #' @export
 #'
-#' @examples
 dropEmptys <- function(x, drop = "all") {
 
   match.arg(drop, c("all", "na", "null", "blank"))

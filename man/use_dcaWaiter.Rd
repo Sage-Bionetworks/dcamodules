@@ -2,13 +2,10 @@
 % Please edit documentation in R/dca_waiters.R
 \name{use_dcaWaiter}
 \alias{use_dcaWaiter}
-\title{Title}
+\title{Config waiter}
 \usage{
 use_dcaWaiter()
 }
-\value{
-
-}
 \description{
-Title
+Config waiter
 }

@@ -1,13 +1,12 @@
 
-#' Title
+#' Data Curator Footer
 #'
-#' @param label
-#' @param ...
+#' @param message The main text section at the bottom of footer
+#' @param media The top section for media links
+#' @param height The height of footer
+#' @param ... List of tag attributes
 #'
-#' @return
 #' @export
-#'
-#' @examples
 dcaFooter <- function(message, media = NULL, height = "100px", ...) {
   
   tags$div(

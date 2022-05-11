@@ -14,6 +14,7 @@ $sidebar-font-hover-cl: #fff !default;
 $footer-bg-cl: #222d32 !default;
 $footer-font-cl: #b8c7ce !default;
 $waiter-bg-cl: #3c8dbc !default;
+$waiter-font-cl: #444 !default;
 
 // collect all themes
 $themes: (
@@ -37,7 +38,7 @@ $themes: (
     'sidebar-font-cl': #fff,
     'sidebar-bg-select-cl': #f5b33c,
     'sidebar-font-select-cl': #3c4a63,
-    'sidebar-bg-hover-cl': rgba(#d3d5db 0.2),
+    'sidebar-bg-hover-cl': rgba(#d3d5db, 0.2),
     'sidebar-font-hover-cl': #f5b33c,
     // footer
     'footer-bg-cl': #fff,
@@ -45,5 +46,6 @@ $themes: (
     // box
     // waiter
     'waiter-bg-cl': #eaeff5,
+    'waiter-font-cl': #000,
   ),
 );

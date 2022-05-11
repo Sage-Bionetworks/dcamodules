@@ -2,16 +2,17 @@
 % Please edit documentation in R/dca_buttons.R
 \name{mediaButton}
 \alias{mediaButton}
-\title{Title}
+\title{Media button}
 \usage{
 mediaButton(icon, link = NULL, ...)
 }
 \arguments{
-\item{...}{}
-}
-\value{
+\item{icon}{The icon object from \code{shiny::icon}}
 
+\item{link}{The redirecting url}
+
+\item{...}{List of tag attributes}
 }
 \description{
-Title
+Media button
 }

@@ -50,6 +50,7 @@
     // box
     // waiter
     $waiter-bg-cl: map-get($current-theme, 'waiter-bg-cl') !global;
+    $waiter-font-cl: map-get($current-theme, 'waiter-font-cl') !global;
   }
 }
 // mixin to set custom theme
@@ -275,5 +276,6 @@
   // waiter
   .waiter-overlay.waiter-local {
     background: $waiter-bg-cl !important;
+    color: $waiter-font-cl !important;
   }
 }

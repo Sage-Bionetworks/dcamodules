@@ -1,7 +1,7 @@
 #' Create UI dependencies
 #' @noRd
 #'
-get_dca_deps <- function() {
+dcaDeps <- function() {
 
   # match.arg(type, c("default", "btn", "waiter", "box"))
   # css <- dplyr::case_when(type == "btn" ~ "button.min.css",
@@ -24,14 +24,14 @@ get_dca_deps <- function() {
 #' @noRd
 #'
 add_deps <- function(tag) {
-  shiny::tagList(tag, get_dca_deps())
+  shiny::tagList(tag, dcaDeps())
 }
 
 
-#' haha
+#' Update css files
 #'
+#' @keywords internal
 #' @export
-#' @noRd
 #'
 update_css <- function() {
   stopifnot(interactive())

@@ -1,4 +1,4 @@
-#' @title Launch the dcamodules Gallery
+#' Launch the gallery of dcamodules
 #'
 #' @description
 #' A gallery of all components available in dcamodules
@@ -6,7 +6,6 @@
 #' @export
 #'
 #' @examples
-#'
 #' if (interactive()) {
 #'
 #'  dcamodules::showcase()

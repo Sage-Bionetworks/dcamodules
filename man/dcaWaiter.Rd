@@ -19,27 +19,27 @@ dcaWaiter(
 )
 }
 \arguments{
-\item{stage}{type of waiter, 'show' to initiate waiter screen, 'update' to update a waiter screen, or 'hide' to hide a waiter screen}
+\item{stage}{Type of waiter, 'show' to initiate waiter screen, 'update' to update a waiter screen, or 'hide' to hide a waiter screen}
 
 \item{id}{Id of element to hide or element on which to show waiter over}
 
-\item{user.name}{name of user}
+\item{user.name}{Name of user}
 
-\item{is.landing}{whether the waiter screen is used for landing process, including landing page, login failed pages, and welcome page}
+\item{is.landing}{Whether the waiter screen is used for landing process, including landing page, login failed pages, and welcome page}
 
-\item{is.stop}{whether the waiter screen will be stopped after rendered}
+\item{is.stop}{Whether the waiter screen will be stopped after rendered}
 
-\item{sleep}{time to keep the loading screen before hiding - recommend to give at least 2s to let users view the page}
+\item{sleep}{Time to keep the loading screen before hiding - recommend to give at least 2s to let users view the page}
 
-\item{msg}{message displayed in the waiter screen}
+\item{is.certified}{Whether the user is synapse certified}
 
-\item{spin}{spinner displayed in the waiter screen}
+\item{is.permission}{Whether the user have sufficient permission to the fileview}
 
-\item{color}{background color of the waiter screen}
+\item{msg}{Message displayed in the waiter screen}
 
-\item{isCertified}{whether the user is synapse certified}
+\item{spin}{Spinner displayed in the waiter screen}
 
-\item{isPermission}{whether the user have sufficient permission to the fileview}
+\item{color}{Background color of the waiter screen}
 }
 \value{
 show, update, or stop a waiter screen

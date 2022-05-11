@@ -2,16 +2,15 @@
 % Please edit documentation in R/utils.R
 \name{dropEmptys}
 \alias{dropEmptys}
-\title{Title}
+\title{dropEmptys}
 \usage{
 dropEmptys(x, drop = "all")
 }
 \arguments{
-\item{x}{}
-}
-\value{
+\item{x}{List of input values}
 
+\item{drop}{Which type of values to drop}
 }
 \description{
-Title
+dropEmptys
 }

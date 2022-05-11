@@ -2,16 +2,17 @@
 % Please edit documentation in R/dca_buttons.R
 \name{paletteButton}
 \alias{paletteButton}
-\title{Title}
+\title{Palette button}
 \usage{
 paletteButton(id, color, ...)
 }
 \arguments{
-\item{color}{}
-}
-\value{
+\item{id}{The input id to read value from}
 
+\item{color}{The color of palette}
+
+\item{...}{List of tag attributes}
 }
 \description{
-Title
+Palette button
 }

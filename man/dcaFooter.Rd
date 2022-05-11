@@ -2,16 +2,19 @@
 % Please edit documentation in R/dca_footer.R
 \name{dcaFooter}
 \alias{dcaFooter}
-\title{Title}
+\title{Data Curator Footer}
 \usage{
 dcaFooter(message, media = NULL, height = "100px", ...)
 }
 \arguments{
-\item{...}{}
-}
-\value{
+\item{message}{The main text section at the bottom of footer}
 
+\item{media}{The top section for media links}
+
+\item{height}{The height of footer}
+
+\item{...}{List of tag attributes}
 }
 \description{
-Title
+Data Curator Footer
 }

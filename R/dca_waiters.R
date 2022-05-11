@@ -1,37 +1,34 @@
-#' Title
+#' Config waiter
 #'
-#' @return
 #' @export
 #'
-#' @examples
 use_dcaWaiter <- function() {
-  list(waiter::use_waiter(), get_dca_deps())
+  list(waiter::use_waiter(), dcaDeps())
 }
 
 
 #' DCA Waiter
 #'
 #' @description This is wrapper function on the top of \code{waiter} for data curator app
-#' @param stage type of waiter, 'show' to initiate waiter screen, 'update' to update a waiter screen, or 'hide' to hide a waiter screen
+#' @param stage Type of waiter, 'show' to initiate waiter screen, 'update' to update a waiter screen, or 'hide' to hide a waiter screen
 #' @param id Id of element to hide or element on which to show waiter over
-#' @param is.landing whether the waiter screen is used for landing process, including landing page, login failed pages, and welcome page
-#' @param isCertified whether the user is synapse certified
-#' @param isPermission whether the user have sufficient permission to the fileview
-#' @param user.name name of user
-#' @param is.stop whether the waiter screen will be stopped after rendered
-#' @param sleep time to keep the loading screen before hiding - recommend to give at least 2s to let users view the page
-#' @param msg message displayed in the waiter screen
-#' @param spin spinner displayed in the waiter screen
-#' @param color background color of the waiter screen
+#' @param is.landing Whether the waiter screen is used for landing process, including landing page, login failed pages, and welcome page
+#' @param is.certified Whether the user is synapse certified
+#' @param is.permission Whether the user have sufficient permission to the fileview
+#' @param user.name Name of user
+#' @param is.stop Whether the waiter screen will be stopped after rendered
+#' @param sleep Time to keep the loading screen before hiding - recommend to give at least 2s to let users view the page
+#' @param msg Message displayed in the waiter screen
+#' @param spin Spinner displayed in the waiter screen
+#' @param color Background color of the waiter screen
 #'
 #' @return show, update, or stop a waiter screen
-#' @import shiny waiter
 #' @export
 dcaWaiter <- function(stage = c("show", "update", "hide"),
-                     id = NULL, user.name = "DCA User",
-                     is.landing = FALSE, is.stop = FALSE, sleep = 2,
-                     is.certified = TRUE, is.permission = TRUE,
-                     msg = NULL, spin = NULL, color = NULL) {
+                      id = NULL, user.name = "DCA User",
+                      is.landing = FALSE, is.stop = FALSE, sleep = 2,
+                      is.certified = TRUE, is.permission = TRUE,
+                      msg = NULL, spin = NULL, color = NULL) {
 
   # validate arguments
   match.arg(stage, c("show", "update", "hide"))
@@ -44,13 +41,13 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
 
   # default values
   if (is.null(msg)) msg <- "Loading ..."
-  if (is.null(spin)) spin <- spin_plus()
+  if (is.null(spin)) spin <- waiter::spin_plus()
   if (is.null(color)) bg_cl <- "#424874" # TODO: add waiter to theme
 
   # if "hide", proceed hiding process immediately and exit function
   if (stage == "hide") {
     Sys.sleep(sleep)
-    return(waiter_hide(id))
+    return(waiter::waiter_hide(id))
   }
 
   ## predefined loading screens for dca
@@ -61,7 +58,7 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
     if (stage == "show") {
       # initial loading screen
       # `waiter_show_on_load` only work in UI
-      waiter_show_on_load(
+      waiter::waiter_show_on_load(
         tagList(
           img(src = img_path),
           h3("Retrieving Synapse information...")
@@ -71,7 +68,7 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
     } else if (!is.certified) {
       # not certified synapse user
       Sys.sleep(sleep)
-      waiter_update(
+      waiter::waiter_update(
         id,
         tagList(
           img(src = img_path),
@@ -88,7 +85,7 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
     } else if (!is.permission) {
       # not have right permission
       Sys.sleep(sleep)
-      waiter_update(
+      waiter::waiter_update(
         id,
         tagList(
           img(src = img_path),
@@ -101,7 +98,7 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
     } else {
       # success loading page - user.name needed to provide
       Sys.sleep(sleep)
-      waiter_update(
+      waiter::waiter_update(
         id,
         tagList(
           img(src = img_path),
@@ -109,25 +106,25 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
         )
       )
       Sys.sleep(sleep)
-      waiter_hide(id)
+      waiter::waiter_hide(id)
     }
   } else {
     ## custom loading screens
     if (stage == "show") {
-      waiter_show(
+      waiter::waiter_show(
         id,
         tagList(spin, br(), h3(msg)),
         color = bg_cl
       )
     } else {
       Sys.sleep(sleep)
-      waiter_update(
+      waiter::waiter_update(
         id,
         tagList(spin, br(), h3(msg))
       )
       if (is.stop) {
         Sys.sleep(sleep)
-        waiter_hide(id)
+        waiter::waiter_hide(id)
       }
     }
   }
@@ -138,7 +135,7 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
 #'
 #' @description Synapse logo spinner to use with waiter
 #' @param logo name of logo
-#' @return
+#' 
 #' @export
 #'
 spin_logo <- function(logo = "synapse") {

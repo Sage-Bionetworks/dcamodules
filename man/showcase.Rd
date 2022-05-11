@@ -2,7 +2,7 @@
 % Please edit documentation in R/showcase.R
 \name{showcase}
 \alias{showcase}
-\title{Launch the dcamodules Gallery}
+\title{Launch the gallery of dcamodules}
 \usage{
 showcase()
 }
@@ -10,7 +10,6 @@ showcase()
 A gallery of all components available in dcamodules
 }
 \examples{
-
 if (interactive()) {
 
  dcamodules::showcase()
