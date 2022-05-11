@@ -1,7 +1,7 @@
 library(shiny)
 library(shinydashboard)
 library(dcamodules)
-library(dplyr)
+library(magrittr)
 
 ### general
 themes <- c("default", "sage")
@@ -147,7 +147,7 @@ ui <- dashboardPage(
           actionButton("demo-act-btn6", "Danger", class = "btn-danger")
         )
       )
-    ),
+    ) %>% tabSwitchUI("switch_btn"),
     dcaFooter(
       HTML(paste0(
         "Copy right @2022. Powered by ",
@@ -169,6 +169,8 @@ server <- function(input, output, session) {
       set_theme(theme = input$btn_theme)
     })
   })
+
+  tabSwitch("switch_btn", "tabs", session, input, output)
 
   lapply(c("loading", "no_cert", "no_perm", "success"), function(i) {
     observeEvent(input[[paste0("btn_waiter_", i)]], {

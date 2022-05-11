@@ -10,7 +10,7 @@
 dcaFooter <- function(message, media = NULL, height = "100px", ...) {
   tags$div(
     class = "dca-footer-placeholder",
-    style = sprintf("max-height: %s;", height),
+    style = sprintf("height: %s;", height),
     tags$footer(
       class = "dca-footer",
       style = sprintf("max-height: %s;", height),
