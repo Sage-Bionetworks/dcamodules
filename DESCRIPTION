@@ -16,7 +16,6 @@ Imports:
     magrittr,
     base64enc,
     colourpicker,
-    glue,
     htmltools,
     sagethemes,
     sass,

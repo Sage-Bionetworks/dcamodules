@@ -11,10 +11,10 @@ dcaFooter <- function(message, media = NULL, height = "100px", ...) {
   
   tags$div(
     class = "dca-footer-placeholder",
-    style = glue::glue("max-height: {height};"),
+    style = sprintf("max-height: %s;", height),
     tags$footer(
       class = "dca-footer",
-      style = glue::glue("max-height: {height};"),
+      style = sprintf("max-height: %s;", height),
       tagList(
         if(!is.null(media)) div(class = "dca-footer-media", list(media)),
         div(class = "dca-footer-msg", list(message))
