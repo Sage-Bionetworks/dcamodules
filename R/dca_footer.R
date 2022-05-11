@@ -8,7 +8,6 @@
 #'
 #' @export
 dcaFooter <- function(message, media = NULL, height = "100px", ...) {
-  
   tags$div(
     class = "dca-footer-placeholder",
     style = sprintf("max-height: %s;", height),
@@ -16,11 +15,10 @@ dcaFooter <- function(message, media = NULL, height = "100px", ...) {
       class = "dca-footer",
       style = sprintf("max-height: %s;", height),
       tagList(
-        if(!is.null(media)) div(class = "dca-footer-media", list(media)),
+        if (!is.null(media)) div(class = "dca-footer-media", list(media)),
         div(class = "dca-footer-msg", list(message))
       ),
       ...
     )
   )
 }
-

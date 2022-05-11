@@ -11,8 +11,6 @@ A gallery of all components available in dcamodules
 }
 \examples{
 if (interactive()) {
-
- dcamodules::showcase()
-
+  dcamodules::showcase()
 }
 }

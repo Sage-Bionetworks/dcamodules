@@ -7,10 +7,8 @@
 #'
 #' @examples
 #' if (interactive()) {
-#'
-#'  dcamodules::showcase()
-#'
+#'   dcamodules::showcase()
 #' }
 showcase <- function() {
-  shiny::shinyAppFile(system.file('examples/app.R', package = 'dcamodules', mustWork = TRUE))
+  shiny::shinyAppFile(system.file("examples/app.R", package = "dcamodules", mustWork = TRUE))
 }

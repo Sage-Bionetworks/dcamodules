@@ -52,7 +52,6 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
 
   ## predefined loading screens for dca
   if (is.landing) {
-
     img_path <- "assets/loading_sage_logo.gif"
 
     if (stage == "show") {
@@ -73,12 +72,13 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
         tagList(
           img(src = img_path),
           h3("Looks like you're not a synapse certified user!"),
-          span("Please follow the ",
-               a("instruction",
-                 href = "https://help.synapse.org/docs/User-Account-Tiers.2007072795.html#UserAccountTiers-CertifiedUsers",
-                 target = "_blank"
-                ),
-               " to become a certified user, then refresh this page."
+          span(
+            "Please follow the ",
+            a("instruction",
+              href = "https://help.synapse.org/docs/User-Account-Tiers.2007072795.html#UserAccountTiers-CertifiedUsers",
+              target = "_blank"
+            ),
+            " to become a certified user, then refresh this page."
           )
         )
       )
@@ -94,7 +94,6 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
            Please contact your team and project administrators.")
         )
       )
-
     } else {
       # success loading page - user.name needed to provide
       Sys.sleep(sleep)
@@ -135,11 +134,10 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
 #'
 #' @description Synapse logo spinner to use with waiter
 #' @param logo name of logo
-#' 
+#'
 #' @export
 #'
 spin_logo <- function(logo = "synapse") {
-
   all_logos <- list.files(system.file(package = "dcamodules", "assets/logos"))
   all_orgs <- tools::file_path_sans_ext(all_logos)
 
@@ -154,8 +152,10 @@ spin_logo <- function(logo = "synapse") {
     img_type <- "png"
   }
 
-  b64 <- base64enc::dataURI(file = system.file(logo_path, package="dcamodules"),
-                            mime = paste0("image/", img_type))
+  b64 <- base64enc::dataURI(
+    file = system.file(logo_path, package = "dcamodules"),
+    mime = paste0("image/", img_type)
+  )
   spinner <- img(src = b64, class = "dca-logo-spin")
   add_deps(spinner)
 }

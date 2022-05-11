@@ -17,10 +17,10 @@ Set theme of shiny dashboard
 \examples{
 \donttest{
 # 1. use it in the dashboardBody()
- set_theme(theme = "default")
+set_theme(theme = "default")
 
- # 2. create your own custom variables
- custom_theme <- list(
+# 2. create your own custom variables
+custom_theme <- list(
   "primary" = "blue",
   "accent" = "red",
   "dark" = NULL,

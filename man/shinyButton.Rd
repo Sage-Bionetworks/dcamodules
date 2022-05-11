@@ -18,8 +18,6 @@ A button with shiny effect
 }
 \examples{
 if (interactive()) {
-
- shinyButton("button")
-
+  shinyButton("button")
 }
 }

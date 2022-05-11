@@ -7,17 +7,14 @@
 #' @param id The input id to read value from
 #' @param label The display label of the button
 #' @param ... List of tag attributes
-#' 
+#'
 #' @import shiny
 #' @export
 #' @examples
 #' if (interactive()) {
-#'
-#'  shinyButton("button")
-#'
+#'   shinyButton("button")
 #' }
 shinyButton <- function(id, label, ...) {
-
   value <- restoreInput(id = id, default = NULL)
 
   btn <- tags$button(
@@ -47,7 +44,7 @@ arrowButton <- function(id, direction = "left", ...) {
 
   value <- restoreInput(id = id, default = NULL)
 
-  btn <-  tags$button(
+  btn <- tags$button(
     id = id,
     type = "button",
     class = sprintf("btn btn-default action-button dca-%s-btn", direction),
@@ -69,14 +66,13 @@ arrowButton <- function(id, direction = "left", ...) {
 #'
 #' @export
 mediaButton <- function(icon, link = NULL, ...) {
-
   btn <- tags$a(
-      icon(icon),
-      href = link,
-      target = "_blank",
-      class = "dca-icon-btn",
-      ...
-    )
+    icon(icon),
+    href = link,
+    target = "_blank",
+    class = "dca-icon-btn",
+    ...
+  )
   add_deps(btn)
 }
 
@@ -86,11 +82,10 @@ mediaButton <- function(icon, link = NULL, ...) {
 #' @param id The input id to read value from
 #' @param color The color of palette
 #' @param ... List of tag attributes
-#' 
+#'
 #' @export
 #'
 paletteButton <- function(id, color, ...) {
-
   value <- restoreInput(id = id, default = NULL)
 
   btn <- tags$button(

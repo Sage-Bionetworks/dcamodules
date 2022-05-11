@@ -5,7 +5,6 @@
 #' @export
 #'
 palettePanelUI <- function(id) {
-
   ns <- NS(id)
   bg_cls <- unlist(sagethemes::sage_colors)
   font_cls <- c("#000000", "#FFFFFF")
@@ -19,7 +18,7 @@ palettePanelUI <- function(id) {
     sidebar_font_cl = "#b8c7ce",
     content_font_cl = "#444444",
     footer_font_cl = "#b8c7ce",
-    waiter_font_cl ="#444444"
+    waiter_font_cl = "#444444"
   )
 
   sections <- c("header", "sidebar", "content", "footer", "waiter")
@@ -30,18 +29,19 @@ palettePanelUI <- function(id) {
     tagList(
       fluidRow(
         lapply(sections, function(s) {
-          column(2,
+          column(
+            2,
             h4(s, class = "text-center text-capitalize"),
             tagList(
               colourpicker::colourInput(
-                ns(NS(s, "bg-cl")), 
+                ns(NS(s, "bg-cl")),
                 "background",
                 palette = "limited",
                 value = NULL,
                 allowedCols = c(defaults[[paste0(s, "_bg_cl")]], bg_cls)
               ),
               colourpicker::colourInput(
-                ns(NS(s, "font-cl")), 
+                ns(NS(s, "font-cl")),
                 "font",
                 palette = "limited",
                 value = NULL,
@@ -74,11 +74,12 @@ palettePanel <- function(id, head.id, parent.session, parent.input, parent.outpu
   moduleServer(
     id,
     function(input, output, session) {
-
-      colors <- c("#d5cfe3", "#b2a5d1", "#907fba", "#5a478f",
-                  "#47337d", "#332069", "#251454", "#e1f4f5",
-                  "#c5edf0", "#a6dde0", "#7ec8cc", "#5bb0b5",
-                  "#2f8e94", "#0c656b")
+      colors <- c(
+        "#d5cfe3", "#b2a5d1", "#907fba", "#5a478f",
+        "#47337d", "#332069", "#251454", "#e1f4f5",
+        "#c5edf0", "#a6dde0", "#7ec8cc", "#5bb0b5",
+        "#2f8e94", "#0c656b"
+      )
       sections <- c("header", "sidebar", "content", "footer", "waiter")
 
       vars <- reactive({
@@ -103,7 +104,7 @@ palettePanel <- function(id, head.id, parent.session, parent.input, parent.outpu
           saveRDS(vars(), path)
           output[["save-progress"]] <- renderText(
             sprintf("'%s' is updated!", path)
-            )
+          )
         })
       })
     }

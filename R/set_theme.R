@@ -8,10 +8,10 @@
 #' @examples
 #' \donttest{
 #' # 1. use it in the dashboardBody()
-#'  set_theme(theme = "default")
+#' set_theme(theme = "default")
 #'
-#'  # 2. create your own custom variables
-#'  custom_theme <- list(
+#' # 2. create your own custom variables
+#' custom_theme <- list(
 #'   "primary" = "blue",
 #'   "accent" = "red",
 #'   "dark" = NULL,
@@ -46,13 +46,11 @@
 #' }
 #'
 set_theme <- function(config = NULL, theme = "default") {
-
   valid_themes <- c("default", "sage", "htan")
   match.arg(theme, valid_themes)
 
   # if pre-defined theme is used, custom is ignored
   if (!is.null(config) && theme == "default") {
-
     if (length(config) == 1 && is.character(config)) {
       match.arg(tolower(tools::file_ext(config)), "rds")
       custom_theme <- readRDS(config)
@@ -62,7 +60,6 @@ set_theme <- function(config = NULL, theme = "default") {
 
     # remove undefined variables
     variables <- dropEmptys(custom_theme)
-
   } else {
     variables <- NULL
   }
@@ -75,8 +72,8 @@ set_theme <- function(config = NULL, theme = "default") {
       defaults = variables,
       rules = sprintf("@include get-colors-from-theme(%s);
                        @include set-theme();", theme)
-      )
     )
+  )
 
   tags$head(
     tags$style(

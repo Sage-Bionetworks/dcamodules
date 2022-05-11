@@ -3,5 +3,5 @@
 #' @noRd
 #'
 .onLoad <- function(...) {
-  shiny::addResourcePath("assets", system.file("assets", package="dcamodules"))
+  shiny::addResourcePath("assets", system.file("assets", package = "dcamodules"))
 }
