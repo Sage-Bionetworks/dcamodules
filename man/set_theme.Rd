@@ -12,46 +12,51 @@ set_theme(config = NULL, theme = "default")
 \item{theme}{The predefined theme.}
 }
 \description{
-Set theme of shiny dashboard
+Set theme of shiny dashboard.
 }
 \examples{
-\donttest{
-# 1. use it in the dashboardBody()
-set_theme(theme = "default")
+if (interactive()) {
+  library(shinydashboard)
+  library(dcamodules)
+  # 1. use it in the dashboardBody()
+  dashboardBody(
+    set_theme(theme = "default")
+  )
 
-# 2. create your own custom variables
-custom_theme <- list(
-  "primary" = "blue",
-  "accent" = "red",
-  "dark" = NULL,
-  "light" = NULL,
-  "success" = NULL,
-  "info" = NULL,
-  "warning" = NULL,
-  "danger" = NULL,
-  "white" = NULL,
-  "black" = NULL,
-  "font" = NULL,
-  "link-font-cl" = NULL,
-  "content-bg-cl" = NULL,
-  "content-font-cl" = NULL,
-  "header-font-cl" = NULL,
-  "sidebar-bg-cl" = NULL,
-  "sidebar-font-cl" = NULL,
-  "sidebar-bg-select-cl" = NULL,
-  "sidebar-font-select-cl" = NULL,
-  "sidebar-bg-hover-cl" = NULL,
-  "sidebar-font-hover-cl" = NULL,
-  "footer-bg-cl" = NULL,
-  "footer-font-cl" = NULL,
-  "waiter-bg-cl" = NULL,
-  "waiter-font-cl" = NULL
-)
-# save variables to rds
-# saveRDS(custom_theme, "theme_config.rds")
+  # 2. create your own custom variables
+  custom_theme <- list(
+    "primary" = "blue",
+    "accent" = "red",
+    "dark" = NULL,
+    "light" = NULL,
+    "success" = NULL,
+    "info" = NULL,
+    "warning" = NULL,
+    "danger" = NULL,
+    "white" = NULL,
+    "black" = NULL,
+    "font" = NULL,
+    "link-font-cl" = NULL,
+    "content-bg-cl" = NULL,
+    "content-font-cl" = NULL,
+    "header-font-cl" = NULL,
+    "sidebar-bg-cl" = NULL,
+    "sidebar-font-cl" = NULL,
+    "sidebar-bg-select-cl" = NULL,
+    "sidebar-font-select-cl" = NULL,
+    "sidebar-bg-hover-cl" = NULL,
+    "sidebar-font-hover-cl" = NULL,
+    "footer-bg-cl" = NULL,
+    "footer-font-cl" = NULL,
+    "waiter-bg-cl" = NULL,
+    "waiter-font-cl" = NULL
+  )
+  # save variables to rds
+  saveRDS(custom_theme, "theme_config.rds")
 
-# set them by parsing the config rds
-# set_theme(config = "theme_config.rds")
+  # set them by parsing the config rds
+  dashboardBody(
+    set_theme(config = "theme_config.rds")
+  )
 }
-
 }

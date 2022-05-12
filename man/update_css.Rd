@@ -9,4 +9,9 @@ update_css()
 \description{
 Update css files
 }
+\examples{
+\dontrun{
+update_css()
+}
+}
 \keyword{internal}

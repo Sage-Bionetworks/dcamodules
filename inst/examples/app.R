@@ -39,7 +39,7 @@ ui <- dashboardPage(
     )
   ),
   dashboardBody(
-    use_dcaWaiter(),
+    use_dca_waiter(),
     uiOutput("theme"),
     tabItems(
       tabItem(
@@ -79,25 +79,25 @@ ui <- dashboardPage(
             width = 12,
             height = "250px",
             actionButton("btn_waiter_loading", "try")
-          ) %>% tagInsertAttribute(id = "box_waiter_loading"),
+          ) %>% insert_attribute(id = "box_waiter_loading"),
           box(
             title = "Uncertified User:",
             width = 12,
             height = "250px",
             actionButton("btn_waiter_no_cert", "try")
-          ) %>% tagInsertAttribute(id = "box_waiter_no_cert"),
+          ) %>% insert_attribute(id = "box_waiter_no_cert"),
           box(
             title = "Not Enough Permission:",
             width = 12,
             height = "250px",
             actionButton("btn_waiter_no_perm", "try")
-          ) %>% tagInsertAttribute(id = "box_waiter_no_perm"),
+          ) %>% insert_attribute(id = "box_waiter_no_perm"),
           box(
             title = "Successful Login:",
             width = 12,
             height = "250px",
             actionButton("btn_waiter_success", "try")
-          ) %>% tagInsertAttribute(id = "box_waiter_success")
+          ) %>% insert_attribute(id = "box_waiter_success")
         )
       ),
       tabItem(
@@ -174,15 +174,15 @@ server <- function(input, output, session) {
 
   lapply(c("loading", "no_cert", "no_perm", "success"), function(i) {
     observeEvent(input[[paste0("btn_waiter_", i)]], {
-      dcaWaiter("hide", sleep = 0)
+      dca_waiter("hide", sleep = 0)
 
       if (i == "loading") {
         msg <- "Retrieving Synapse information..."
-        dcaWaiter("show", id = paste0("box_waiter_", i), msg = msg)
+        dca_waiter("show", id = paste0("box_waiter_", i), msg = msg)
       } else {
         msg <- NULL
-        dcaWaiter("show", id = paste0("box_waiter_", i), msg = msg)
-        dcaWaiter("update",
+        dca_waiter("show", id = paste0("box_waiter_", i), msg = msg)
+        dca_waiter("update",
           id = paste0("box_waiter_", i),
           is.landing = !grepl("landing", i),
           is.certified = !grepl("cert", i),

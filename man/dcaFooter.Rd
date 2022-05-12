@@ -7,14 +7,25 @@
 dcaFooter(message, media = NULL, height = "100px", ...)
 }
 \arguments{
-\item{message}{The main text section at the bottom of footer}
+\item{message}{The main text section at the bottom of footer.}
 
-\item{media}{The top section for media links}
+\item{media}{The top section for media links. Default to NULL.}
 
-\item{height}{The height of footer}
+\item{height}{The height of footer. Default to '100px'/}
 
 \item{...}{List of tag attributes}
 }
 \description{
-Data Curator Footer
+Add footer to the bottom of \code{dashboardSidebar} or \code{dashboardBody}.
+}
+\examples{
+if (interactive()) {
+  library(shinydashboard)
+  dashboardBody(
+    dcaFooter("
+      Copy right 2022",
+      media = mediaButton("google", "https://google.com")
+    )
+  )
+}
 }

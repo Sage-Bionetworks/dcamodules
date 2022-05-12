@@ -1,0 +1,50 @@
+url: ~
+template:
+  params:
+    bootswatch: lumen
+development:
+  mode: unreleased
+
+reference:
+- title: Basic buttons
+  contents:
+  - shinyButton
+  - arrowButton
+  - mediaButton
+  - paletteButton
+
+- title: Waiters
+  contents:
+  - use_dca_waiter
+  - dca_waiter
+  - spin_logo
+
+- title: Sections
+  contents:
+    dcaFooter
+
+- title: Modules
+  contents:
+  - tabSwitchUI
+  - tabSwitch
+  - palettePanelUI
+  - palettePanel
+
+- title: Styles
+  contents:
+  - set_theme
+  - update_css
+  - showcase
+
+- title: utils
+  contents:
+  - var_to_server
+  - get_tab_names
+  - insert_attribute
+  - drop_empty
+
+articles:
+- title: Set themes
+  navbar: ~
+  contents:
+  - themes

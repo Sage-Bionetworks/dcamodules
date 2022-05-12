@@ -2,13 +2,14 @@
 % Please edit documentation in R/mod_palette_panel.R
 \name{palettePanelUI}
 \alias{palettePanelUI}
-\title{Create an palette panel output element}
+\title{Create an palette panel}
 \usage{
 palettePanelUI(id)
 }
 \arguments{
-\item{id}{output variable to read the value from}
+\item{id}{output variable to read the value from.}
 }
 \description{
-Create an palette panel output element
+Create an palette panel
 }
+\keyword{internal}

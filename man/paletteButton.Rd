@@ -7,12 +7,17 @@
 paletteButton(id, color, ...)
 }
 \arguments{
-\item{id}{The input id to read value from}
+\item{id}{The input id to read value from.}
 
-\item{color}{The color of palette}
+\item{color}{The color of palette.}
 
-\item{...}{List of tag attributes}
+\item{...}{List of tag attributes.}
 }
 \description{
 Palette button
+}
+\examples{
+if (interactive()) {
+  paletteButton("awesome-id", "red")
+}
 }

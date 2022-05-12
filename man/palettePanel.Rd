@@ -9,14 +9,15 @@ palettePanel(id, head.id, parent.session, parent.input, parent.output)
 \arguments{
 \item{id}{The id of the output object.}
 
-\item{head.id}{The id of head tag that used to change styles}
+\item{head.id}{The id of head tag that used to change styles.}
 
-\item{parent.session}{Session from parent scope}
+\item{parent.session}{Session from parent scope.}
 
-\item{parent.input}{Input from parent scope}
+\item{parent.input}{Input from parent scope.}
 
-\item{parent.output}{Output from parent scope}
+\item{parent.output}{Output from parent scope.}
 }
 \description{
 Palette panel server
 }
+\keyword{internal}

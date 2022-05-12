@@ -1,9 +1,11 @@
-#' Create an palette panel output element
+#' Create an palette panel
 #'
-#' @param id output variable to read the value from
-#'
+#' @param id output variable to read the value from.
+#' @keywords internal
+#' @rdname palettePanelUI
 #' @export
-#'
+#' @importFrom sagethemes sage_colors
+#' @importFrom colourpicker colourInput
 palettePanelUI <- function(id) {
   ns <- NS(id)
   bg_cls <- unlist(sagethemes::sage_colors)
@@ -63,13 +65,13 @@ palettePanelUI <- function(id) {
 #' Palette panel server
 #'
 #' @param id The id of the output object.
-#' @param head.id The id of head tag that used to change styles
-#' @param parent.session Session from parent scope
-#' @param parent.input Input from parent scope
-#' @param parent.output Output from parent scope
-#'
+#' @param head.id The id of head tag that used to change styles.
+#' @param parent.session Session from parent scope.
+#' @param parent.input Input from parent scope.
+#' @param parent.output Output from parent scope.
+#' @keywords internal
+#' @rdname palettePanel
 #' @export
-#'
 palettePanel <- function(id, head.id, parent.session, parent.input, parent.output) {
   moduleServer(
     id,

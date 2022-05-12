@@ -1,14 +1,9 @@
 #' Create UI dependencies
-#' @noRd
 #'
-dcaDeps <- function() {
-
-  # match.arg(type, c("default", "btn", "waiter", "box"))
-  # css <- dplyr::case_when(type == "btn" ~ "button.min.css",
-  #                         type == "waiter" ~ "waiter.min.css",
-  #                         type == "box" ~ "box.min.css",
-  #                         TRUE ~ "main.min.css")
-  # js <-
+#' @noRd
+#' @importFrom htmltools htmlDependency
+#' @importFrom utils packageVersion
+dca_deps <- function() {
   htmltools::htmlDependency(
     name = "dcamodules",
     version = utils::packageVersion("dcamodules"),
@@ -22,30 +17,22 @@ dcaDeps <- function() {
 #' Add UI dependencies
 #'
 #' @noRd
-#'
 add_deps <- function(tag) {
-  shiny::tagList(tag, dcaDeps())
+  tagList(tag, dca_deps())
 }
 
 
 #' Update css files
 #'
+#' @examples \dontrun{
+#' update_css()
+#' }
 #' @keywords internal
+#' @rdname update_css
 #' @export
-#'
+#' @importFrom sass sass sass_file sass_options
 update_css <- function() {
   stopifnot(interactive())
-
-  # match.arg(type, c("default", "btn", "waiter", "box"))
-  # scss_file <- dplyr::case_when(type == "btn" ~ "buttons/_load.scss",
-  #                               type == "waiter" ~ "waiters/_load.scss",
-  #                               type == "box" ~ "boxes/_load.scss",
-  #                               TRUE ~ "main.scss")
-  # css_file <- dplyr::case_when(type == "btn" ~ "button.min.css",
-  #                              type == "waiter" ~ "waiter.min.css",
-  #                              type == "box" ~ "box.min.css",
-  #                              TRUE ~ "main.min.css")
-
   scss_file <- "main.scss"
   css_file <- "main.min.css"
   sass::sass(

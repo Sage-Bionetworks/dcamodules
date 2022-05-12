@@ -1,19 +1,14 @@
-
-#' @title Shiny button
+#' Shiny button
 #'
-#' @description
-#' A button with shiny effect
-#'
-#' @param id The input id to read value from
-#' @param label The display label of the button
-#' @param ... List of tag attributes
-#'
-#' @import shiny
-#' @export
+#' @param id The input id to read value from.
+#' @param label The display label of the button.
+#' @param ... List of tag attributes.
 #' @examples
 #' if (interactive()) {
-#'   shinyButton("button")
+#'   shinyButton("awesome-id", "button")
 #' }
+#' @rdname shinyButton
+#' @export
 shinyButton <- function(id, label, ...) {
   value <- restoreInput(id = id, default = NULL)
 
@@ -31,12 +26,15 @@ shinyButton <- function(id, label, ...) {
 
 #' Arrow button
 #'
-#' @param id The input id to read value from
-#' @param direction The direction of arrow button
-#' @param ... List of tag attributes
-#'
+#' @param id The input id to read value from.
+#' @param direction The direction of arrow button.
+#' @param ... List of tag attributes.
+#' @examples
+#' if (interactive()) {
+#'   arrowButton("awesome-id", direction = "left")
+#' }
+#' @rdname arrowButton
 #' @export
-#'
 arrowButton <- function(id, direction = "left", ...) {
   match.arg(direction, c("left", "right"))
   icon_left <- lapply(1:3, function(i) tags$i(class = "fa fa-angle-left"))
@@ -63,7 +61,11 @@ arrowButton <- function(id, direction = "left", ...) {
 #' @param icon The icon object from \code{shiny::icon}
 #' @param link The redirecting url
 #' @param ... List of tag attributes
-#'
+#' @examples
+#' if (interactive()) {
+#'   mediaButton("github", "https://github.com")
+#' }
+#' @rdname mediaButton
 #' @export
 mediaButton <- function(icon, link = NULL, ...) {
   btn <- tags$a(
@@ -79,12 +81,15 @@ mediaButton <- function(icon, link = NULL, ...) {
 
 #' Palette button
 #'
-#' @param id The input id to read value from
-#' @param color The color of palette
-#' @param ... List of tag attributes
-#'
+#' @param id The input id to read value from.
+#' @param color The color of palette.
+#' @param ... List of tag attributes.
+#' @examples
+#' if (interactive()) {
+#'   paletteButton("awesome-id", "red")
+#' }
+#' @rdname paletteButton
 #' @export
-#'
 paletteButton <- function(id, color, ...) {
   value <- restoreInput(id = id, default = NULL)
 
