@@ -1,4 +1,4 @@
-test_that("shinyButton Default", {
+test_that("shinyButton works", {
 
   btn <- shinyButton(
     "test-id", "test-button",
@@ -11,7 +11,7 @@ test_that("shinyButton Default", {
   expect_identical(btn[[2]]$stylesheet, "main.min.css")
 })
 
-test_that("arrowButton Default", {
+test_that("arrowButton works", {
 
   btn <- arrowButton(
     "test-id",
@@ -25,7 +25,7 @@ test_that("arrowButton Default", {
   expect_identical(btn[[2]]$stylesheet, "main.min.css")
 })
 
-test_that("mediaButton Default", {
+test_that("mediaButton works", {
 
   btn <- mediaButton(
     "google",
@@ -39,7 +39,7 @@ test_that("mediaButton Default", {
   expect_identical(btn[[2]]$stylesheet, "main.min.css")
 })
 
-test_that("paletteButton Default", {
+test_that("paletteButton works", {
 
   btn <- paletteButton(
     "test-id", "red",
