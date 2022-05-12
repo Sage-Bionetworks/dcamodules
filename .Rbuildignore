@@ -4,7 +4,6 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^\.github$
-^README\.Rmd$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
