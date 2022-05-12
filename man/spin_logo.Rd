@@ -7,7 +7,7 @@
 spin_logo(logo = "synapse")
 }
 \arguments{
-\item{logo}{name of logo}
+\item{logo}{Name of logo. Default to 'synapse'.}
 }
 \description{
 Synapse logo spinner to use with waiter

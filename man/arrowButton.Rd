@@ -7,12 +7,17 @@
 arrowButton(id, direction = "left", ...)
 }
 \arguments{
-\item{id}{The input id to read value from}
+\item{id}{The input id to read value from.}
 
-\item{direction}{The direction of arrow button}
+\item{direction}{The direction of arrow button.}
 
-\item{...}{List of tag attributes}
+\item{...}{List of tag attributes.}
 }
 \description{
 Arrow button
+}
+\examples{
+if (interactive()) {
+  arrowButton("awesome-id", direction = "left")
+}
 }

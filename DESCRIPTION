@@ -1,11 +1,22 @@
 Package: dcamodules
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Data Curator App Modules
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R:
+    c(person(given = "Rongrong",
+             family = "Chai",
+             role = c("aut", "cre"),
+             email = "rchai@sagebase.org"),
+      person(given = "Anthony",
+             family = "Williams",
+             role = c("aut")),
+      person(given = "Milen",
+             family = "Nikolov",
+             role = c("aut")),
+      person(given = "Sage Bionetworks",
+             role = "cph"))
+Description: This is a package to collect essential modules and useful functions
+    used in the data curator app (https://github.com/Sage-Bionetworks/data_curator).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -19,5 +30,12 @@ Imports:
     htmltools,
     sagethemes,
     sass,
-    waiter
+    waiter,
+    purrr
 Remotes: Sage-Bionetworks/sagethemes
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+URL: https://github.com/Sage-Bionetworks/dcamodules
+BugReports: https://github.com/Sage-Bionetworks/dcamodules/issues

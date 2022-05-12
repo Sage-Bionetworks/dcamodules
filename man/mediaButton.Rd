@@ -16,3 +16,8 @@ mediaButton(icon, link = NULL, ...)
 \description{
 Media button
 }
+\examples{
+if (interactive()) {
+  mediaButton("github", "https://github.com")
+}
+}

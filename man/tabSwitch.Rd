@@ -7,16 +7,42 @@
 tabSwitch(id, tab.id, parent.session, parent.input, parent.output)
 }
 \arguments{
-\item{id}{The input id to read value from}
+\item{id}{The input id to read value from.}
 
-\item{tab.id}{The id of \code{tabItem} object}
+\item{tab.id}{The id of \code{sidebarMenu} object.}
 
-\item{parent.session}{The session from parent scope}
+\item{parent.session}{The session from parent scope.}
 
-\item{parent.input}{The input from parent scope}
+\item{parent.input}{The input from parent scope.}
 
-\item{parent.output}{The output from parent scope}
+\item{parent.output}{The output from parent scope.}
 }
 \description{
 Tab switch button server
+}
+\examples{
+if (interactive()) {
+  library(shiny)
+  library(shinydashboard)
+  library(dcamodules)
+  ui <- dashboardPage(
+    dashboardHeader(),
+    dashboardSidebar(
+      sidebarMenu(
+        id = "tabs",
+        menuItem("awesome_tab")
+      )
+    ),
+    dashboardBody(
+      tabSwitchUI(
+        id = "switch",
+        tabItems(tabItem("awesome_tab"))
+      )
+    )
+  )
+  server <- function(input, output, session) {
+    tabSwitch("switch", "tabs", session, input, output)
+  }
+  shinyApp(ui, server)
+}
 }

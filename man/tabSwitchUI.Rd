@@ -2,15 +2,27 @@
 % Please edit documentation in R/mod_switch_button.R
 \name{tabSwitchUI}
 \alias{tabSwitchUI}
-\title{Create switch button}
+\title{Create button to switch tabs}
 \usage{
 tabSwitchUI(.tab, id = NULL)
 }
 \arguments{
-\item{.tab}{The \code{tabItem} object}
+\item{.tab}{The \code{tabItem} object.}
 
-\item{id}{The input variable to read value from}
+\item{id}{The input variable to read value from. If NULL is set, 'dca-tab-switch' will be used for 'id'.}
 }
 \description{
-Create switch button
+Create button to switch tabs
+}
+\examples{
+if (interactive()) {
+  library(shinydashboard)
+  library(magrittr)
+  library(dcamodules)
+  # add after tabItems via pipe \%>\%
+  # or move tabItems inside of tabSwitchUI
+  tabItems(
+    tabItem(tabName = "awesome-tab")
+  ) \%>\% tabSwitchUI()
+}
 }

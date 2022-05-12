@@ -1,34 +1,47 @@
 #' Config waiter
-#'
+#' @description Use to config dependencies of dca waiter
+#' @examples
+#' if (interactive()) {
+#'   library(shinydashboard)
+#'   library(dcamodules)
+#'   dashboardBody(
+#'     use_dca_waiter()
+#'   )
+#' }
+#' @rdname use_dca_waiter
 #' @export
-#'
-use_dcaWaiter <- function() {
-  list(waiter::use_waiter(), dcaDeps())
+use_dca_waiter <- function() {
+  list(waiter::use_waiter(), dca_deps())
 }
 
 
 #' DCA Waiter
 #'
-#' @description This is wrapper function on the top of \code{waiter} for data curator app
-#' @param stage Type of waiter, 'show' to initiate waiter screen, 'update' to update a waiter screen, or 'hide' to hide a waiter screen
-#' @param id Id of element to hide or element on which to show waiter over
-#' @param is.landing Whether the waiter screen is used for landing process, including landing page, login failed pages, and welcome page
-#' @param is.certified Whether the user is synapse certified
-#' @param is.permission Whether the user have sufficient permission to the fileview
-#' @param user.name Name of user
-#' @param is.stop Whether the waiter screen will be stopped after rendered
-#' @param sleep Time to keep the loading screen before hiding - recommend to give at least 2s to let users view the page
-#' @param msg Message displayed in the waiter screen
-#' @param spin Spinner displayed in the waiter screen
-#' @param color Background color of the waiter screen
-#'
-#' @return show, update, or stop a waiter screen
+#' @description This is wrapper function on the top of \code{waiter} for data curator app.
+#' @param stage Type of waiter, 'show' to initiate waiter screen, 'update' to update a waiter screen, or 'hide' to hide a waiter screen.
+#' @param id Id of element to hide or element on which to show waiter over.
+#' @param is.landing Whether the waiter screen is used for landing process, including landing page, login failed pages, and welcome page.
+#' @param is.certified Whether the user is synapse certified.
+#' @param is.permission Whether the user have sufficient permission to the fileview.
+#' @param user.name Name of user.
+#' @param is.stop Whether the waiter screen will be stopped after rendered.
+#' @param sleep Time to keep the loading screen before hiding - recommend to give at least 2s to let users view the page.
+#' @param msg Message displayed in the waiter screen.
+#' @param spin Spinner displayed in the waiter screen.
+#' @param color Background color of the waiter screen.
+#' @examples
+#' if (interactive()) {
+#'   # check the waiter tab in the gallery
+#'   dcamodules::showcase()
+#' }
+#' @return show, update, or stop a waiter screen.
+#' @rdname dca_waiter
 #' @export
-dcaWaiter <- function(stage = c("show", "update", "hide"),
-                      id = NULL, user.name = "DCA User",
-                      is.landing = FALSE, is.stop = FALSE, sleep = 2,
-                      is.certified = TRUE, is.permission = TRUE,
-                      msg = NULL, spin = NULL, color = NULL) {
+dca_waiter <- function(stage = c("show", "update", "hide"),
+                       id = NULL, user.name = "DCA User",
+                       is.landing = FALSE, is.stop = FALSE, sleep = 2,
+                       is.certified = TRUE, is.permission = TRUE,
+                       msg = NULL, spin = NULL, color = NULL) {
 
   # validate arguments
   match.arg(stage, c("show", "update", "hide"))
@@ -50,7 +63,7 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
     return(waiter::waiter_hide(id))
   }
 
-  ## predefined loading screens for dca
+  # predefined loading screens for dca
   if (is.landing) {
     img_path <- "assets/loading_sage_logo.gif"
 
@@ -108,7 +121,7 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
       waiter::waiter_hide(id)
     }
   } else {
-    ## custom loading screens
+    # custom loading screens
     if (stage == "show") {
       waiter::waiter_show(
         id,
@@ -133,10 +146,9 @@ dcaWaiter <- function(stage = c("show", "update", "hide"),
 #' Synapse Logo Spinner
 #'
 #' @description Synapse logo spinner to use with waiter
-#' @param logo name of logo
-#'
+#' @param logo Name of logo. Default to 'synapse'.
+#' @rdname spin_logo
 #' @export
-#'
 spin_logo <- function(logo = "synapse") {
   all_logos <- list.files(system.file(package = "dcamodules", "assets/logos"))
   all_orgs <- tools::file_path_sans_ext(all_logos)

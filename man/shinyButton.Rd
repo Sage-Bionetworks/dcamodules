@@ -7,17 +7,17 @@
 shinyButton(id, label, ...)
 }
 \arguments{
-\item{id}{The input id to read value from}
+\item{id}{The input id to read value from.}
 
-\item{label}{The display label of the button}
+\item{label}{The display label of the button.}
 
-\item{...}{List of tag attributes}
+\item{...}{List of tag attributes.}
 }
 \description{
-A button with shiny effect
+Shiny button
 }
 \examples{
 if (interactive()) {
-  shinyButton("button")
+  shinyButton("awesome-id", "button")
 }
 }
