@@ -35,7 +35,9 @@ Imports:
 Remotes: Sage-Bionetworks/sagethemes
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 URL: https://github.com/Sage-Bionetworks/dcamodules
 BugReports: https://github.com/Sage-Bionetworks/dcamodules/issues
+Config/testthat/edition: 3
