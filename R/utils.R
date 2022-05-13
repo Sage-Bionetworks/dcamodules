@@ -35,7 +35,7 @@ get_tab_names <- function(.tab) {
 #' widgetUI <- function(id) {
 #'   ns <- NS(id)
 #'   items <- c("chicken", "egg")
-#'   var_to_server(ns("items"), tab_names)
+#'   var_to_server(ns("items"), items)
 #' }
 #'
 #' widgetServer <- function() {
@@ -50,9 +50,8 @@ get_tab_names <- function(.tab) {
 #' }
 #' @rdname var_to_server
 #' @export
-#' @importFrom shiny selectInput
 var_to_server <- function(id, values) {
-  out <- shiny::selectInput(id,
+  out <- selectInput(id,
     "",
     choices = values,
     selected = values,
@@ -82,9 +81,9 @@ insert_attribute <- function(.tag, pos = 1, ...) {
   if (pos == 0 || length(childrens) == 0) {
     .tag <- htmltools::tagAppendAttributes(.tag, ...)
   } else {
-    .tag$children[[pos]] <-
+    .tag$children[[1]][[pos]] <-
       htmltools::tagAppendAttributes(
-        .tag$children[[pos]],
+        .tag$children[[1]][[pos]],
         ...
       )
   }
