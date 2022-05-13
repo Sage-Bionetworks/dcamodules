@@ -38,6 +38,7 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
-URL: https://github.com/Sage-Bionetworks/dcamodules
+URL: https://sage-bionetworks.github.io/dcamodules/,
+    https://github.com/Sage-Bionetworks/dcamodules
 BugReports: https://github.com/Sage-Bionetworks/dcamodules/issues
 Config/testthat/edition: 3
