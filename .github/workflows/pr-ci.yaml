@@ -27,25 +27,33 @@ jobs:
       - name: Install dependencies
         run: Rscript -e 'install.packages("styler")'
 
-      - name: save R.cache location
-        id: save-r-cache-location
-        run: |
-          cat("##[set-output name=r-cache-location;]", R.cache::getCacheRootPath(), "\n", sep = "")
+      - name: Enable styler cache
+        run: styler::cache_activate()
         shell: Rscript {0}
 
-      - name: R.cache cache
+      - name: Determine cache location
+        id: styler-location
+        run: |
+          cat(
+            "##[set-output name=location;]",
+            styler::cache_info(format = "tabular")$location,
+            "\n",
+            sep = ""
+          )
+        shell: Rscript {0}
+
+      - name: Cache styler
         uses: actions/cache@v2
-        env:
-          cache-name: r-cache
         with:
-          path: ${{ r-cache-location }}
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.sha }}
+          path: ${{ steps.styler-location.outputs.location }}
+          key: ${{ runner.os }}-styler-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-${{ env.cache-name }}-
+            ${{ runner.os }}-styler-
             ${{ runner.os }}-
 
       - name: Style
-        run: Rscript -e 'styler::style_pkg()'
+        run: styler::style_pkg(filetype = c(".R"))
+        shell: Rscript {0}
 
       - name: commit
         run: |
