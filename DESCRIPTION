@@ -34,6 +34,7 @@ Imports:
     purrr
 Remotes: Sage-Bionetworks/sagethemes
 Suggests: 
+    covr,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
