@@ -18,7 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   r: '4.0.1'  }
+          - {os: macOS-latest,   r: '4.0.1',  coveralls: "true"  }
           - {os: windows-latest, r: '4.0.1', }
           - {os: ubuntu-18.04,   r: '4.0.1',  rspm: "https://packagemanager.rstudio.com/all/__linux__/bionic/latest"}
 
@@ -41,8 +41,7 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           cache-version: 2
-          extra-packages: any::rcmdcheck
-          needs: check
+          extra-packages: any::rcmdcheck, any::covr
 
       - uses: r-lib/actions/check-r-package@v2
         with:
@@ -59,3 +58,13 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
+
+      - name: Test coverage
+        if: matrix.config.coveralls == 'true'
+        continue-on-error: true
+        run: |
+          covr::coveralls(
+            function_exclusions = "\\.onLoad",
+            repo_token = ${{ secrets.COVERALLS_TOKEN }},
+            service_name='drone')
+        shell: Rscript {0}
