@@ -79,25 +79,25 @@ ui <- dashboardPage(
             width = 12,
             height = "250px",
             actionButton("btn_waiter_loading", "try")
-          ) %>% insert_attribute(id = "box_waiter_loading"),
+          ) %>% insert_attr_box(id = "box_waiter_loading"),
           box(
             title = "Uncertified User:",
             width = 12,
             height = "250px",
             actionButton("btn_waiter_no_cert", "try")
-          ) %>% insert_attribute(id = "box_waiter_no_cert"),
+          ) %>% insert_attr_box(id = "box_waiter_no_cert"),
           box(
             title = "Not Enough Permission:",
             width = 12,
             height = "250px",
             actionButton("btn_waiter_no_perm", "try")
-          ) %>% insert_attribute(id = "box_waiter_no_perm"),
+          ) %>% insert_attr_box(id = "box_waiter_no_perm"),
           box(
             title = "Successful Login:",
             width = 12,
             height = "250px",
             actionButton("btn_waiter_success", "try")
-          ) %>% insert_attribute(id = "box_waiter_success")
+          ) %>% insert_attr_box(id = "box_waiter_success")
         )
       ),
       tabItem(

@@ -62,32 +62,30 @@ var_to_server <- function(id, values) {
   return(out)
 }
 
-#' Insert attribute to a tag
+#' Insert attribute to a shinydashboard::box
 #'
-#' @param .tag The tag object.
-#' @param pos List of tag attributes. \code{pos = 0} adds attribute to \code{.tag}. \code{pos = 1} adds attribute to the first child of \code{.tag}. Default to 1.
-#' @param ... After which position to insert attributes.
-#' @return New tag object after adding attributes.
+#' @param .tag The \code{shinydashboard::box} object.
+#' @param ... The attributes added to the box
+#' @return New box object after adding attributes.
 #' @examples
 #' \dontrun{
-#' insert_attribute(div(), id = "dca")
-#' # <div id="dca"></div>
+#' insert_attribute(box(), id = "dca")
+#' <div class="col-sm-6">
+#'   <div class="box" id="dca">
+#'   <div class="box-body"></div>
+#'   </div>
+#' </div>
 #' }
-#' @rdname insert_attribute
+#' @rdname insert_attr_box
 #' @export
 #' @importFrom htmltools tagAppendAttributes
-insert_attribute <- function(.tag, pos = 1, ...) {
-  childrens <- .tag$children
-  if (pos == 0 || length(childrens) == 0) {
-    .tag <- htmltools::tagAppendAttributes(.tag, ...)
-  } else {
-    .tag$children[[1]][[pos]] <-
+insert_attr_box <- function(.box, ...) {
+  .box$children[[1]] <-
       htmltools::tagAppendAttributes(
-        .tag$children[[1]][[pos]],
+        .box$children[[1]],
         ...
       )
-  }
-  return(.tag)
+  return(.box)
 }
 
 

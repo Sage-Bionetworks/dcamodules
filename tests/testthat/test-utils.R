@@ -14,19 +14,12 @@ test_that("var_to_server works", {
   # TODO: add test on values in server
 })
 
-test_that("insert_attribute with single tag works", {
-  tag <- insert_attribute(
-    div(),
+test_that("insert_attr_box works", {
+  tag <- insert_attr_box(
+    shinydashboard::box(),
     id = "test-id"
   )
-  tag2 <- insert_attribute(
-    tags$div(list(tags$i(), tags$i())),
-    id = "test-id",
-    pos = 2
-  )
-  expect_identical(tag$attribs$id, "test-id")
-  expect_identical(tag2$children[[1]][[2]]$attribs$id, "test-id")
-  expect_identical(tag2$children[[1]][[1]]$attribs$id, NULL)
+  expect_identical(tag$children[[1]]$attribs$id, "test-id")
 })
 
 test_that("drop_empty with drop = 'all' works", {
