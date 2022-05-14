@@ -5,7 +5,6 @@ test_that("use_dca_waiter works", {
 })
 
 test_that("waiter works", {
-
   library(shiny)
   library(shinydashboard)
   library(dcamodules)
@@ -21,7 +20,6 @@ test_that("waiter works", {
   )
 
   server <- function(input, output, session) {
-
     observeEvent(input$waiter, {
       t <- 0
       # not certified

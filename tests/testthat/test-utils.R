@@ -40,5 +40,3 @@ test_that("drop_empty with drop = 'all' works", {
   expect_identical(res_null, c("real", NA, "  "))
   expect_identical(res_blank, c("real", "null", NA))
 })
-
-
