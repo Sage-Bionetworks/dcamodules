@@ -64,7 +64,7 @@ var_to_server <- function(id, values) {
 
 #' Insert attribute to a shinydashboard::box
 #'
-#' @param .tag The \code{shinydashboard::box} object.
+#' @param .box The \code{shinydashboard::box} object.
 #' @param ... The attributes added to the box
 #' @return New box object after adding attributes.
 #' @examples

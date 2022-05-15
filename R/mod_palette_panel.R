@@ -67,12 +67,10 @@ palettePanelUI <- function(id) {
 #' @param id The id of the output object.
 #' @param head.id The id of head tag that used to change styles.
 #' @param parent.session Session from parent scope.
-#' @param parent.input Input from parent scope.
-#' @param parent.output Output from parent scope.
 #' @keywords internal
 #' @rdname palettePanel
 #' @export
-palettePanel <- function(id, head.id, parent.session, parent.input, parent.output) {
+palettePanel <- function(id, head.id, parent.session) {
   moduleServer(
     id,
     function(input, output, session) {
@@ -94,7 +92,7 @@ palettePanel <- function(id, head.id, parent.session, parent.input, parent.outpu
 
       observeEvent(vars(), {
         output[["save-progress"]] <- renderText(NULL)
-        parent.output[[head.id]] <- renderUI({
+        parent.session$output[[head.id]] <- renderUI({
           set_theme(vars())
         })
       })

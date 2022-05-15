@@ -4,7 +4,7 @@
 \alias{tabSwitch}
 \title{Tab switch button server}
 \usage{
-tabSwitch(id, tab.id, parent.session, parent.input, parent.output)
+tabSwitch(id, tab.id, parent.session)
 }
 \arguments{
 \item{id}{The input id to read value from.}
@@ -12,10 +12,6 @@ tabSwitch(id, tab.id, parent.session, parent.input, parent.output)
 \item{tab.id}{The id of \code{sidebarMenu} object.}
 
 \item{parent.session}{The session from parent scope.}
-
-\item{parent.input}{The input from parent scope.}
-
-\item{parent.output}{The output from parent scope.}
 }
 \description{
 Tab switch button server
@@ -41,7 +37,7 @@ if (interactive()) {
     )
   )
   server <- function(input, output, session) {
-    tabSwitch("switch", "tabs", session, input, output)
+    tabSwitch("switch", "tabs", session)
   }
   shinyApp(ui, server)
 }

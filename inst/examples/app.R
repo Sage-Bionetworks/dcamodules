@@ -170,7 +170,7 @@ server <- function(input, output, session) {
     })
   })
 
-  tabSwitch("switch_btn", "tabs", session, input, output)
+  tabSwitch("switch_btn", "tabs", session)
 
   lapply(c("loading", "no_cert", "no_perm", "success"), function(i) {
     observeEvent(input[[paste0("btn_waiter_", i)]], {

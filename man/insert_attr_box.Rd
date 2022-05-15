@@ -7,9 +7,9 @@
 insert_attr_box(.box, ...)
 }
 \arguments{
-\item{...}{The attributes added to the box}
+\item{.box}{The \code{shinydashboard::box} object.}
 
-\item{.tag}{The \code{shinydashboard::box} object.}
+\item{...}{The attributes added to the box}
 }
 \value{
 New box object after adding attributes.

@@ -4,21 +4,7 @@ test_that("use_dca_waiter works", {
   expect_identical(deps[[2]]$stylesheet, "main.min.css")
 })
 
-test_that("waiter works", {
-  library(shiny)
-  library(shinydashboard)
-  library(dcamodules)
-
-  ui <- dashboardPage(
-    dashboardHeader(),
-    dashboardSidebar(),
-    dashboardBody(
-      use_dca_waiter(),
-      # landing
-      dca_waiter("show", is.landing = TRUE)
-    )
-  )
-
+test_that("waiters can be successfully initiated", {
   server <- function(input, output, session) {
     observeEvent(input$waiter, {
       t <- 0
@@ -34,14 +20,14 @@ test_that("waiter works", {
       dca_waiter("hide", sleep = t)
     })
   }
-
   testServer(server, {
     # iniate all waiters in server
     session$setInputs(waiter = 1)
+    expect_equal(input$waiter, 1)
   })
 })
 
-test_that("waiter warning works", {
+test_that("should have warning when is.stop and is.landing both provided", {
   expect_warning(
     dca_waiter("show", is.landing = TRUE, is.stop = TRUE),
     "'is.stop' is not used when 'is.landing' is TRUE"

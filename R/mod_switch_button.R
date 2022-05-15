@@ -74,8 +74,6 @@ tabSwitchUI <- function(.tab, id) {
 #' @param id The input id to read value from.
 #' @param tab.id The id of \code{sidebarMenu} object.
 #' @param parent.session The session from parent scope.
-#' @param parent.input The input from parent scope.
-#' @param parent.output The output from parent scope.
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)
@@ -97,14 +95,14 @@ tabSwitchUI <- function(.tab, id) {
 #'     )
 #'   )
 #'   server <- function(input, output, session) {
-#'     tabSwitch("switch", "tabs", session, input, output)
+#'     tabSwitch("switch", "tabs", session)
 #'   }
 #'   shinyApp(ui, server)
 #' }
 #' @rdname tabSwitch
 #' @export
 #' @importFrom shinydashboard updateTabItems
-tabSwitch <- function(id, tab.id, parent.session, parent.input, parent.output) {
+tabSwitch <- function(id, tab.id, parent.session) {
   moduleServer(
     id,
     function(input, output, session) {
@@ -112,7 +110,7 @@ tabSwitch <- function(id, tab.id, parent.session, parent.input, parent.output) {
         observeEvent(input[[name]],
           {
             tab_names <- input[["tab-names"]]
-            curr_inx <- which(tab_names == parent.input[[tab.id]])
+            curr_inx <- which(tab_names == parent.session$input[[tab.id]])
             # switch to next/previous tab based on which btn is clicked
             i <- ifelse(grepl("prev-[1-9+]", name), -1, 1)
             updateTabItems(parent.session,
