@@ -1,7 +1,7 @@
 #' Create button to switch tabs
 #'
 #' @param .tab The \code{tabItem} object.
-#' @param id The input variable to read value from. If NULL is set, 'dca-tab-switch' will be used for 'id'.
+#' @param id The input variable to read value from.
 #' @examples
 #' if (interactive()) {
 #'   library(shinydashboard)
@@ -17,14 +17,14 @@
 #' @export
 #' @importFrom magrittr %>%
 #' @importFrom htmltools tagAppendChild
-tabSwitchUI <- function(.tab, id = NULL) {
-  if (is.null(id)) id <- "dca-tab-switch"
+tabSwitchUI <- function(.tab, id) {
   ns <- NS(id)
 
   n_tabs <- length(.tab$children)
 
-  tab_names <- get_tab_names(.tab)
-  var1 <- var_to_server(ns("tab-names"), tab_names)
+  stopifnot(n_tabs > 0)
+
+  tab_names <- var_to_server(ns("tab-names"), get_tab_names(.tab))
 
   switch_btn_ids <- c(NS("prev", n_tabs))
 
@@ -64,9 +64,9 @@ tabSwitchUI <- function(.tab, id = NULL) {
     })
   }
 
-  var2 <- var_to_server(ns("switch-ids"), switch_btn_ids)
+  switch_ids <- var_to_server(ns("switch-ids"), switch_btn_ids)
 
-  return(tagList(.tab, var1, var2))
+  return(tagList(.tab, tab_names, switch_ids))
 }
 
 #' Tab switch button server

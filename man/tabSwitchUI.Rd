@@ -4,12 +4,12 @@
 \alias{tabSwitchUI}
 \title{Create button to switch tabs}
 \usage{
-tabSwitchUI(.tab, id = NULL)
+tabSwitchUI(.tab, id)
 }
 \arguments{
 \item{.tab}{The \code{tabItem} object.}
 
-\item{id}{The input variable to read value from. If NULL is set, 'dca-tab-switch' will be used for 'id'.}
+\item{id}{The input variable to read value from.}
 }
 \description{
 Create button to switch tabs
