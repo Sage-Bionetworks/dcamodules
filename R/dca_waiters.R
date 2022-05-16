@@ -1,20 +1,3 @@
-#' Config waiter
-#' @description Use to config dependencies of dca waiter
-#' @examples
-#' if (interactive()) {
-#'   library(shinydashboard)
-#'   library(dcamodules)
-#'   dashboardBody(
-#'     use_dca_waiter()
-#'   )
-#' }
-#' @rdname use_dca_waiter
-#' @export
-use_dca_waiter <- function() {
-  list(waiter::use_waiter(), dca_deps())
-}
-
-
 #' DCA Waiter
 #'
 #' @description This is wrapper function on the top of \code{waiter} for data curator app.
@@ -169,5 +152,4 @@ spin_logo <- function(logo = "synapse") {
     mime = paste0("image/", img_type)
   )
   spinner <- img(src = b64, class = "dca-logo-spin")
-  add_deps(spinner)
 }

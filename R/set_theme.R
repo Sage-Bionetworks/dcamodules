@@ -1,17 +1,16 @@
-#' Set theme
+#' Use DCA Modules
 #'
-#' @description Set theme of shiny dashboard.
-#'
-#' @param config The configuration of styling variables. It can be a rds file or list of variables.
-#' @param theme The predefined theme.
-#'
+#' @description Initiate dca modules dependencies
+#' @param theme The theme of app. A list variables, e.g. \code{list('header-bg-cl' = 'red')},
+#'     a config file (.rds) or a prefined theme ("sage") is accepted.
+#'     Default is the "default" theme.
 #' @examples
 #' if (interactive()) {
 #'   library(shinydashboard)
 #'   library(dcamodules)
 #'   # 1. use it in the dashboardBody()
 #'   dashboardBody(
-#'     set_theme(theme = "default")
+#'     use_dca(theme = "sage")
 #'   )
 #'
 #'   # 2. create your own custom variables
@@ -30,6 +29,7 @@
 #'     "link-font-cl" = NULL,
 #'     "content-bg-cl" = NULL,
 #'     "content-font-cl" = NULL,
+#'     "header-bg-cl" = NULL,
 #'     "header-font-cl" = NULL,
 #'     "sidebar-bg-cl" = NULL,
 #'     "sidebar-font-cl" = NULL,
@@ -47,36 +47,51 @@
 #'
 #'   # set them by parsing the config rds
 #'   dashboardBody(
-#'     set_theme(config = "theme_config.rds")
+#'     use_dca(config = "theme_config.rds")
 #'   )
 #' }
-#' @rdname set_theme
+#' @rdname use_dca
 #' @export
 #' @importFrom sass sass sass_file sass_layer
 #' @importFrom tools file_ext
-set_theme <- function(config = NULL, theme = "default") {
-  valid_themes <- c("default", "sage", "htan")
-  match.arg(theme, valid_themes)
+#' @importFrom htmlwidgets JS
+#'
+use_dca <- function(waiter = TRUE, theme = "default") {
 
-  # if pre-defined theme is used, custom is ignored
-  if (!is.null(config) && theme == "default") {
-    if (length(config) == 1 && is.character(config)) {
-      match.arg(tolower(tools::file_ext(config)), "rds")
-      custom_theme <- readRDS(config)
-    } else {
-      custom_theme <- config
-    }
+  stopifnot(is.logical(waiter))
 
-    # remove undefined variables
+  var_opt <- c("primary","accent","dark","light",
+               "success","info","warning","danger",
+               "white", "black", "font", "link-font-cl",
+               "content-bg-cl", "content-font-cl",
+               "header-bg-cl", "header-font-cl",
+               "sidebar-bg-cl", "sidebar-font-cl",
+               "sidebar-bg-select-cl", "sidebar-font-select-cl",
+               "sidebar-bg-hover-cl", "sidebar-font-hover-cl",
+               "footer-bg-cl", "footer-font-cl",
+               "waiter-bg-cl", "waiter-font-cl")
+  variables <- NULL
+  rules <- NULL
+
+  # validation
+  # if custom theme provided, change theme to default for now
+  if (is.list(theme)) {
+    stopifnot(all(names(theme) %in% var_opt))
+    variables <- drop_empty(theme)
+    theme <- "default"
+  } else if (grepl("rds", tools::file_ext(theme))) {
+    stopifnot(file.exists(theme))
+    custom_theme <- readRDS(config)
     variables <- drop_empty(custom_theme)
+    theme <- "default"
   } else {
-    variables <- NULL
+    match.arg(theme, c("default", "sage"))
   }
 
   themeCSS <- sass::sass(
     sass::sass_layer(
       functions = sass::sass_file(
-        system.file(package = "dcamodules", "styling/scss/set_theme.scss")
+        system.file(package = "dcamodules", "styling/scss/main.scss")
       ),
       defaults = variables,
       rules = sprintf("@include get-colors-from-theme(%s);
@@ -84,11 +99,18 @@ set_theme <- function(config = NULL, theme = "default") {
     )
   )
 
-  tags$head(
-    tags$style(
-      HTML(
-        text = themeCSS
+  list(
+    tags$head(
+      tags$style(themeCSS),
+      tags$script(htmlwidgets::JS(
+        "
+        setTimeout(function() {
+          history.pushState({}, 'Data Curator', window.location.pathname);
+        }, 2000);
+        "
+        )
       )
-    )
+    ),
+    waiter::use_waiter()
   )
 }

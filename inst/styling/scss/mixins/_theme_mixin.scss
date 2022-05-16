@@ -88,16 +88,16 @@
   .skin-blue .main-header .navbar {
     background: $header-bg-cl;
     color: $header-font-cl;
-    box-shadow: $primary-shadow;
-    clip-path: inset(-5px -5px -5px 0);
+    // box-shadow: $primary-shadow;
+    // clip-path: inset(-5px -5px -5px 0);
   }
 
   // logo bar
   .skin-blue .main-header .logo {
     background: $header-bg-cl !important;
     color: $header-font-cl;
-    box-shadow: $primary-shadow;
-    clip-path: inset(-5px 0 -5px -5px);
+    // box-shadow: $primary-shadow;
+    // clip-path: inset(-5px 0 -5px -5px);
   }
 
   /* sidebar: collapse button hover */

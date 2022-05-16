@@ -2,6 +2,7 @@ library(shiny)
 library(shinydashboard)
 library(dcamodules)
 library(magrittr)
+library(sass)
 
 ### general
 themes <- c("default", "sage")
@@ -11,7 +12,14 @@ all_orgs <- list.files(system.file(package = "dcamodules", "assets/logos")) %>%
 
 ui <- dashboardPage(
   dashboardHeader(
-    title = tagList("DCA Modules", tags$img(src = "assets/logos/sage.svg", height = 40, alt = "Logo"))
+    title = tagList("DCA Modules", tags$img(src = "assets/logos/sage.svg", height = 40, alt = "Logo")),
+    dropdownMenu(type = "messages",
+                 messageItem(
+                   from = "Sales Dept",
+                   message = "Sales are steady this month."
+                 )
+    ),
+    palettePanelUI("palette-panel")
   ),
   dashboardSidebar(
     sidebarMenu(
@@ -26,6 +34,7 @@ ui <- dashboardPage(
         tabName = "tab_waiter",
         icon = icon("clock")
       ),
+
       menuItem(
         "progress bar",
         tabName = "tab_progress_bar",
@@ -39,7 +48,7 @@ ui <- dashboardPage(
     )
   ),
   dashboardBody(
-    use_dca_waiter(),
+    use_dca(theme = "default"),
     uiOutput("theme"),
     tabItems(
       tabItem(
@@ -119,8 +128,7 @@ ui <- dashboardPage(
           box(
             title = "Customize your theme",
             status = "primary",
-            width = 12,
-            palettePanelUI("palette-panel"),
+            width = 12
           )
         ),
         fluidRow(
@@ -163,10 +171,10 @@ ui <- dashboardPage(
 )
 
 server <- function(input, output, session) {
-  palettePanel("palette-panel", "theme", session, input, output)
+  palettePanel("palette-panel", "theme", session)
   observeEvent(input$btn_theme, {
     output$theme <- renderUI({
-      set_theme(theme = input$btn_theme)
+      use_dca(theme = input$btn_theme)
     })
   })
 

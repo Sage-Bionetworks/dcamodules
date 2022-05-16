@@ -20,7 +20,6 @@ shinyButton <- function(id, label, ...) {
     list(label),
     ...
   )
-  add_deps(btn)
 }
 
 
@@ -52,7 +51,6 @@ arrowButton <- function(id, direction = "left", ...) {
     ),
     ...
   )
-  add_deps(btn)
 }
 
 
@@ -75,7 +73,6 @@ mediaButton <- function(icon, link = NULL, ...) {
     class = "dca-icon-btn",
     ...
   )
-  add_deps(btn)
 }
 
 
@@ -104,5 +101,4 @@ paletteButton <- function(id, color, ...) {
     ),
     ...
   )
-  add_deps(btn)
 }

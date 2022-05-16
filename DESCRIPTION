@@ -31,7 +31,8 @@ Imports:
     sagethemes,
     sass,
     waiter,
-    purrr
+    purrr,
+    htmlwidgets
 Remotes: Sage-Bionetworks/sagethemes
 Suggests: 
     covr,
