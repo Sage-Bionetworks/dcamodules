@@ -2,7 +2,7 @@ comment: false
 
 coverage:
   round: down
-  range: "70...100"
+  range: "50...75"
   status:
     project:
       default:
