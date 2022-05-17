@@ -18,7 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   r: '4.0.1',  coveralls: "true"  }
+          - {os: macOS-latest,   r: '4.0.1',  coverage: "true"  }
           - {os: windows-latest, r: '4.0.1', }
           - {os: ubuntu-18.04,   r: '4.0.1',  rspm: "https://packagemanager.rstudio.com/all/__linux__/bionic/latest"}
 
@@ -60,11 +60,8 @@ jobs:
           path: check
 
       - name: Test coverage
-        if: matrix.config.coveralls == 'true'
+        if: matrix.config.coverage == 'true' && github.event_name == 'push'
         continue-on-error: true
         run: |
-          covr::coveralls(
-            function_exclusions = c("\\.onLoad", "showcase"),
-            repo_token = "${{ secrets.COVERALLS_TOKEN }}",
-            service_name='drone')
+          covr::codecov(function_exclusions = c("\\.onLoad", "showcase"))
         shell: Rscript {0}
