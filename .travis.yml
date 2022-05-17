@@ -1,0 +1,11 @@
+# documentation at https://docs.travis-ci.com/user/languages/r
+
+# this ci is used to update test coverage for coveralls
+language: r
+
+sudo: true
+cache: packages
+warnings_are_errors: true
+
+after_success:
+  - Rscript -e 'covr::coveralls(function_exclusions = c("\\.onLoad", "showcase"))'
