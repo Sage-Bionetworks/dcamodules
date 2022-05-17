@@ -18,7 +18,6 @@
 #' @rdname dcaFooter
 #' @export
 dcaFooter <- function(message, media = NULL, height = "100px", ...) {
-
   height <- validateCssUnit(height)
   tags$div(
     class = "dca-footer-placeholder",

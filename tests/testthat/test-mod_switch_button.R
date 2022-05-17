@@ -19,7 +19,7 @@ ui <- dashboardPage(
         tabItem("tab1"),
         tabItem("tab2"),
         tabItem("tab3")
-        )
+      )
     )
   )
 )

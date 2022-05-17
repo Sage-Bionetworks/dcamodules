@@ -57,17 +57,18 @@
 #' @importFrom htmlwidgets JS
 #' @importFrom waiter use_waiter
 use_dca <- function(theme = "default") {
-
-  var_opt <- c("primary","accent","dark","light",
-               "success","info","warning","danger",
-               "white", "black", "font", "link-font-cl",
-               "content-bg-cl", "content-font-cl",
-               "header-bg-cl", "header-font-cl",
-               "sidebar-bg-cl", "sidebar-font-cl",
-               "sidebar-bg-select-cl", "sidebar-font-select-cl",
-               "sidebar-bg-hover-cl", "sidebar-font-hover-cl",
-               "footer-bg-cl", "footer-font-cl",
-               "waiter-bg-cl", "waiter-font-cl")
+  var_opt <- c(
+    "primary", "accent", "dark", "light",
+    "success", "info", "warning", "danger",
+    "white", "black", "font", "link-font-cl",
+    "content-bg-cl", "content-font-cl",
+    "header-bg-cl", "header-font-cl",
+    "sidebar-bg-cl", "sidebar-font-cl",
+    "sidebar-bg-select-cl", "sidebar-font-select-cl",
+    "sidebar-bg-hover-cl", "sidebar-font-hover-cl",
+    "footer-bg-cl", "footer-font-cl",
+    "waiter-bg-cl", "waiter-font-cl"
+  )
   variables <- NULL
   rules <- NULL
 
@@ -106,8 +107,7 @@ use_dca <- function(theme = "default") {
           history.pushState({}, 'Data Curator', window.location.pathname);
         }, 2000);
         "
-        )
-      )
+      ))
     ),
     waiter::use_waiter()
   )
