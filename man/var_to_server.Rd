@@ -22,7 +22,7 @@ Use this trick to send values from ui to server in module.
 widgetUI <- function(id) {
   ns <- NS(id)
   items <- c("chicken", "egg")
-  var_to_server(ns("items"), tab_names)
+  var_to_server(ns("items"), items)
 }
 
 widgetServer <- function() {

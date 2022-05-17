@@ -1,7 +1,7 @@
 #' Create button to switch tabs
 #'
 #' @param .tab The \code{tabItem} object.
-#' @param id The input variable to read value from. If NULL is set, 'dca-tab-switch' will be used for 'id'.
+#' @param id The input variable to read value from.
 #' @examples
 #' if (interactive()) {
 #'   library(shinydashboard)
@@ -17,14 +17,14 @@
 #' @export
 #' @importFrom magrittr %>%
 #' @importFrom htmltools tagAppendChild
-tabSwitchUI <- function(.tab, id = NULL) {
-  if (is.null(id)) id <- "dca-tab-switch"
+tabSwitchUI <- function(.tab, id) {
   ns <- NS(id)
 
   n_tabs <- length(.tab$children)
 
-  tab_names <- get_tab_names(.tab)
-  var1 <- var_to_server(ns("tab-names"), tab_names)
+  stopifnot(n_tabs > 0)
+
+  tab_names <- var_to_server(ns("tab-names"), get_tab_names(.tab))
 
   switch_btn_ids <- c(NS("prev", n_tabs))
 
@@ -64,9 +64,9 @@ tabSwitchUI <- function(.tab, id = NULL) {
     })
   }
 
-  var2 <- var_to_server(ns("switch-ids"), switch_btn_ids)
+  switch_ids <- var_to_server(ns("switch-ids"), switch_btn_ids)
 
-  return(tagList(.tab, var1, var2))
+  return(tagList(.tab, tab_names, switch_ids))
 }
 
 #' Tab switch button server
@@ -74,8 +74,6 @@ tabSwitchUI <- function(.tab, id = NULL) {
 #' @param id The input id to read value from.
 #' @param tab.id The id of \code{sidebarMenu} object.
 #' @param parent.session The session from parent scope.
-#' @param parent.input The input from parent scope.
-#' @param parent.output The output from parent scope.
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)
@@ -97,14 +95,14 @@ tabSwitchUI <- function(.tab, id = NULL) {
 #'     )
 #'   )
 #'   server <- function(input, output, session) {
-#'     tabSwitch("switch", "tabs", session, input, output)
+#'     tabSwitch("switch", "tabs", session)
 #'   }
 #'   shinyApp(ui, server)
 #' }
 #' @rdname tabSwitch
 #' @export
 #' @importFrom shinydashboard updateTabItems
-tabSwitch <- function(id, tab.id, parent.session, parent.input, parent.output) {
+tabSwitch <- function(id, tab.id, parent.session) {
   moduleServer(
     id,
     function(input, output, session) {
@@ -112,7 +110,7 @@ tabSwitch <- function(id, tab.id, parent.session, parent.input, parent.output) {
         observeEvent(input[[name]],
           {
             tab_names <- input[["tab-names"]]
-            curr_inx <- which(tab_names == parent.input[[tab.id]])
+            curr_inx <- which(tab_names == parent.session$input[[tab.id]])
             # switch to next/previous tab based on which btn is clicked
             i <- ifelse(grepl("prev-[1-9+]", name), -1, 1)
             updateTabItems(parent.session,

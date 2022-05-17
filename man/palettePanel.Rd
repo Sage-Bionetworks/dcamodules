@@ -4,7 +4,7 @@
 \alias{palettePanel}
 \title{Palette panel server}
 \usage{
-palettePanel(id, head.id, parent.session, parent.input, parent.output)
+palettePanel(id, head.id, parent.session)
 }
 \arguments{
 \item{id}{The id of the output object.}
@@ -12,10 +12,6 @@ palettePanel(id, head.id, parent.session, parent.input, parent.output)
 \item{head.id}{The id of head tag that used to change styles.}
 
 \item{parent.session}{Session from parent scope.}
-
-\item{parent.input}{Input from parent scope.}
-
-\item{parent.output}{Output from parent scope.}
 }
 \description{
 Palette panel server

@@ -2,6 +2,7 @@ library(shiny)
 library(shinydashboard)
 library(dcamodules)
 library(magrittr)
+library(sass)
 
 ### general
 themes <- c("default", "sage")
@@ -11,7 +12,14 @@ all_orgs <- list.files(system.file(package = "dcamodules", "assets/logos")) %>%
 
 ui <- dashboardPage(
   dashboardHeader(
-    title = tagList("DCA Modules", tags$img(src = "assets/logos/sage.svg", height = 40, alt = "Logo"))
+    title = tagList("DCA Modules", tags$img(src = "assets/logos/sage.svg", height = 40, alt = "Logo")),
+    dropdownMenu(type = "messages",
+                 messageItem(
+                   from = "Sales Dept",
+                   message = "Sales are steady this month."
+                 )
+    ),
+    palettePanelUI("palette-panel")
   ),
   dashboardSidebar(
     sidebarMenu(
@@ -26,6 +34,7 @@ ui <- dashboardPage(
         tabName = "tab_waiter",
         icon = icon("clock")
       ),
+
       menuItem(
         "progress bar",
         tabName = "tab_progress_bar",
@@ -39,7 +48,7 @@ ui <- dashboardPage(
     )
   ),
   dashboardBody(
-    use_dca_waiter(),
+    use_dca(theme = "default"),
     uiOutput("theme"),
     tabItems(
       tabItem(
@@ -79,25 +88,25 @@ ui <- dashboardPage(
             width = 12,
             height = "250px",
             actionButton("btn_waiter_loading", "try")
-          ) %>% insert_attribute(id = "box_waiter_loading"),
+          ) %>% insert_attr_box(id = "box_waiter_loading"),
           box(
             title = "Uncertified User:",
             width = 12,
             height = "250px",
             actionButton("btn_waiter_no_cert", "try")
-          ) %>% insert_attribute(id = "box_waiter_no_cert"),
+          ) %>% insert_attr_box(id = "box_waiter_no_cert"),
           box(
             title = "Not Enough Permission:",
             width = 12,
             height = "250px",
             actionButton("btn_waiter_no_perm", "try")
-          ) %>% insert_attribute(id = "box_waiter_no_perm"),
+          ) %>% insert_attr_box(id = "box_waiter_no_perm"),
           box(
             title = "Successful Login:",
             width = 12,
             height = "250px",
             actionButton("btn_waiter_success", "try")
-          ) %>% insert_attribute(id = "box_waiter_success")
+          ) %>% insert_attr_box(id = "box_waiter_success")
         )
       ),
       tabItem(
@@ -119,8 +128,7 @@ ui <- dashboardPage(
           box(
             title = "Customize your theme",
             status = "primary",
-            width = 12,
-            palettePanelUI("palette-panel"),
+            width = 12
           )
         ),
         fluidRow(
@@ -163,14 +171,14 @@ ui <- dashboardPage(
 )
 
 server <- function(input, output, session) {
-  palettePanel("palette-panel", "theme", session, input, output)
+  palettePanel("palette-panel", "theme", session)
   observeEvent(input$btn_theme, {
     output$theme <- renderUI({
-      set_theme(theme = input$btn_theme)
+      use_dca(theme = input$btn_theme)
     })
   })
 
-  tabSwitch("switch_btn", "tabs", session, input, output)
+  tabSwitch("switch_btn", "tabs", session)
 
   lapply(c("loading", "no_cert", "no_perm", "success"), function(i) {
     observeEvent(input[[paste0("btn_waiter_", i)]], {

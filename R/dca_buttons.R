@@ -20,7 +20,6 @@ shinyButton <- function(id, label, ...) {
     list(label),
     ...
   )
-  add_deps(btn)
 }
 
 
@@ -52,7 +51,6 @@ arrowButton <- function(id, direction = "left", ...) {
     ),
     ...
   )
-  add_deps(btn)
 }
 
 
@@ -75,34 +73,4 @@ mediaButton <- function(icon, link = NULL, ...) {
     class = "dca-icon-btn",
     ...
   )
-  add_deps(btn)
-}
-
-
-#' Palette button
-#'
-#' @param id The input id to read value from.
-#' @param color The color of palette.
-#' @param ... List of tag attributes.
-#' @examples
-#' if (interactive()) {
-#'   paletteButton("awesome-id", "red")
-#' }
-#' @rdname paletteButton
-#' @export
-paletteButton <- function(id, color, ...) {
-  value <- restoreInput(id = id, default = NULL)
-
-  btn <- tags$button(
-    id = id,
-    type = "button",
-    class = "action-button dca-palette-btn",
-    `data-val` = value,
-    icon(
-      "circle",
-      style = sprintf("color: %s;", color)
-    ),
-    ...
-  )
-  add_deps(btn)
 }

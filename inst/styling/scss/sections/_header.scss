@@ -1,0 +1,77 @@
+.dca-palette-panel {
+  .dca-palette-toggle {
+    position: relative;
+    display: block;
+    padding: 15px;
+    color: #fff;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: rgba(0, 0, 0, 0.1);
+      color: #f6f6f6;
+    }
+  }
+
+  &.open > .dca-palette-toggle {
+    background: rgba(0, 0, 0, 0.1);
+    color: #f6f6f6;
+  }
+
+  #dca-palette-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    left: auto;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #444;
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: none;
+
+    & .header {
+      border-bottom: 1px solid #f4f4f4;
+      padding: 7px 10px;
+    }
+
+    & .menu {
+      padding: 10px;
+    }
+  }
+
+  .shiny-input-container:not(.shiny-input-container-inline) {
+    width: 192px; // to fix 7 palettes per row
+    margin-bottom: 0;
+
+    label {
+      // font-weight: 400;
+    }
+  }
+}
+
+// customize colourpicker
+.colourpicker-panel {
+  .colourpicker-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 4px;
+
+    .cp-list-col-outer {
+      border-color: #f4f4f4;
+      border-radius: 50%;
+
+      &:hover {
+        border-color: orange;
+      }
+      .cp-list-col {
+        border-radius: 50%;
+      }
+    }
+  }
+}

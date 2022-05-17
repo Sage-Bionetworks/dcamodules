@@ -5,9 +5,10 @@
 @import 'base/load';
 
 // mixins
-// no need to import theme mixin - allow user to decide (whether/which) theme
-@import 'mixins/button_mixin';
-@import 'mixins/box_mixin';
+@import 'mixins/load';
+
+// themes
+@import 'themes/load';
 
 // sections
 @import 'sections/load';
