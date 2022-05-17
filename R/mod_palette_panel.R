@@ -9,8 +9,10 @@
 palettePanelUI <- function(id) {
   ns <- NS(id)
 
-  base_cls <- c("#3c8dbc", "#222d32", "#ecf0f5", "#605ca8",
-                "#00a65a", "#dd4b39", "#f39c12")
+  base_cls <- c(
+    "#3c8dbc", "#222d32", "#ecf0f5", "#605ca8",
+    "#00a65a", "#dd4b39", "#f39c12"
+  )
   bg_cls <- c(base_cls, unlist(sagethemes::sage_colors))
   defaults <- list(
     header_bg_cl = "#3c8dbc",
@@ -43,7 +45,7 @@ palettePanelUI <- function(id) {
         id = "dca-palette-menu", # one palette panel for one app makes sense
         style = "display: none;", # close initially
         tagList(
-          div(class ="header text-capitalize", "Background Color"),
+          div(class = "header text-capitalize", "Background Color"),
           lapply(sections, function(s) {
             div(
               class = "menu",
@@ -77,8 +79,10 @@ palettePanel <- function(id, head.id, parent.session) {
   moduleServer(
     id,
     function(input, output, session) {
-      base_cls <- c("#3c8dbc", "#222d32", "#ecf0f5", "#605ca8",
-                    "#00a65a", "#dd4b39", "#f39c12")
+      base_cls <- c(
+        "#3c8dbc", "#222d32", "#ecf0f5", "#605ca8",
+        "#00a65a", "#dd4b39", "#f39c12"
+      )
       bg_cls <- c(base_cls, unlist(sagethemes::sage_colors))
       defaults <- list(
         header_bg_cl = "#3c8dbc",
