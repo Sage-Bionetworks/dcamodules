@@ -5,7 +5,7 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/Sage-Bionetworks/dcamodules/actions/workflows/R-CMD-check.yaml/badge.svg?branch=main)](https://github.com/Sage-Bionetworks/dcamodules/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/Sage-Bionetworks/dcamodules/branch/fix-coveralls/graph/main)](https://app.codecov.io/gh/Sage-Bionetworks/dcamodules?branch=main)
+[![codecov](https://codecov.io/gh/Sage-Bionetworks/dcamodules/branch/main/graph/badge.svg?token=5Y7lT03lsv)](https://codecov.io/gh/Sage-Bionetworks/dcamodules)
 <!-- badges: end -->
 
 The goal of dcamodules is to collect essential modules used in the data
