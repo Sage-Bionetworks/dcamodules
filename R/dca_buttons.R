@@ -74,31 +74,3 @@ mediaButton <- function(icon, link = NULL, ...) {
     ...
   )
 }
-
-
-#' Palette button
-#'
-#' @param id The input id to read value from.
-#' @param color The color of palette.
-#' @param ... List of tag attributes.
-#' @examples
-#' if (interactive()) {
-#'   paletteButton("awesome-id", "red")
-#' }
-#' @rdname paletteButton
-#' @export
-paletteButton <- function(id, color, ...) {
-  value <- restoreInput(id = id, default = NULL)
-
-  btn <- tags$button(
-    id = id,
-    type = "button",
-    class = "action-button dca-palette-btn",
-    `data-val` = value,
-    icon(
-      "circle",
-      style = sprintf("color: %s;", color)
-    ),
-    ...
-  )
-}

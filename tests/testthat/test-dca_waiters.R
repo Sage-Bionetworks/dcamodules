@@ -1,9 +1,3 @@
-test_that("use_dca_waiter works", {
-  deps <- use_dca_waiter()
-  expect_length(deps, 2)
-  expect_identical(deps[[2]]$stylesheet, "main.min.css")
-})
-
 test_that("waiters can be successfully initiated", {
   server <- function(input, output, session) {
     observeEvent(input$waiter, {
@@ -37,8 +31,8 @@ test_that("should have warning when is.stop and is.landing both provided", {
 test_that("spin_logo works", {
   svg_spinner <- spin_logo("synapse")
   png_spinner <- spin_logo("htan")
-  expect_identical(class(svg_spinner[[1]]), "shiny.tag")
-  expect_identical(class(png_spinner[[1]]), "shiny.tag")
-  expect_identical(svg_spinner[[1]]$attribs$class, "dca-logo-spin")
-  expect_identical(png_spinner[[1]]$attribs$class, "dca-logo-spin")
+  expect_identical(class(svg_spinner), "shiny.tag")
+  expect_identical(class(png_spinner), "shiny.tag")
+  expect_identical(svg_spinner$attribs$class, "dca-logo-spin")
+  expect_identical(png_spinner$attribs$class, "dca-logo-spin")
 })

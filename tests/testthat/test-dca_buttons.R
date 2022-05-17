@@ -4,10 +4,9 @@ test_that("shinyButton works", {
     style = "color: red;"
   )
 
-  expect_identical(btn[[1]]$attribs$id, "test-id")
-  expect_identical(btn[[1]]$attribs$class, "btn btn-default action-button dca-shiny-btn")
-  expect_identical(btn[[1]]$attribs$style, "color: red;")
-  expect_identical(btn[[2]]$stylesheet, "main.min.css")
+  expect_identical(btn$attribs$id, "test-id")
+  expect_identical(btn$attribs$class, "btn btn-default action-button dca-shiny-btn")
+  expect_identical(btn$attribs$style, "color: red;")
 })
 
 test_that("arrowButton works", {
@@ -15,14 +14,13 @@ test_that("arrowButton works", {
     "test-id",
     style = "color: red;"
   )
-  expect_identical(btn[[1]]$attribs$id, "test-id")
+  expect_identical(btn$attribs$id, "test-id")
   expect_identical(
-    purrr::map_chr(btn[[1]]$children[[1]][[1]], ~ .x$attribs$class),
+    purrr::map_chr(btn$children[[1]][[1]], ~ .x$attribs$class),
     rep("fa fa-angle-left", 3)
   )
-  expect_identical(btn[[1]]$attribs$class, "btn btn-default action-button dca-left-btn")
-  expect_identical(btn[[1]]$attribs$style, "color: red;")
-  expect_identical(btn[[2]]$stylesheet, "main.min.css")
+  expect_identical(btn$attribs$class, "btn btn-default action-button dca-left-btn")
+  expect_identical(btn$attribs$style, "color: red;")
 })
 
 test_that("mediaButton works", {
@@ -31,21 +29,8 @@ test_that("mediaButton works", {
     style = "color: red;"
   )
 
-  expect_true(grepl("fa-google", btn[[1]]$children[[1]]$attribs$class))
-  expect_true(is.null(btn[[1]]$attribs$link))
-  expect_identical(btn[[1]]$attribs$class, "dca-icon-btn")
-  expect_identical(btn[[1]]$attribs$style, "color: red;")
-  expect_identical(btn[[2]]$stylesheet, "main.min.css")
-})
-
-test_that("paletteButton works", {
-  btn <- paletteButton(
-    "test-id", "red",
-    style = "color: red;"
-  )
-  expect_identical(btn[[1]]$attribs$id, "test-id")
-  expect_identical(btn[[1]]$attribs$class, "action-button dca-palette-btn")
-  expect_identical(btn[[1]]$children[[1]]$attribs$style, "color: red;")
-  expect_identical(btn[[1]]$attribs$style, "color: red;")
-  expect_identical(btn[[2]]$stylesheet, "main.min.css")
+  expect_true(grepl("fa-google", btn$children[[1]]$attribs$class))
+  expect_true(is.null(btn$attribs$link))
+  expect_identical(btn$attribs$class, "dca-icon-btn")
+  expect_identical(btn$attribs$style, "color: red;")
 })

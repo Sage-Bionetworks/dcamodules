@@ -1,3 +1,4 @@
+library(shiny)
 library(shinydashboard)
 library(dcamodules)
 
@@ -23,6 +24,9 @@ ui <- dashboardPage(
   )
 )
 
-# testing updateTabItems in a module is a bit tricky
-# haven't found a good testing for ^
-# ignore server test for now
+# not real server testing
+server <- function(input, out, session) {
+  tabSwitch("switch", "tabs", session)
+}
+
+shinyApp(ui, server)

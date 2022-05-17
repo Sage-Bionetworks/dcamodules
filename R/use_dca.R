@@ -47,7 +47,7 @@
 #'
 #'   # set them by parsing the config rds
 #'   dashboardBody(
-#'     use_dca(config = "theme_config.rds")
+#'     use_dca(theme = "theme_config.rds")
 #'   )
 #' }
 #' @rdname use_dca
@@ -55,10 +55,8 @@
 #' @importFrom sass sass sass_file sass_layer
 #' @importFrom tools file_ext
 #' @importFrom htmlwidgets JS
-#'
-use_dca <- function(waiter = TRUE, theme = "default") {
-
-  stopifnot(is.logical(waiter))
+#' @importFrom waiter use_waiter
+use_dca <- function(theme = "default") {
 
   var_opt <- c("primary","accent","dark","light",
                "success","info","warning","danger",
@@ -81,7 +79,7 @@ use_dca <- function(waiter = TRUE, theme = "default") {
     theme <- "default"
   } else if (grepl("rds", tools::file_ext(theme))) {
     stopifnot(file.exists(theme))
-    custom_theme <- readRDS(config)
+    custom_theme <- readRDS(theme)
     variables <- drop_empty(custom_theme)
     theme <- "default"
   } else {
