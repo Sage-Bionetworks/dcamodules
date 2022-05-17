@@ -32,7 +32,10 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/themes.html">themes</a>
+      <a href="../articles/themes_01.html">Customize Themes</a>
+    </li>
+    <li>
+      <a href="../articles/schematic_api_01.html">Schematic RestAPI</a>
     </li>
   </ul></li>
 <li>
@@ -84,7 +87,7 @@
 <span class="r-in"><span class="va">widgetUI</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="va">ns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/NS.html" class="external-link">NS</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span></span>
 <span class="r-in">  <span class="va">items</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"chicken"</span>, <span class="st">"egg"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu">var_to_server</span><span class="op">(</span><span class="fu">ns</span><span class="op">(</span><span class="st">"items"</span><span class="op">)</span>, <span class="va">tab_names</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu">var_to_server</span><span class="op">(</span><span class="fu">ns</span><span class="op">(</span><span class="st">"items"</span><span class="op">)</span>, <span class="va">items</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">widgetServer</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>

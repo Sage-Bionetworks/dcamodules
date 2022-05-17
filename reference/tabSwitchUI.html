@@ -32,7 +32,10 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/themes.html">themes</a>
+      <a href="../articles/themes_01.html">Customize Themes</a>
+    </li>
+    <li>
+      <a href="../articles/schematic_api_01.html">Schematic RestAPI</a>
     </li>
   </ul></li>
 <li>
@@ -63,7 +66,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tabSwitchUI</span><span class="op">(</span><span class="va">.tab</span>, id <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tabSwitchUI</span><span class="op">(</span><span class="va">.tab</span>, <span class="va">id</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -71,7 +74,7 @@
     <dl><dt>.tab</dt>
 <dd><p>The <code>tabItem</code> object.</p></dd>
 <dt>id</dt>
-<dd><p>The input variable to read value from. If NULL is set, 'dca-tab-switch' will be used for 'id'.</p></dd>
+<dd><p>The input variable to read value from.</p></dd>
 </dl></div>
 
     <div id="ref-examples">
@@ -79,7 +82,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://rstudio.github.io/shinydashboard/" class="external-link">shinydashboard</a></span><span class="op">)</span></span>
 <span class="r-in">  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
-<span class="r-in">  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Sage-Bionetworks/dcamodules" class="external-link">dcamodules</a></span><span class="op">)</span></span>
+<span class="r-in">  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sage-bionetworks.github.io/dcamodules/" class="external-link">dcamodules</a></span><span class="op">)</span></span>
 <span class="r-in">  <span class="co"># add after tabItems via pipe %&gt;%</span></span>
 <span class="r-in">  <span class="co"># or move tabItems inside of tabSwitchUI</span></span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/pkg/shinydashboard/man/tabItems.html" class="external-link">tabItems</a></span><span class="op">(</span></span>

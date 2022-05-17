@@ -16,7 +16,10 @@
     <loc>/articles/index.html</loc>
   </url>
   <url>
-    <loc>/articles/themes.html</loc>
+    <loc>/articles/schematic_api_01.html</loc>
+  </url>
+  <url>
+    <loc>/articles/themes_01.html</loc>
   </url>
   <url>
     <loc>/authors.html</loc>
@@ -46,22 +49,16 @@
     <loc>/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/insert_attribute.html</loc>
+    <loc>/reference/insert_attr_box.html</loc>
   </url>
   <url>
     <loc>/reference/mediaButton.html</loc>
-  </url>
-  <url>
-    <loc>/reference/paletteButton.html</loc>
   </url>
   <url>
     <loc>/reference/palettePanel.html</loc>
   </url>
   <url>
     <loc>/reference/palettePanelUI.html</loc>
-  </url>
-  <url>
-    <loc>/reference/set_theme.html</loc>
   </url>
   <url>
     <loc>/reference/shinyButton.html</loc>
@@ -79,10 +76,7 @@
     <loc>/reference/tabSwitchUI.html</loc>
   </url>
   <url>
-    <loc>/reference/update_css.html</loc>
-  </url>
-  <url>
-    <loc>/reference/use_dca_Waiter.html</loc>
+    <loc>/reference/use_dca.html</loc>
   </url>
   <url>
     <loc>/reference/var_to_server.html</loc>
