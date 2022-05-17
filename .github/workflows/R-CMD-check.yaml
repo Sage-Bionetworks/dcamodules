@@ -60,7 +60,7 @@ jobs:
           path: check
 
       - name: Test coverage
-        if: matrix.config.coverage == 'true'
+        if: matrix.config.coverage == 'true' && github.event_name == 'push'
         continue-on-error: true
         run: |
           covr::codecov(function_exclusions = c("\\.onLoad", "showcase"))
