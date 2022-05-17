@@ -70,11 +70,11 @@ var_to_server <- function(id, values) {
 #' @examples
 #' \dontrun{
 #' insert_attribute(box(), id = "dca")
-#' <div class="col-sm-6">
-#'   <div class="box" id="dca">
-#'   <div class="box-body"></div>
-#'   </div>
-#' </div>
+#' # <div class="col-sm-6">
+#' #   <div class="box" id="dca">
+#' #     <div class="box-body"></div>
+#' #   </div>
+#' # </div>
 #' }
 #' @rdname insert_attr_box
 #' @export

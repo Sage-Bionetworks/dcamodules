@@ -20,10 +20,10 @@ Insert attribute to a shinydashboard::box
 \examples{
 \dontrun{
 insert_attribute(box(), id = "dca")
-<div class="col-sm-6">
-  <div class="box" id="dca">
-  <div class="box-body"></div>
-  </div>
-</div>
+# <div class="col-sm-6">
+#   <div class="box" id="dca">
+#     <div class="box-body"></div>
+#   </div>
+# </div>
 }
 }

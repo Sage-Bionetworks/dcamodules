@@ -11,11 +11,9 @@ reference:
   - shinyButton
   - arrowButton
   - mediaButton
-  - paletteButton
 
 - title: Waiters
   contents:
-  - use_dca_waiter
   - dca_waiter
   - spin_logo
 
@@ -24,27 +22,33 @@ reference:
     dcaFooter
 
 - title: Modules
+- subtitle: General
+  desc: Modules used for UI component
   contents:
   - tabSwitchUI
   - tabSwitch
   - palettePanelUI
   - palettePanel
-
-- title: Styles
-  contents:
-  - set_theme
-  - update_css
-  - showcase
+- subtitle: Schematic
+  desc: Modules used with schematic functions
 
 - title: utils
   contents:
+  - showcase
+  - use_dca
   - var_to_server
   - get_tab_names
-  - insert_attribute
+  - insert_attr_box
   - drop_empty
 
+- title: Schematic RestAPI
+
 articles:
-- title: Set themes
+- title: Customize themes
   navbar: ~
   contents:
-  - themes
+  - themes_01
+- title: Schematic RestAPI
+  navbar: ~
+  contents:
+  - schematic_api_01

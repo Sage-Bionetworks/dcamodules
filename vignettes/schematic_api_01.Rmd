@@ -1,8 +1,8 @@
 ---
-title: "themes"
+title: "Schematic RestAPI"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{themes}
+  %\VignetteIndexEntry{Schematic RestAPI}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
