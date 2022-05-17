@@ -10,7 +10,7 @@ test_that("use_dca can use predefined theme", {
   expect_snapshot(res_theme[[1]]$children)
 })
 
-test_that("use_dca can read rds file", {
-  res_rds <- use_dca(theme = "test-data/test_use_dca.rds")
-  expect_snapshot(res_rds[[1]]$children)
-})
+# test_that("use_dca can read rds file", {
+#   res_rds <- use_dca(theme = "test-data/test_use_dca.rds")
+#   expect_snapshot(res_rds[[1]]$children)
+# })
