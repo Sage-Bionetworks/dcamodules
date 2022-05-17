@@ -64,7 +64,7 @@ jobs:
         continue-on-error: true
         run: |
           covr::coveralls(
-            function_exclusions = "\\.onLoad",
+            function_exclusions = c("\\.onLoad", "showcase"),
             repo_token = "${{ secrets.COVERALLS_TOKEN }}",
             service_name='drone')
         shell: Rscript {0}

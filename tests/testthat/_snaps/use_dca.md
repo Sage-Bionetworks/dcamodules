@@ -1,4 +1,4 @@
-# use_dca works 
+# use_dca can read variables 
 
     Code
       res_var[[1]]$children
@@ -911,7 +911,7 @@
               </script>
       
 
----
+# use_dca can use predefined theme
 
     Code
       res_theme[[1]]$children
@@ -1824,7 +1824,7 @@
               </script>
       
 
----
+# use_dca can read rds file
 
     Code
       res_rds[[1]]$children
