@@ -13,6 +13,7 @@ generate_manifest_ui <- function(id) {
   br(),
   h2("Download Template for Selected Folder"),
   fluidRow(
+    waiter::useWaiter(),
     shinydashboardPlus::box(
       title = "Get Link, Annotate, and Download Template as CSV",
       status = "primary",
@@ -91,6 +92,12 @@ generate_manifest_server <- function(id) {
         #     ),
         #     datasetId = folder_synID()
         #   )
+
+      waiter::waiter_show( # show the waiter
+        html = tagList(h3("Generating Google Sheet"), br(),
+                       waiter::spin_fading_circles(), br(), 
+                       h4("This may take a while"))
+        )
         
         #schematic rest api to generate manifest
        manifest_url <- manifest_generate(
@@ -103,16 +110,18 @@ generate_manifest_server <- function(id) {
          data_type = input$data_type,
          dataset_id = input$dataset_id
          )
+       
+       waiter::waiter_hide()
         
         # generate link
+       # Consider adding a button with text, then have the link open a new tab
+       # with sheet.
         output$text_template <- renderUI(
           tags$a(id = "template_link",
                  href = manifest_url,
                  list(icon("hand-point-right"), manifest_url),
                  target = "_blank")
         )
-        
-#        dcWaiter("hide", sleep = 1)
         
 #        shinypop::nx_confirm(
 #          inputId = "btn_template_confirm",
