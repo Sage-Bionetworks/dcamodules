@@ -37,41 +37,6 @@ generate_manifest_ui <- function(id) {
     )
   )
 )
-#  tabItem(
-#    tabName = "tab_data",
-#    h2("Set Dataset and Metadata Template for Curation"),
-    # fluidRow(
-    #   shinydashboardPlus::box(
-    #     status = "primary",
-    #     width = 6,
-    #     title = "Choose a Project and Folder: ",
-    #     selectInput(
-    #       inputId = ns("dropdown_project"),
-    #       label = "Project:",
-    #       choices = "Generating..."
-    #     ),
-    #     selectInput(
-    #       inputId = ns("dropdown_folder"),
-    #       label = "Folder:",
-    #       choices = "Generating..."
-    #     ),
-    #     helpText(
-    #       "If your recently updated folder does not appear, please wait for Synapse to sync and refresh"
-    #     )
-    #   ),
-    #   shinydashboardPlus::box(
-    #     status = "primary",
-    #     width = 6,
-    #     title = "Choose a Metadata Template Type: ",
-    #     selectInput(
-    #       inputId = ns("dropdown_template"),
-    #       label = "Template:",
-    #       choices = "Generating..."
-    #     )
-    #   )
-    # )#,
-#    switchTabUI("switchTab2", direction = "both")
-#  )
 }
 
 generate_manifest_server <- function(id) {
@@ -81,26 +46,15 @@ generate_manifest_server <- function(id) {
       
       observeEvent(input$btn_template, {
         # loading screen for template link generation
- #       dcWaiter("show", msg = "Generating link...")
-        
-        # manifest_url <-
-        #   metadata_model$getModelManifest(paste0(config$community, " ", input$dropdown_template),
-        #     template_schema_name(),
-        #     filenames = switch((template_type == "assay") + 1,
-        #       NULL,
-        #       as.list(names(datatype_list$files))
-        #     ),
-        #     datasetId = folder_synID()
-        #   )
 
-      waiter::waiter_show( # show the waiter
-        html = tagList(h3("Generating Google Sheet"), br(),
-                       waiter::spin_fading_circles(), br(), 
-                       h4("This may take a while"))
+        waiter::waiter_show( # show the waiter
+          html = tagList(h3("Generating Google Sheet"), br(),
+                         waiter::spin_fading_circles(), br(), 
+                         h4("This may take a while"))
         )
         
         #schematic rest api to generate manifest
-       manifest_url <- manifest_generate(
+        manifest_url <- manifest_generate(
          # url=file.path("http://0.0.0.0:3001", "v1/manifest/generate"),
          # title = "Test",
          # data_type = "Biospecimen",
@@ -109,9 +63,9 @@ generate_manifest_server <- function(id) {
          title = input$title,
          data_type = input$data_type,
          dataset_id = input$dataset_id
-         )
+        )
        
-       waiter::waiter_hide()
+        waiter::waiter_hide()
         
         # generate link
        # Consider adding a button with text, then have the link open a new tab
