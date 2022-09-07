@@ -84,7 +84,7 @@ use_dca <- function(theme = "default") {
     variables <- drop_empty(custom_theme)
     theme <- "default"
   } else {
-    match.arg(theme, c("default", "sage"))
+    match.arg(theme, c("default", "sage", "htan"))
   }
 
   themeCSS <- sass::sass(

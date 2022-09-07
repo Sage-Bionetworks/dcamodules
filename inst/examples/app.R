@@ -5,7 +5,7 @@ library(magrittr)
 library(sass)
 
 ### general
-themes <- c("default", "sage")
+themes <- c("default", "sage", "htan")
 
 all_orgs <- list.files(system.file(package = "dcamodules", "assets/logos")) %>%
   tools::file_path_sans_ext()
@@ -13,11 +13,12 @@ all_orgs <- list.files(system.file(package = "dcamodules", "assets/logos")) %>%
 ui <- dashboardPage(
   dashboardHeader(
     title = tagList("DCA Modules", tags$img(src = "assets/logos/sage.svg", height = 40, alt = "Logo")),
-    dropdownMenu(type = "messages",
-                 messageItem(
-                   from = "Sales Dept",
-                   message = "Sales are steady this month."
-                 )
+    dropdownMenu(
+      type = "messages",
+      messageItem(
+        from = "Sales Dept",
+        message = "Sales are steady this month."
+      )
     ),
     palettePanelUI("palette-panel")
   ),
@@ -34,7 +35,6 @@ ui <- dashboardPage(
         tabName = "tab_waiter",
         icon = icon("clock")
       ),
-
       menuItem(
         "progress bar",
         tabName = "tab_progress_bar",
