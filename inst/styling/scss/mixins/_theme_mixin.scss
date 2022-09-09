@@ -8,51 +8,47 @@
 }
 
 @mixin get-colors-from-theme($theme) {
-  @if $theme and $theme != 'default' {
-    // get colors from pre-defined themes
-    $current-theme: map-get($themes, $theme) !global;
-    $primary: map-get($current-theme, 'primary') !global;
-    $accent: map-get($current-theme, 'accent') !global;
-    $dark: map-get($current-theme, 'dark') !global;
-    $light: map-get($current-theme, 'light') !global;
-    $success: map-get($current-theme, 'success') !global;
-    $info: map-get($current-theme, 'info') !global;
-    $warning: map-get($current-theme, 'warning') !global;
-    $danger: map-get($current-theme, 'danger') !global;
-    $font: map-get($current-theme, 'font') !global;
-    $content-bg-cl: map-get($current-theme, 'content-bg-cl') !global;
-    $content-font-cl: map-get($current-theme, 'content-font-cl') !global;
-    $link-font-cl: map-get($current-theme, 'link-font-cl') !global;
-    $header-bg-cl: map-get($current-theme, 'header-bg-cl') !global;
-    $header-font-cl: map-get($current-theme, 'header-font-cl') !global;
-    // sidebar
-    $sidebar-bg-cl: map-get($current-theme, 'sidebar-bg-cl') !global;
-    $sidebar-font-cl: map-get($current-theme, 'sidebar-font-cl') !global;
-    $sidebar-bg-select-cl: map-get(
-      $current-theme,
-      'sidebar-bg-select-cl'
-    ) !global;
-    $sidebar-font-select-cl: map-get(
-      $current-theme,
-      'sidebar-font-select-cl'
-    ) !global;
-    $sidebar-bg-hover-cl: map-get(
-      $current-theme,
-      'sidebar-bg-hover-cl'
-    ) !global;
-    $sidebar-font-hover-cl: map-get(
-      $current-theme,
-      'sidebar-font-hover-cl'
-    ) !global;
-    // footer
-    $footer-bg-cl: map-get($current-theme, 'footer-bg-cl') !global;
-    $footer-font-cl: map-get($current-theme, 'footer-font-cl') !global;
-    // box
-    // waiter
-    $waiter-bg-cl: map-get($current-theme, 'waiter-bg-cl') !global;
-    $waiter-font-cl: map-get($current-theme, 'waiter-font-cl') !global;
-  }
+  // get colors from pre-defined themes
+  $current-theme: map-get($themes, $theme) !global;
+  $primary: map-get($current-theme, 'primary') !global;
+  $accent: map-get($current-theme, 'accent') !global;
+  $dark: map-get($current-theme, 'dark') !global;
+  $light: map-get($current-theme, 'light') !global;
+  $success: map-get($current-theme, 'success') !global;
+  $info: map-get($current-theme, 'info') !global;
+  $warning: map-get($current-theme, 'warning') !global;
+  $danger: map-get($current-theme, 'danger') !global;
+  $font: map-get($current-theme, 'font') !global;
+  $content-bg-cl: map-get($current-theme, 'content-bg-cl') !global;
+  $content-font-cl: map-get($current-theme, 'content-font-cl') !global;
+  $link-font-cl: map-get($current-theme, 'link-font-cl') !global;
+  $header-bg-cl: map-get($current-theme, 'header-bg-cl') !global;
+  $header-font-cl: map-get($current-theme, 'header-font-cl') !global;
+  // sidebar
+  $sidebar-bg-cl: map-get($current-theme, 'sidebar-bg-cl') !global;
+  $sidebar-font-cl: map-get($current-theme, 'sidebar-font-cl') !global;
+  $sidebar-bg-select-cl: map-get(
+    $current-theme,
+    'sidebar-bg-select-cl'
+  ) !global;
+  $sidebar-font-select-cl: map-get(
+    $current-theme,
+    'sidebar-font-select-cl'
+  ) !global;
+  $sidebar-bg-hover-cl: map-get($current-theme, 'sidebar-bg-hover-cl') !global;
+  $sidebar-font-hover-cl: map-get(
+    $current-theme,
+    'sidebar-font-hover-cl'
+  ) !global;
+  // footer
+  $footer-bg-cl: map-get($current-theme, 'footer-bg-cl') !global;
+  $footer-font-cl: map-get($current-theme, 'footer-font-cl') !global;
+  // box
+  // waiter
+  $waiter-bg-cl: map-get($current-theme, 'waiter-bg-cl') !global;
+  $waiter-font-cl: map-get($current-theme, 'waiter-font-cl') !global;
 }
+
 // mixin to set custom theme
 @mixin set-theme() {
   // basic colors for loop later

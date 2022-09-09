@@ -5,7 +5,7 @@ library(magrittr)
 library(sass)
 
 ### general
-themes <- c("default", "sage", "htan")
+themes <- c("sage", "htan")
 
 all_orgs <- list.files(system.file(package = "dcamodules", "assets/logos")) %>%
   tools::file_path_sans_ext()
