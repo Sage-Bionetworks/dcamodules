@@ -1,0 +1,15 @@
+@mixin dca-waiter($waiter-bg-cl, $waiter-font-cl) {
+  .waiter-overlay.waiter-local {
+    left: 0 !important;
+    background: $waiter-bg-cl !important;
+    color: $waiter-font-cl !important;
+  }
+
+  .waiter-overlay-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: auto !important;
+  }
+}

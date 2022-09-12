@@ -5,14 +5,14 @@ library(magrittr)
 library(sass)
 
 ### general
-themes <- c("sage", "htan")
+themes <- c("default", "sage", "htan")
 
 all_orgs <- list.files(system.file(package = "dcamodules", "assets/logos")) %>%
   tools::file_path_sans_ext()
 
 ui <- dashboardPage(
   dashboardHeader(
-    title = tagList("DCA Modules", tags$img(src = "assets/logos/sage.svg", height = 40, alt = "Logo")),
+    title = tagList("DCA Modules", tags$img(src = NULL, height = 40, alt = "Logo")),
     dropdownMenu(
       type = "messages",
       messageItem(

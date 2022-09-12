@@ -1,0 +1,19 @@
+@mixin dca-content($content-bg-cl, $link-font-cl) {
+  .skin-blue .wrapper {
+    background-color: $content-bg-cl;
+  }
+
+  .content-wrapper,
+  .right-side {
+    background: $content-bg-cl;
+
+    a {
+      color: $link-font-cl !important;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

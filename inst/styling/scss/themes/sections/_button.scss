@@ -1,0 +1,49 @@
+@mixin dca-btn-basic {
+  min-width: 36px;
+  white-space: nowrap;
+  text-decoration: none;
+  text-align: center;
+  line-height: 36px;
+  margin: 8px 8px 8px 0;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: none;
+  outline: none !important;
+  cursor: pointer;
+  box-shadow: $btn-shadow;
+}
+
+@mixin dca-button($basic-cls) {
+  .btn-default,
+  .action-button {
+    @include dca-btn-basic;
+    background: map-get($basic-cls, 'accent');
+    color: set-font-color(map-get($basic-cls, 'accent'));
+    filter: grayscale(0%) opacity(1);
+    transition: 100ms;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:active:focus,
+    &:visited {
+      background: map-get($basic-cls, 'accent');
+      color: set-font-color(map-get($basic-cls, 'accent'));
+      filter: grayscale(20%) opacity(0.7);
+    }
+  }
+
+  @each $type in map-keys($basic-cls) {
+    $bg-cl: map-get($basic-cls, #{$type});
+
+    .btn-#{$type},
+    .btn-#{$type}:active,
+    .btn-#{$type}:visited {
+      background: $bg-cl !important;
+      color: set-font-color($bg-cl) !important;
+    }
+    .btn-#{$type}:hover {
+      background: $bg-cl !important;
+    }
+  }
+}

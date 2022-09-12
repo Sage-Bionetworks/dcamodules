@@ -1,3 +1,21 @@
+.dca-palette-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: 14px;
+  height: 14px;
+  min-width: 0 !important;
+  padding: 0 !important;
+  margin: 4px !important;
+
+  .fa-circle:hover {
+    border-bottom: 2px solid orange;
+  }
+}
+
 .dca-palette-panel {
   .dca-palette-toggle {
     position: relative;

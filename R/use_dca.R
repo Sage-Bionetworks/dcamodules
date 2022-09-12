@@ -91,7 +91,7 @@ use_dca <- function(theme = "default") {
     theme == "default",
     "@include set-theme()",
     sprintf(
-      "@include get-colors-from-theme(%s);
+      "@include define-colors(%s);
       @include set-theme();", theme
     )
   )
@@ -99,7 +99,7 @@ use_dca <- function(theme = "default") {
   themeCSS <- sass::sass(
     sass::sass_layer(
       functions = sass::sass_file(
-        system.file(package = "dcamodules", "styling/scss/main.scss")
+        system.file(package = "dcamodules", "styling/scss/styles.scss")
       ),
       defaults = variables,
       rules = rules

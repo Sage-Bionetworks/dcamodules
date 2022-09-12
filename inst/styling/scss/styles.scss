@@ -1,17 +1,11 @@
 // this will only load all stylings for modules
 // stylings for themes (variables) will not be loaded here
 
-// variables
-@import 'base/load';
-
-// mixins
-@import 'mixins/load';
+// bases
+@import 'bases/load';
 
 // themes
 @import 'themes/load';
 
-// sections
-@import 'sections/load';
-
 // components
-@import 'libs/load';
+@import 'components/load';
