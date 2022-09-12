@@ -27,6 +27,8 @@ $themes: (
     'danger': #e53935,
     'dark': #000,
     'light': #fff,
+    'black': #000,
+    'white': #fff,
     'font': 'lato',
     'content-bg-cl': #fff,
     'content-font-cl': #3c4a63,
@@ -47,5 +49,37 @@ $themes: (
     // waiter
     'waiter-bg-cl': #eaeff5,
     'waiter-font-cl': #000,
+  ),
+  'htan': (
+    'primary': #605ca8,
+    'accent': #f5b33c,
+    'success': #28a745,
+    'info': blue,
+    'warning': #ff9900,
+    'danger': #e53935,
+    'dark': #000,
+    'light': #fff,
+    'black': #000,
+    'white': #fff,
+    'font': 'lato',
+    'content-bg-cl': #fff,
+    'content-font-cl': #333,
+    'link-font-cl': #4c83b6,
+    'header-bg-cl': #605ca8,
+    'header-font-cl': #fff,
+    // sidebar
+    'sidebar-bg-cl': #191919,
+    'sidebar-font-cl': #fff,
+    'sidebar-bg-select-cl': rgba(#605ca8, 0.8),
+    'sidebar-font-select-cl': #fff,
+    'sidebar-bg-hover-cl': rgba(104, 103, 103, 0.3),
+    'sidebar-font-hover-cl': #fff,
+    // footer
+    'footer-bg-cl': #202020,
+    'footer-font-cl': #878787,
+    // box
+    // waiter
+    'waiter-bg-cl': rgba(#605ca8, 0.9),
+    'waiter-font-cl': #fff,
   ),
 );

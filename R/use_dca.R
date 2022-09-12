@@ -84,17 +84,25 @@ use_dca <- function(theme = "default") {
     variables <- drop_empty(custom_theme)
     theme <- "default"
   } else {
-    match.arg(theme, c("default", "sage"))
+    match.arg(theme, c("default", "sage", "htan"))
   }
+
+  rules <- ifelse(
+    theme == "default",
+    "@include set-theme()",
+    sprintf(
+      "@include define-colors(%s);
+      @include set-theme();", theme
+    )
+  )
 
   themeCSS <- sass::sass(
     sass::sass_layer(
       functions = sass::sass_file(
-        system.file(package = "dcamodules", "styling/scss/main.scss")
+        system.file(package = "dcamodules", "styling/scss/styles.scss")
       ),
       defaults = variables,
-      rules = sprintf("@include get-colors-from-theme(%s);
-                       @include set-theme();", theme)
+      rules = rules
     )
   )
 

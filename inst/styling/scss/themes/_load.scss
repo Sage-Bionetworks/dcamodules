@@ -1,4 +1,11 @@
-// load color and typography
-@import 'colors';
-@import 'typography';
-@import 'themes';
+@import 'sections/box';
+@import 'sections/button';
+@import 'sections/content';
+@import 'sections/footer';
+@import 'sections/header';
+@import 'sections/sidebar';
+@import 'sections/waiter';
+
+@import 'set_font_color';
+@import 'define_colors';
+@import 'set_theme';

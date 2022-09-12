@@ -1,0 +1,45 @@
+@mixin dca-box-basic {
+  border-radius: $box-radius;
+  box-shadow: $box-shadow;
+  border-width: $box-border-width;
+}
+
+@mixin dca-box-header {
+  border-top-left-radius: $box-radius;
+  border-top-right-radius: $box-radius;
+}
+
+@mixin dca-box($basic-cls) {
+  @each $type in map-keys($basic-cls) {
+    $bg-cl: map-get($basic-cls, #{$type});
+
+    .box {
+      @include dca-box-basic;
+
+      &.box-solid.box-#{$type} {
+        border: none;
+
+        & > .box-header {
+          @include dca-box-header;
+          background: $bg-cl;
+
+          & h3 {
+            color: set-font-color($bg-cl);
+          }
+        }
+      }
+
+      &.box-#{$type} {
+        border-color: $bg-cl;
+
+        & > .box-header {
+          @include dca-box-header;
+
+          & h3 {
+            color: $black;
+          }
+        }
+      }
+    }
+  }
+}

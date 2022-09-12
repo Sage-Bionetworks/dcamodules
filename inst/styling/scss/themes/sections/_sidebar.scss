@@ -1,0 +1,68 @@
+@mixin dca-sidebar(
+  $primary-cl,
+  $sidebar-bg-cl,
+  $sidebar-font-cl,
+  $sidebar-bg-select-cl,
+  $sidebar-font-select-cl,
+  $sidebar-bg-hover-cl,
+  $sidebar-font-hover-cl
+) {
+  .navbar .sidebar-toggle {
+    background: $primary-cl;
+    color: set-font-color($primary-cl);
+
+    &:hover {
+      background: $primary-cl;
+      color: set-font-color($primary-cl);
+    }
+  }
+
+  .skin-blue .main-sidebar {
+    background: $sidebar-bg-cl !important;
+    color: $sidebar-font-cl;
+    box-shadow: $primary-shadow;
+
+    .sidebar {
+      padding-top: 15px; // avoid header shadow
+
+      li {
+        & > a {
+          border-left: unset !important;
+          border-radius: $box-radius;
+          margin: 0 14px;
+          transition: background-color 100ms ease;
+          color: $sidebar-font-cl;
+          & > span {
+            color: $sidebar-font-cl !important;
+          }
+        }
+
+        &:hover > a,
+        & > a:hover {
+          color: $sidebar-font-hover-cl !important;
+          background: $sidebar-bg-hover-cl;
+          & > span {
+            color: $sidebar-font-hover-cl !important;
+          }
+        }
+      }
+
+      // selected
+      li.active {
+        & > a {
+          color: $sidebar-font-select-cl !important;
+          background: $sidebar-bg-select-cl !important;
+          & > span {
+            color: $sidebar-font-select-cl !important;
+          }
+        }
+
+        &:hover > a,
+        & > a:hover {
+          background: $sidebar-bg-select-cl !important;
+          color: $sidebar-font-select-cl !important;
+        }
+      }
+    }
+  }
+}

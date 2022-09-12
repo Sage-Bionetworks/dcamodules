@@ -1,0 +1,64 @@
+// mixin to set custom theme
+@mixin set-theme() {
+  // basic colors for loop later
+  $basic-cls: (
+    'primary': $primary,
+    'accent': $accent,
+    'dark': $dark,
+    'light': $light,
+    'success': $success,
+    'info': $info,
+    'warning': $warning,
+    'danger': $danger,
+    'white': $white,
+    'black': $black,
+  );
+
+  // base
+  body {
+    background-color: $header-bg-cl;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    span {
+      font-family: $font;
+      color: $content-font-cl;
+    }
+  }
+
+  // header
+  @include dca-header(
+    map-get($basic-cls, 'primary'),
+    $header-bg-cl,
+    $header-font-cl
+  );
+
+  // sidebar
+  @include dca-sidebar(
+    map-get($basic-cls, 'primary'),
+    $sidebar-bg-cl,
+    $sidebar-font-cl,
+    $sidebar-bg-select-cl,
+    $sidebar-font-select-cl,
+    $sidebar-bg-hover-cl,
+    $sidebar-font-hover-cl
+  );
+
+  // content
+  @include dca-content($content-bg-cl, $link-font-cl);
+
+  // footer
+  @include dca-footer($footer-bg-cl, $footer-font-cl);
+
+  // boxes
+  @include dca-box($basic-cls);
+
+  // buttons
+  @include dca-button($basic-cls);
+
+  // waiter
+  @include dca-waiter($waiter-bg-cl, $waiter-font-cl);
+}

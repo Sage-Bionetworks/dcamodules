@@ -1,0 +1,6 @@
+@mixin dca-footer($footer-bg-cl, $footer-font-cl) {
+  .dca-footer {
+    background: $footer-bg-cl;
+    color: $footer-font-cl;
+  }
+}

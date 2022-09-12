@@ -1,0 +1,8 @@
+// function to change color based on bg color
+@function set-font-color($color) {
+  @if (lightness($color) > 60) {
+    @return $black; // Lighter background, return dark color
+  } @else {
+    @return $white; // Darker background, return light color
+  }
+}
