@@ -28,7 +28,7 @@
       li {
         & > a {
           border-left: unset !important;
-          border-radius: $radius;
+          border-radius: $box-radius;
           margin: 0 14px;
           transition: background-color 100ms ease;
           color: $sidebar-font-cl;

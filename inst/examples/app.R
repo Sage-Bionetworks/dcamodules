@@ -162,7 +162,6 @@ ui <- dashboardPage(
         "."
       )),
       media = tagList(
-        mediaButton("github", "https://github.com/Sage-Bionetworks/dcamodules"),
         mediaButton("github", "https://github.com/Sage-Bionetworks/dcamodules")
       )
     )

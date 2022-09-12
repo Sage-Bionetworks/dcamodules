@@ -1,11 +1,12 @@
 @mixin dca-box-basic {
-  border-radius: $radius;
-  box-shadow: $md-shadow;
+  border-radius: $box-radius;
+  box-shadow: $box-shadow;
+  border-width: $box-border-width;
 }
 
 @mixin dca-box-header {
-  border-top-left-radius: $radius;
-  border-top-right-radius: $radius;
+  border-top-left-radius: $box-radius;
+  border-top-right-radius: $box-radius;
 }
 
 @mixin dca-box($basic-cls) {
