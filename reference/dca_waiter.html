@@ -66,57 +66,80 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dca_waiter</span><span class="op">(</span>
-  stage <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"show"</span>, <span class="st">"update"</span>, <span class="st">"hide"</span><span class="op">)</span>,
-  id <span class="op">=</span> <span class="cn">NULL</span>,
-  user.name <span class="op">=</span> <span class="st">"DCA User"</span>,
-  is.landing <span class="op">=</span> <span class="cn">FALSE</span>,
-  is.stop <span class="op">=</span> <span class="cn">FALSE</span>,
-  sleep <span class="op">=</span> <span class="fl">2</span>,
-  is.certified <span class="op">=</span> <span class="cn">TRUE</span>,
-  is.permission <span class="op">=</span> <span class="cn">TRUE</span>,
-  msg <span class="op">=</span> <span class="cn">NULL</span>,
-  spin <span class="op">=</span> <span class="cn">NULL</span>,
-  color <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dca_waiter</span><span class="op">(</span></span>
+<span>  stage <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"show"</span>, <span class="st">"update"</span>, <span class="st">"hide"</span><span class="op">)</span>,</span>
+<span>  id <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  user.name <span class="op">=</span> <span class="st">"DCA User"</span>,</span>
+<span>  is.landing <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  is.stop <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  sleep <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  is.certified <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  is.permission <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  msg <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  spin <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  color <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>stage</dt>
 <dd><p>Type of waiter, 'show' to initiate waiter screen, 'update' to update a waiter screen, or 'hide' to hide a waiter screen.</p></dd>
+
+
 <dt>id</dt>
 <dd><p>Id of element to hide or element on which to show waiter over.</p></dd>
+
+
 <dt>user.name</dt>
 <dd><p>Name of user.</p></dd>
+
+
 <dt>is.landing</dt>
 <dd><p>Whether the waiter screen is used for landing process, including landing page, login failed pages, and welcome page.</p></dd>
+
+
 <dt>is.stop</dt>
 <dd><p>Whether the waiter screen will be stopped after rendered.</p></dd>
+
+
 <dt>sleep</dt>
 <dd><p>Time to keep the loading screen before hiding - recommend to give at least 2s to let users view the page.</p></dd>
+
+
 <dt>is.certified</dt>
 <dd><p>Whether the user is synapse certified.</p></dd>
+
+
 <dt>is.permission</dt>
 <dd><p>Whether the user have sufficient permission to the fileview.</p></dd>
+
+
 <dt>msg</dt>
 <dd><p>Message displayed in the waiter screen.</p></dd>
+
+
 <dt>spin</dt>
 <dd><p>Spinner displayed in the waiter screen.</p></dd>
+
+
 <dt>color</dt>
 <dd><p>Background color of the waiter screen.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>show, update, or stop a waiter screen.</p>
+    
+
+<p>show, update, or stop a waiter screen.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="co"># check the waiter tab in the gallery</span></span>
-<span class="r-in">  <span class="fu">dcamodules</span><span class="fu">::</span><span class="fu"><a href="showcase.html">showcase</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="co"># check the waiter tab in the gallery</span></span></span>
+<span class="r-in"><span>  <span class="fu">dcamodules</span><span class="fu">::</span><span class="fu"><a href="showcase.html">showcase</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -131,7 +154,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

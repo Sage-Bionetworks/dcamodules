@@ -66,32 +66,39 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dcaFooter</span><span class="op">(</span><span class="va">message</span>, media <span class="op">=</span> <span class="cn">NULL</span>, height <span class="op">=</span> <span class="st">"100px"</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dcaFooter</span><span class="op">(</span><span class="va">message</span>, media <span class="op">=</span> <span class="cn">NULL</span>, height <span class="op">=</span> <span class="st">"100px"</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>message</dt>
 <dd><p>The main text section at the bottom of footer.</p></dd>
+
+
 <dt>media</dt>
 <dd><p>The top section for media links. Default to NULL.</p></dd>
+
+
 <dt>height</dt>
 <dd><p>The height of footer. Default to '100px'/</p></dd>
+
+
 <dt>...</dt>
 <dd><p>List of tag attributes</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://rstudio.github.io/shinydashboard/" class="external-link">shinydashboard</a></span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/pkg/shinydashboard/man/dashboardBody.html" class="external-link">dashboardBody</a></span><span class="op">(</span></span>
-<span class="r-in">    <span class="fu">dcaFooter</span><span class="op">(</span><span class="st">"</span>
-<span class="r-in">      Copy right 2022"</span>,</span>
-<span class="r-in">      media <span class="op">=</span> <span class="fu"><a href="mediaButton.html">mediaButton</a></span><span class="op">(</span><span class="st">"google"</span>, <span class="st">"https://google.com"</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://rstudio.github.io/shinydashboard/" class="external-link">shinydashboard</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/shinydashboard/man/dashboardBody.html" class="external-link">dashboardBody</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu">dcaFooter</span><span class="op">(</span><span class="st">"</span></span></span>
+<span class="r-in"><span><span class="st">      Copy right 2022"</span>,</span></span>
+<span class="r-in"><span>      media <span class="op">=</span> <span class="fu"><a href="mediaButton.html">mediaButton</a></span><span class="op">(</span><span class="st">"google"</span>, <span class="st">"https://google.com"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -106,7 +113,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
