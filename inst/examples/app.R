@@ -7,17 +7,16 @@ library(sass)
 ### general
 themes <- c("default", "sage", "htan")
 
-all_orgs <- list.files(system.file(package = "dcamodules", "assets/logos")) %>%
-  tools::file_path_sans_ext()
+all_orgs <- list.files(system.file(package = "dcamodules", "assets/logos"))
 
 ui <- dashboardPage(
   dashboardHeader(
-    title = tagList("DCA Modules", tags$img(src = NULL, height = 40, alt = "Logo")),
+    title = tagList("DCA Modules", tags$img(src = "assets/logos/sage.svg", height = 40, alt = "Logo")),
     dropdownMenu(
       type = "messages",
       messageItem(
-        from = "Sales Dept",
-        message = "Sales are steady this month."
+        from = "DCC Admin",
+        message = "You are in the dcamodules demo."
       )
     ),
     palettePanelUI("palette-panel")
@@ -78,7 +77,7 @@ ui <- dashboardPage(
             title = "Logo Spinner:",
             width = 12,
             fluidRow(
-              lapply(all_orgs, function(org) {
+              lapply(tools::file_path_sans_ext(all_orgs), function(org) {
                 column(3, spin_logo(org))
               })
             )
