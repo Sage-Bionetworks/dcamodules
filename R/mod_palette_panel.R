@@ -109,14 +109,8 @@ palettePanel <- function(id, head.id, parent.session) {
       })
 
       observeEvent(input$`save-btn`, {
-        vars()
-        path <- "./theme_config.rds"
-        isolate({
-          saveRDS(vars(), path)
-          output[["save-progress"]] <- renderText(
-            sprintf("'%s' is updated!", path)
-          )
-        })
+        saveRDS(vars(), "theme_config.rds")
+        output[["save-progress"]] <- renderText("'theme_config.rds' is updated!")
       })
     }
   )

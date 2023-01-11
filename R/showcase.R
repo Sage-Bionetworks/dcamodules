@@ -9,5 +9,6 @@
 #' @rdname showcase
 #' @export
 showcase <- function() {
+  Sys.setenv(WORKING_DIR = getwd())
   shiny::shinyAppFile(system.file("examples/app.R", package = "dcamodules", mustWork = TRUE))
 }

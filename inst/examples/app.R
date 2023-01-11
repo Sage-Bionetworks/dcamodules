@@ -170,6 +170,11 @@ ui <- dashboardPage(
 
 server <- function(input, output, session) {
   palettePanel("palette-panel", "theme", session)
+
+  # set the app's working dir
+  # so the theme_config.rds can be saved to user's working dir
+  setwd(Sys.getenv("WORKING_DIR"))
+
   observeEvent(input$btn_theme, {
     output$theme <- renderUI({
       use_dca(theme = input$btn_theme)
