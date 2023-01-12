@@ -20,7 +20,7 @@ ui <- dashboardPage(
       )
     ),
     palettePanelUI("palette-panel")
-  ),
+  ) %>% expandHeader(left = actionButton("test-left", "Test")),
   dashboardSidebar(
     sidebarMenu(
       id = "tabs",
